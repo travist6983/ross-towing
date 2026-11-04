@@ -1,0 +1,98 @@
+{
+  "towing/IMG_5089.jpeg": {
+    "alt": "A red Ross Towing flatbed, truck number 80, carrying a black SUV strapped to its bed on a residential street.",
+    "caption": "Flatbed tow of an SUV.",
+    "featured": true,
+    "blurRegions": [
+      {
+        "x": 1915,
+        "y": 1420,
+        "w": 80,
+        "h": 100
+      }
+    ]
+  },
+  "towing/IMG_5382.jpeg": {
+    "alt": "A black Ross Towing wrecker, truck number 79, towing a white shuttle bus by its front wheels in a gravel yard.",
+    "caption": "Wrecker 79 with a shuttle bus in tow.",
+    "featured": true,
+    "blurRegions": [
+      {
+        "x": 1720,
+        "y": 1345,
+        "w": 60,
+        "h": 60
+      },
+      {
+        "x": 2330,
+        "y": 1000,
+        "w": 160,
+        "h": 160
+      },
+      {
+        "x": 2710,
+        "y": 1490,
+        "w": 300,
+        "h": 70
+      },
+      {
+        "x": 3650,
+        "y": 1130,
+        "w": 210,
+        "h": 195
+      }
+    ]
+  },
+  "towing/IMG_5561.jpeg": {
+    "alt": "A black Ross Towing wrecker, truck number 79, towing a box truck with a fire damaged cab and cargo body across a gravel lot.",
+    "caption": "Wrecker 79 towing a burned out box truck.",
+    "featured": true
+  },
+  "towing/IMG_6288.jpeg": {
+    "alt": "Three red Ross Towing tow trucks parked side by side at night with their amber lights on.",
+    "caption": "Ross trucks at night.",
+    "featured": true
+  },
+  "towing/rotator-night.jpg": {
+    "alt": "A red Ross Towing rotator marked Police Towing, lit up at night in a lot with other trucks lined up behind it."
+  },
+  "towing/rotator-88.jpg": {
+    "alt": "Ross Towing heavy wrecker number 88, a red truck marked Police Towing, with its boom stowed."
+  },
+  "towing/wrecker-79.jpg": {
+    "alt": "Ross Towing wrecker number 79, a black tow truck marked Police Towing."
+  },
+  "freight/freight-rig-sunset.jpg": {
+    "alt": "A red Ross Towing semi tractor hitched to a long trailer, parked on gravel at sunset."
+  },
+  "freight/rollback-excavator.jpg": {
+    "alt": "A white Ross Towing rollback with its bed tilted, loading a yellow compact excavator at a dirt job site."
+  },
+  "freight/rollback-crane.jpg": {
+    "alt": "A white Ross Towing rollback carrying a yellow mobile crane, chained down, outside an industrial building."
+  },
+  "freight/landoll-forklifts.jpg": {
+    "alt": "Two yellow forklifts strapped down on a black Landoll trailer in a gravel lot."
+  },
+  "freight/lowboy.jpg": {
+    "alt": "An empty red lowboy trailer in a gravel yard."
+  },
+  "freight/tractor-landoll.jpg": {
+    "alt": "A red Ross Towing semi tractor hooked to a black Landoll trailer in a gravel yard."
+  },
+  "training/IMG_1668.jpeg": {
+    "alt": "A K-9 handler leads a police dog along a silver sedan in a gravel lot while another officer walks nearby."
+  },
+  "training/IMG_1682.jpeg": {
+    "alt": "Two officers with a police dog beside a blue SUV, with a Farmington Hills Police SUV parked behind them."
+  },
+  "training/IMG_1695.jpeg": {
+    "alt": "A police dog lies beside the back of a white car while its handler holds the leash.",
+    "crop": {
+      "x": 0,
+      "y": 190,
+      "w": 640,
+      "h": 420
+    }
+  }
+}

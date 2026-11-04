@@ -1,0 +1,56 @@
+{
+  "_note": "Google reviews Jennifer Gatt sent on Nov 4, 2026, quoted word for word (only line breaks joined). Never edit, merge or invent review text. To show a different review, set \"featured\": true and a \"slot\" (towing, recovery, release); set the one it replaces to false. Attribution is first name plus last initial. No stars, ratings or relative dates.",
+  "reviews": [
+    {
+      "id": "aubrey",
+      "author": "Aubrey D.",
+      "featured": true,
+      "slot": "recovery",
+      "show": "excerpt",
+      "excerpt": "After my first accident I had no clue what to do. Cort towed my car promptly and let me ride with him back to the shop. He offered a great explanation of the next steps and assured he's seen cars with worse damage be repaired. His kindness, generosity, and patience really helped me get through a stressful situation.",
+      "text": "After my first accident I had no clue what to do. Cort towed my car promptly and let me ride with him back to the shop. He offered a great explanation of the next steps and assured he's seen cars with worse damage be repaired. His kindness, generosity, and patience really helped me get through a stressful situation. In this day in age it's so easy to look down, mind your business and just do your job but people like Cort who care and lend a hand when someone at their lowest that truly makes a change in this world. I cannot thank him enough for his support but will take his kindness and pass it along."
+    },
+    {
+      "id": "kathy",
+      "author": "Kathy D.",
+      "featured": true,
+      "slot": "towing",
+      "text": "Very helpful, friendly, and polite when we had to have our car towed after it was in an accident. Jake was especially helpful when we stopped by to get our stuff out of the car the next day- even the insurance agent handling the claim noted how friendly he was on the phone to her."
+    },
+    {
+      "id": "jill",
+      "author": "Jill S.",
+      "featured": true,
+      "slot": "release",
+      "text": "I spoke with someone on the phone and they explained everything I needed to know very clearly and they were quick when I went in to pick my car up. Made a stressful situation a little more bearable."
+    },
+    {
+      "id": "tyrin",
+      "author": "Tyrin B.",
+      "featured": false,
+      "slot": null,
+      "text": "This towing company was a blessing they are the best company out of all of the companies I dealt with. Very respectful & very helpful!"
+    },
+    {
+      "id": "jonae",
+      "author": "Jonae S.",
+      "featured": false,
+      "slot": null,
+      "text": "Wonderful service Even with me being mad my car got towed helped me feel better❤️❤️"
+    },
+    {
+      "id": "monica",
+      "author": "Monica B.",
+      "featured": false,
+      "slot": null,
+      "text": "I had the pleasure encounter with Jake and made this situation a Whole lot less stressful.Thanks Jake for your kindness,help,and patience throughout this unfortunate situation"
+    },
+    {
+      "id": "erica",
+      "author": "Erica M.",
+      "featured": false,
+      "slot": null,
+      "text": "This place was very nice and understanding, helped me with the next steps. Didn't judge me crying, treated my car good! But thank you guys for what you do!"
+    }
+  ]
+}

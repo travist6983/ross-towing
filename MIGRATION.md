@@ -10,7 +10,7 @@ The site started as `preview/ross-towing/` inside the journeymanwebco.com repo (
 |---|---|---|
 | Page (copy, markup, inline CSS) | `index.html` | `index.html`, with shared parts split into `src/partials/` (CSS, icons, header, footer, call bar) |
 | Scroll journey | `journey.js` | `journey.js` (menu moved to `src/menu.js`) |
-| Forms, Towbook, auction | `src/*.js` | `src/*.js` |
+| Forms, Towbook, auction | `src/*.js` | Forms retired for Ross's Towbook links (Nov 4 follow up); Towbook and auction code in `src/` |
 | Auction date | `data/auction.json` | `src/data/auction.json`, built into the page |
 | Photos, logo (AVIF, WebP, JPEG/PNG; EXIF stripped, 3 plates blurred) | `img/` | `public/img/` |
 | Fonts (Barlow, Barlow Condensed, self hosted) | `fonts/` | `public/fonts/` |

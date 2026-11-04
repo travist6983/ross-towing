@@ -1,0 +1,15 @@
+{
+  "_note": "Logos are trademarks. A logo shows only when its file exists under public/ AND \"permission\" is true, and only after Ross confirms in writing that the agency or dealership approved it. Agencies without permission show as plain text names. Dealers show nothing at all until \"permission\" is true (name or logo). Entries named like \"[DEALER NAME 1]\" are placeholders: they show only in npm run dev, never in a build. Logos: SVG preferred, else PNG at 2x, under 30 KB, all about the same height.",
+  "agencies": [
+    { "name": "Farmington Hills Police Department", "logo": "", "permission": false },
+    { "name": "Michigan State Police", "logo": "", "permission": false }
+  ],
+  "dealers": [
+    { "name": "[DEALER NAME 1]", "logo": "", "permission": false, "url": "" },
+    { "name": "[DEALER NAME 2]", "logo": "", "permission": false, "url": "" },
+    { "name": "[DEALER NAME 3]", "logo": "", "permission": false, "url": "" },
+    { "name": "[DEALER NAME 4]", "logo": "", "permission": false, "url": "" },
+    { "name": "[DEALER NAME 5]", "logo": "", "permission": false, "url": "" },
+    { "name": "[DEALER NAME 6]", "logo": "", "permission": false, "url": "" }
+  ]
+}

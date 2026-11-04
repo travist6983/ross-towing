@@ -36,6 +36,7 @@
     { "@type": "AdministrativeArea", "name": "Macomb County, MI" }, { "@type": "State", "name": "Michigan" }
   ],
   "knowsAbout": ["Light duty towing","Flatbed towing","Police towing and impounds","Heavy duty towing","50 ton rotator recovery","Winch outs","Accident recovery","Crane and lifting service","Hazardous spill cleanup","Diesel and oil spill containment","Electric vehicle fire storage","Roadside assistance","Vehicle storage","Public vehicle auctions","Freight hauling","Machinery hauling"],
+  "review": "{{REVIEW_SCHEMA}}",
   "makesOffer": [{
     "@type": "Offer",
     "itemOffered": {
@@ -73,11 +74,8 @@
             <strong>Call <span data-phone>248-356-6011</span></strong>
             <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
           </a>
-          <a class="path path-freight" href="#freight-request" data-track="preview_book" data-track-detail="hero freight quote">
-            <small>Freight and heavy hauling</small>
-            <strong>Request a freight quote</strong>
-            <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
+          <!-- Towbook request links (src/config.js): Tow, Freight, Machinery -->
+          <!-- @section online hero -->
         </div>
         <ul class="strip" aria-label="Credentials">
           <li>Since 1962</li>
@@ -104,9 +102,11 @@
             <article class="card reveal"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><h3>Police towing and impounds</h3><p>Contracted with the Michigan State Police and the Farmington Hills Police Department. Towed to our yard? See <a href="#release">getting your vehicle back</a>.</p></article>
             <article class="card reveal"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><h3>Dealership towing</h3><p>We tow for car dealerships in the area. <a href="#dealers">Dealer partnerships</a>.</p></article>
           </div>
+          <!-- @section reviews towing -->
           <figure class="shot"><picture><source type="image/avif" srcset="/img/wrecker-79-640.avif 640w" sizes="(min-width: 900px) 610px, calc(100vw - 68px)"><source type="image/webp" srcset="/img/wrecker-79-640.webp 640w" sizes="(min-width: 900px) 610px, calc(100vw - 68px)"><img src="/img/wrecker-79-640.jpg" srcset="/img/wrecker-79-640.jpg 640w" sizes="(min-width: 900px) 610px, calc(100vw - 68px)" width="640" height="446" alt="Ross Towing wrecker number 79, a black tow truck marked Police Towing." loading="lazy" decoding="async"></picture></figure>
           <div class="inline-call">
             <a class="btn btn-call" href="tel:+12483566011" data-track="preview_call" data-track-detail="towing"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Call <span class="num" data-phone>248-356-6011</span></a>
+            <!-- @section online tow -->
           </div>
         </section>
         <section id="roadside" class="sub-block" aria-labelledby="roadside-h">
@@ -140,12 +140,14 @@
           <article class="card reveal"><svg class="ico" aria-hidden="true"><use href="#i-crash"/></svg><h3>Accident recovery</h3><p>Getting vehicles off the road after a crash.</p></article>
           <article class="card reveal"><svg class="ico" aria-hidden="true"><use href="#i-crane"/></svg><h3>Crane and lifting service</h3><p>Crane work for lifting jobs.</p></article>
         </div>
+        <!-- @section reviews recovery -->
         <figure class="shot"><picture><source type="image/avif" srcset="/img/recovery-rollover-night-640.avif 640w, /img/recovery-rollover-night-1024.avif 1024w, /img/recovery-rollover-night-1206.avif 1206w" sizes="(min-width: 900px) 610px, calc(100vw - 68px)"><source type="image/webp" srcset="/img/recovery-rollover-night-640.webp 640w, /img/recovery-rollover-night-1024.webp 1024w, /img/recovery-rollover-night-1206.webp 1206w" sizes="(min-width: 900px) 610px, calc(100vw - 68px)"><img src="/img/recovery-rollover-night-1024.jpg" srcset="/img/recovery-rollover-night-640.jpg 640w, /img/recovery-rollover-night-1024.jpg 1024w, /img/recovery-rollover-night-1206.jpg 1206w" sizes="(min-width: 900px) 610px, calc(100vw - 68px)" width="1206" height="837" alt="At night, two red rotator booms, one marked ROSS, raised over a semi tractor lying on its side, with fire trucks lit up behind." loading="lazy" decoding="async"></picture></figure>
         <div class="gallery">
           <figure><picture><source type="image/avif" srcset="/img/rotator-88-640.avif 640w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><source type="image/webp" srcset="/img/rotator-88-640.webp 640w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><img src="/img/rotator-88-640.jpg" srcset="/img/rotator-88-640.jpg 640w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)" width="640" height="480" alt="Ross Towing heavy wrecker number 88, a red truck marked Police Towing, with its boom stowed." loading="lazy" decoding="async"></picture></figure>
           <figure><picture><source type="image/avif" srcset="/img/freeway-recovery-640.avif 640w, /img/freeway-recovery-1024.avif 1024w, /img/freeway-recovery-1206.avif 1206w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><source type="image/webp" srcset="/img/freeway-recovery-640.webp 640w, /img/freeway-recovery-1024.webp 1024w, /img/freeway-recovery-1206.webp 1206w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><img src="/img/freeway-recovery-1024.jpg" srcset="/img/freeway-recovery-640.jpg 640w, /img/freeway-recovery-1024.jpg 1024w, /img/freeway-recovery-1206.jpg 1206w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)" width="1206" height="856" alt="On a coned off freeway lane, a red heavy wrecker with its outriggers down next to a white Ross Towing truck carrying a blue semi cab." loading="lazy" decoding="async"></picture></figure>
         </div>
         <div class="fb-line">
+          <a class="btn btn-line" href="{{BASE}}gallery/#towing"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>See more recovery work</a>
           <a class="btn btn-line btn-fb" href="https://facebook.com/accidentrecovery" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>See our recent recovery work</a>
           <span class="muted">On Facebook, opens in a new tab</span>
         </div>
@@ -204,6 +206,7 @@
         <div class="machinery">
           <h3>Machinery hauling</h3>
           <p>We work with companies like MacAllister CAT.</p>
+          <!-- @section online machinery -->
         </div>
         <div class="gallery">
           <figure><picture><source type="image/avif" srcset="/img/rollback-excavator-640.avif 640w, /img/rollback-excavator-1024.avif 1024w, /img/rollback-excavator-1206.avif 1206w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><source type="image/webp" srcset="/img/rollback-excavator-640.webp 640w, /img/rollback-excavator-1024.webp 1024w, /img/rollback-excavator-1206.webp 1206w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><img src="/img/rollback-excavator-1024.jpg" srcset="/img/rollback-excavator-640.jpg 640w, /img/rollback-excavator-1024.jpg 1024w, /img/rollback-excavator-1206.jpg 1206w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)" width="1206" height="793" alt="A white Ross Towing rollback with its bed tilted, loading a yellow compact excavator at a dirt job site." loading="lazy" decoding="async"></picture></figure>
@@ -211,6 +214,7 @@
           <figure><picture><source type="image/avif" srcset="/img/landoll-forklifts-640.avif 640w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><source type="image/webp" srcset="/img/landoll-forklifts-640.webp 640w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><img src="/img/landoll-forklifts-640.jpg" srcset="/img/landoll-forklifts-640.jpg 640w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)" width="640" height="480" alt="Two yellow forklifts strapped down on a black Landoll trailer in a gravel lot." loading="lazy" decoding="async"></picture></figure>
           <figure><picture><source type="image/avif" srcset="/img/lowboy-640.avif 640w, /img/lowboy-1024.avif 1024w, /img/lowboy-1600.avif 1600w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><source type="image/webp" srcset="/img/lowboy-640.webp 640w, /img/lowboy-1024.webp 1024w, /img/lowboy-1600.webp 1600w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)"><img src="/img/lowboy-1024.jpg" srcset="/img/lowboy-640.jpg 640w, /img/lowboy-1024.jpg 1024w, /img/lowboy-1600.jpg 1600w" sizes="(min-width: 900px) 300px, calc(50vw - 40px)" width="1600" height="1200" alt="An empty red lowboy trailer in a gravel yard." loading="lazy" decoding="async"></picture></figure>
         </div>
+        <p class="more-link"><a class="btn btn-line" href="{{BASE}}gallery/#freight"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>See more freight loads</a></p>
         <div class="equip">
           <h3>Equipment list</h3>
           <table>
@@ -249,83 +253,8 @@
           </div>
         </div>
 
-        <!-- Freight quote. Posts to CONFIG.FORM_ENDPOINT_FREIGHT in src/config.js (empty for now: shows a call-us note and sends nothing). -->
-        <form class="form fq" id="freight-quote" method="post" aria-labelledby="fq-h" novalidate>
-          <h3 id="fq-h">Request a freight quote</h3>
-          <p class="hint">Tell us what's moving, where, and how big it is. Fields marked * are required.</p>
-          <div class="hp" aria-hidden="true"><label for="fq-website">Leave this empty</label><input id="fq-website" name="website" tabindex="-1" autocomplete="off"></div>
-
-          <fieldset class="fs">
-            <legend>Contact</legend>
-            <div class="grid2">
-              <div class="field"><label for="fq-company">Company</label><input id="fq-company" name="company" autocomplete="organization"></div>
-              <div class="field"><label for="fq-contact">Contact name *</label><input id="fq-contact" name="contact" autocomplete="name" required data-msg="Enter your name."></div>
-              <div class="field"><label for="fq-phone">Phone *</label><input id="fq-phone" name="phone" type="tel" autocomplete="tel" required data-msg="Enter a phone number."></div>
-              <div class="field"><label for="fq-email">Email *</label><input id="fq-email" name="email" type="email" autocomplete="email" required data-msg="Enter your email address."></div>
-            </div>
-          </fieldset>
-
-          <fieldset class="fs">
-            <legend>Route</legend>
-            <div class="grid2">
-              <div class="field"><label for="fq-pickup">Pickup city and state *</label><input id="fq-pickup" name="pickup" placeholder="City, state" required data-msg="Enter the pickup city and state."></div>
-              <div class="field"><label for="fq-delivery">Delivery city and state *</label><input id="fq-delivery" name="delivery" placeholder="City, state" required data-msg="Enter the delivery city and state."></div>
-              <div class="field"><label for="fq-ready">Ready date</label><input id="fq-ready" name="ready_date" type="date"></div>
-              <div class="field"><label for="fq-by">Delivery needed by <span class="opt">(optional)</span></label><input id="fq-by" name="deliver_by" type="date" data-msg-number="Pick a date on or after the ready date."></div>
-            </div>
-          </fieldset>
-
-          <fieldset class="fs">
-            <legend>Load</legend>
-            <div class="grid2">
-              <div class="field full"><label for="fq-load">What is being hauled *</label><textarea id="fq-load" name="load" placeholder="Machine, materials, vehicle..." required data-msg="Tell us what's being hauled."></textarea></div>
-              <div class="field"><label for="fq-pieces">Number of pieces <span class="opt">(optional)</span></label><input id="fq-pieces" name="pieces" type="number" inputmode="numeric" min="1" step="1" data-msg-number="Enter a whole number, 1 or more."></div>
-            </div>
-          </fieldset>
-
-          <fieldset class="fs">
-            <legend>Dimensions</legend>
-            <div class="dims">
-              <div class="field"><label for="fq-length">Length</label><div class="unit-row"><input id="fq-length" name="length" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-length-u"><select name="length_unit" aria-label="Length unit" data-unit-for="fq-length-u"><option value="ft" selected>ft</option><option value="in">in</option></select></div><span class="sr" id="fq-length-u">feet</span></div>
-              <div class="field"><label for="fq-width">Width</label><div class="unit-row"><input id="fq-width" name="width" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-width-u"><select name="width_unit" aria-label="Width unit" data-unit-for="fq-width-u"><option value="ft" selected>ft</option><option value="in">in</option></select></div><span class="sr" id="fq-width-u">feet</span></div>
-              <div class="field"><label for="fq-height">Height</label><div class="unit-row"><input id="fq-height" name="height" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-height-u"><select name="height_unit" aria-label="Height unit" data-unit-for="fq-height-u"><option value="ft" selected>ft</option><option value="in">in</option></select></div><span class="sr" id="fq-height-u">feet</span></div>
-            </div>
-          </fieldset>
-
-          <fieldset class="fs">
-            <legend>Weight</legend>
-            <div class="grid2">
-              <div class="field"><label for="fq-weight">Weight</label><div class="unit-row"><input id="fq-weight" name="weight" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-weight-u"><select name="weight_unit" aria-label="Weight unit" data-unit-for="fq-weight-u"><option value="lbs" selected>lbs</option><option value="tons">tons</option></select></div><span class="sr" id="fq-weight-u">pounds</span></div>
-              <label class="check check-solo"><input type="checkbox" name="weight_estimate" value="yes"> Weight is an estimate</label>
-            </div>
-          </fieldset>
-
-          <fieldset class="fs">
-            <legend>Additional equipment needed</legend>
-            <div class="checks">
-              <label class="check"><input type="checkbox" name="equipment" value="Chains"> Chains</label>
-              <label class="check"><input type="checkbox" name="equipment" value="Binders"> Binders</label>
-              <label class="check"><input type="checkbox" name="equipment" value="Tarps"> Tarps</label>
-              <label class="check"><input type="checkbox" name="equipment" value="Edge protectors"> Edge protectors</label>
-              <label class="check"><input type="checkbox" name="equipment" value="Other"> Other</label>
-              <label class="check"><input type="checkbox" name="equipment" value="Not sure, please advise"> Not sure, please advise</label>
-            </div>
-            <div class="field other" id="fq-other-field" hidden><label for="fq-other">Other equipment *</label><input id="fq-other" name="equipment_other" maxlength="120" data-msg="Tell us what other equipment the load needs."></div>
-          </fieldset>
-
-          <fieldset class="fs">
-            <legend>Trailer and notes</legend>
-            <div class="grid2">
-              <div class="field"><label for="fq-trailer">Trailer preference <span class="opt">(optional)</span></label>
-                <select id="fq-trailer" name="trailer"><option value="">No preference</option><option>Flatbed</option><option>Conestoga</option><option>Step deck</option><option>Landoll</option><option>Lowboy</option></select>
-              </div>
-              <div class="field full"><label for="fq-notes">Notes <span class="opt">(optional)</span></label><textarea id="fq-notes" name="notes" placeholder="Loading dock hours, site access, anything else we should know"></textarea></div>
-            </div>
-          </fieldset>
-
-          <button class="btn btn-call" type="submit">Request a freight quote</button>
-          <div class="form-status" role="status" aria-live="polite" hidden></div>
-        </form>
+        <!-- Freight quote: Towbook freight request link (CONFIG.TOWBOOK_FREIGHT_URL). Empty shows a call button. -->
+        <!-- @section online freight -->
       </div>
       <div class="lane" aria-hidden="true"></div>
     </div>
@@ -341,7 +270,10 @@
         <div class="police">
           <strong>Trusted by the Farmington Hills Police and the Michigan State Police.</strong>
           <p>We previously served the City of Southfield Police Department for over 50 years, and we've worked with multiple municipalities, serving police, fire departments and residents alike.</p>
+          <!-- @section partners agencies -->
         </div>
+        <!-- FHPD training photos: gallery-src/training, built by npm run gallery -->
+        <!-- @section training -->
         <div class="gallery three">
           <figure><picture><source type="image/avif" srcset="/img/rotator-night-640.avif 640w, /img/rotator-night-1024.avif 1024w, /img/rotator-night-1206.avif 1206w" sizes="(min-width: 900px) 200px, calc(33vw - 28px)"><source type="image/webp" srcset="/img/rotator-night-640.webp 640w, /img/rotator-night-1024.webp 1024w, /img/rotator-night-1206.webp 1206w" sizes="(min-width: 900px) 200px, calc(33vw - 28px)"><img src="/img/rotator-night-1024.jpg" srcset="/img/rotator-night-640.jpg 640w, /img/rotator-night-1024.jpg 1024w, /img/rotator-night-1206.jpg 1206w" sizes="(min-width: 900px) 200px, calc(33vw - 28px)" width="1206" height="701" alt="A red Ross Towing rotator marked Police Towing, lit up at night in a lot with other trucks lined up behind it." loading="lazy" decoding="async"></picture></figure>
           <figure><picture><source type="image/avif" srcset="/img/tractor-landoll-640.avif 640w, /img/tractor-landoll-1024.avif 1024w, /img/tractor-landoll-1205.avif 1205w" sizes="(min-width: 900px) 200px, calc(33vw - 28px)"><source type="image/webp" srcset="/img/tractor-landoll-640.webp 640w, /img/tractor-landoll-1024.webp 1024w, /img/tractor-landoll-1205.webp 1205w" sizes="(min-width: 900px) 200px, calc(33vw - 28px)"><img src="/img/tractor-landoll-1024.jpg" srcset="/img/tractor-landoll-640.jpg 640w, /img/tractor-landoll-1024.jpg 1024w, /img/tractor-landoll-1205.jpg 1205w" sizes="(min-width: 900px) 200px, calc(33vw - 28px)" width="1205" height="845" alt="A red Ross Towing semi tractor hooked to a black Landoll trailer in a gravel yard." loading="lazy" decoding="async"></picture></figure>
@@ -361,16 +293,18 @@
         <ul class="themes">
           <li>Quick response</li><li>Polite, knowledgeable drivers</li><li>Careful with vehicles</li><li>Helpful after accidents and impounds</li><li>Fair prices</li>
         </ul>
-        <!-- TODO: paste real Google reviews here, with the reviewer's permission. Never write stand-ins. -->
-        <div class="reviews">
-          <figure class="review reveal"><blockquote><span class="ph ph-wrap">[REAL GOOGLE REVIEW QUOTE]</span></blockquote><figcaption><span class="ph">[NAME]</span>, Google review</figcaption></figure>
-          <figure class="review reveal"><blockquote><span class="ph ph-wrap">[REAL GOOGLE REVIEW QUOTE]</span></blockquote><figcaption><span class="ph">[NAME]</span>, Google review</figcaption></figure>
-          <figure class="review reveal"><blockquote><span class="ph ph-wrap">[REAL GOOGLE REVIEW QUOTE]</span></blockquote><figcaption><span class="ph">[NAME]</span>, Google review</figcaption></figure>
-        </div>
+        <section class="recent sub-block" id="recent-work" aria-labelledby="recent-h">
+          <p class="eyebrow">Recent work</p>
+          <h3 id="recent-h">From the gallery</h3>
+          <!-- @section teaser -->
+          <p class="more-link"><a class="btn btn-line" href="{{BASE}}gallery/"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>See the towing and freight gallery</a></p>
+        </section>
         <section class="dealer" id="dealers" aria-labelledby="dealers-h">
           <p class="eyebrow">Dealer partnerships</p>
           <h3 id="dealers-h">Towing for dealerships</h3>
           <p>We tow for car dealerships in the area, and we're looking to partner with more. Call to set up an account.</p>
+          <!-- Dealer logos and names: src/data/partners.json. Nothing shows until a dealer has "permission": true. -->
+          <!-- @section partners dealers -->
           <a class="btn btn-call" href="tel:+12483566011" data-track="preview_call" data-track-detail="dealer"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Talk to us about dealer towing</a>
         </section>
       </div>
@@ -448,6 +382,7 @@
             <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><b>Release hours</b><span><span class="ph">[RELEASE HOURS]</span> Office hours are Monday to Friday 9am to 5pm and Saturday 9am to 1pm.</span></li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-cash"/></svg><b>Payment</b><span>Cash only.</span></li>
           </ul>
+          <!-- @section reviews release -->
           <div class="inline-call">
             <p>Call ahead to check your vehicle is ready:</p>
             <a class="btn btn-call" href="tel:+12483566011" data-track="preview_call" data-track-detail="release"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span class="num" data-phone>248-356-6011</span></a>
@@ -506,40 +441,15 @@
         <p class="lede">We're staffed 24 hours a day, 365 days a year.</p>
         <a class="big-call" href="tel:+12483566011" data-track="preview_call" data-track-detail="contact"><small>Call dispatch 24/7</small><strong data-phone>248-356-6011</strong></a>
         <p class="visit">21360 Telegraph Rd, Southfield, MI 48033 · <a href="https://www.google.com/maps/search/?api=1&amp;query=21360+Telegraph+Rd+Southfield+MI+48033" target="_blank" rel="noopener" data-track="preview_directions" data-track-detail="contact">Directions</a></p>
-        <!-- Towbook: CONFIG.TOWBOOK_MODE in src/config.js. "none" (now) keeps this form, posting to CONFIG.FORM_ENDPOINT_TOW
-             (empty for now: shows a call-us note and sends nothing). "link" and "embed" swap it for TOWBOOK_URL. See README.md, "Towbook". -->
+        <!-- Towbook: CONFIG.TOWBOOK_MODE and TOWBOOK_URL in src/config.js. "link" (now): a button; "embed": the form in an iframe;
+             "none": call only. See README.md, "Towbook". -->
+        <div class="tow-row">
         <div class="tow-online" id="tow-online">
-          <form class="form" id="tow-request" method="post" aria-labelledby="tr-h" novalidate>
-            <h3 id="tr-h">Not urgent? Send us the details</h3>
-            <p class="hint">For emergencies, call. We answer 24/7.</p>
-            <div class="hp" aria-hidden="true"><label for="tr-website">Leave this empty</label><input id="tr-website" name="website" tabindex="-1" autocomplete="off"></div>
-            <fieldset class="fs fs-plain">
-              <legend class="sr">Your details</legend>
-              <div class="fields two">
-                <div class="field"><label for="tr-name">Name *</label><input id="tr-name" name="name" autocomplete="name" required data-msg="Enter your name."></div>
-                <div class="field"><label for="tr-phone">Phone *</label><input id="tr-phone" name="phone" type="tel" autocomplete="tel" required data-msg="Enter a phone number."></div>
-                <div class="field full"><label for="tr-loc">Pickup location *</label>
-                  <div class="loc-row"><input id="tr-loc" name="location" placeholder="Address, cross streets or freeway exit" required data-msg="Tell us where the vehicle is."><button class="btn btn-line btn-geo" id="tr-geo" type="button" hidden><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Use my location</button></div>
-                  <p class="geo-note" id="tr-geo-note" aria-live="polite"></p>
-                </div>
-                <div class="field"><label for="tr-veh">Vehicle year, make and model *</label><input id="tr-veh" name="vehicle" placeholder="Year, make, model" required data-msg="Enter the vehicle's year, make and model."></div>
-                <div class="field"><label for="tr-issue">What happened? *</label>
-                  <select id="tr-issue" name="issue" required data-msg="Choose what happened.">
-                    <option value="">Choose one</option>
-                    <option>Needs a tow</option><option>Accident</option><option>Won't start / battery</option><option>Flat tire</option><option>Locked out</option><option>Out of fuel</option><option>Stuck (ditch, mud, snow)</option><option>Heavy duty or truck</option><option>Spill cleanup</option><option>Something else</option>
-                  </select>
-                </div>
-              </div>
-            </fieldset>
-            <button class="btn btn-call" type="submit">Send details</button>
-            <div class="form-status" role="status" aria-live="polite" hidden></div>
-          </form>
+          <!-- @section online contact -->
         </div>
-        <!-- Towbook QR: hidden until CONFIG.TOWBOOK_QR_SRC points at the file Jennifer sends. Don't describe what it does until she confirms. -->
-        <figure class="qr" id="towbook-qr" hidden>
-          <img alt="Towbook QR code" width="160" height="160" decoding="async">
-          <figcaption><span class="ph ph-wrap">[QR CAPTION: confirm what this QR does]</span></figcaption>
-        </figure>
+        <!-- Towbook QR: built from TOWBOOK_URL (or TOWBOOK_QR_IMG) only in "link"/"embed" mode; desktop only -->
+        <!-- @towqr -->
+        </div>
       </div>
       <div class="lane" aria-hidden="true"></div>
     </div>

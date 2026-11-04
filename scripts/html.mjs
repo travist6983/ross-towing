@@ -3,6 +3,8 @@
 // and nothing that isn't approved (dealer names, logos without permission) ever ships.
 import fs from 'node:fs';
 import path from 'node:path';
+import QRCode from 'qrcode';
+import { loadData, renderReviews, reviewSchema, renderPartners, renderTraining, renderGallery, renderTeaser, renderTowQr, renderOnline } from './sections.mjs';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export const siteUrl = (config) => String(config.SITE_URL || '').replace(/\/?$/, '/');
@@ -35,15 +37,28 @@ function head({ page, config }) {
   return out.join('\n');
 }
 
-export const sections = {};   // name -> (ctx) => html, registered by later build steps
+const qrToSvg = (url) => QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#15171A', light: '#FFFFFF' } });
 
-export function renderPage(html, ctx) {
-  const { page, base, config, root } = ctx;
+export async function renderPage(html, ctx) {
+  const { page, base, config, root, dev } = ctx;
   const info = PAGES[page] || {};
+  const data = loadData(root);
+  const logoExists = (rel) => fs.existsSync(path.join(root, 'public', rel.replace(/^\/+/, '')));
+  const sections = {
+    reviews: (slot) => renderReviews(data.reviews, slot),
+    partners: (group) => renderPartners(data.partners[group], { group, dev, logoExists }),
+    training: () => renderTraining(data.gallery),
+    gallery: () => renderGallery(data.gallery, base),
+    teaser: () => renderTeaser(data.gallery, base),
+    online: (where) => renderOnline(config, where),
+  };
   let out = includes(html, root);
   out = out.replace('<!-- @head -->', head(ctx));
-  out = out.replace(/<!-- @section ([\w-]+)(?: ([\w-]+))? -->/g, (_, name, arg) => (sections[name] ? sections[name](ctx, arg) : ''));
+  out = out.replace(/<!-- @section ([\w-]+)(?: ([\w-]+))? -->/g, (_, name, arg) => (sections[name] ? sections[name](arg) : ''));
+  if (out.includes('<!-- @towqr -->')) out = out.replace('<!-- @towqr -->', await renderTowQr(config, qrToSvg));
+  const schema = reviewSchema(data.reviews);
   return out
+    .replace('"{{REVIEW_SCHEMA}}"', JSON.stringify(schema))
     .replaceAll('{{HOME}}', info.home ?? base)
     .replaceAll('{{BASE}}', base)
     .replaceAll('{{SITE_URL}}', siteUrl(config))

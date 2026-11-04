@@ -1,0 +1,828 @@
+[
+  {
+    "key": "training/IMG_1668.jpeg",
+    "category": "training",
+    "name": "img-1668",
+    "alt": "A K-9 handler leads a police dog along a silver sedan in a gravel lot while another officer walks nearby.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-04",
+    "featured": false,
+    "hash": "0cfc2ac57b0e",
+    "width": 480,
+    "height": 640,
+    "files": [
+      "gallery/training/img-1668-480.avif",
+      "gallery/training/img-1668-480.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/training/img-1668-480.avif",
+          480
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/training/img-1668-480.webp",
+          480
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAwBQCdASoYACAAPuFgpU2opaOiN/VYARAcCWUAxNgQ6eoJMlOCE2pKxTqXpZf6XK+JgAD+kbvlMynNlIgExmZCBOI6xhxkOXPsqm1aV5teemssSKA10m8tm/G+6r9X+gEwZEZGI7f1dGyFBEvtge2zz41r+uVyy0HJZUAAAAA=",
+    "source": {
+      "width": 640,
+      "height": 480
+    }
+  },
+  {
+    "key": "training/IMG_1682.jpeg",
+    "category": "training",
+    "name": "img-1682",
+    "alt": "Two officers with a police dog beside a blue SUV, with a Farmington Hills Police SUV parked behind them.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-04",
+    "featured": false,
+    "hash": "03604e33d51a",
+    "width": 640,
+    "height": 606,
+    "files": [
+      "gallery/training/img-1682-480.avif",
+      "gallery/training/img-1682-480.webp",
+      "gallery/training/img-1682-640.avif",
+      "gallery/training/img-1682-640.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/training/img-1682-480.avif",
+          480
+        ],
+        [
+          "gallery/training/img-1682-640.avif",
+          640
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/training/img-1682-480.webp",
+          480
+        ],
+        [
+          "gallery/training/img-1682-640.webp",
+          640
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwBACdASoYABcAPuFepk2opSOiMAwBEBwJYwDH5CHhNlzMRPANMV7YcqS1XEHWVAAA/sj1dZJrFuAl6vfb7nh2jg76ySMl06ktfFcJv86WbOgPZCEwK0dO1jCIY9/AbZ6OwF1HRcy/vfGqlUoAAA==",
+    "source": {
+      "width": 640,
+      "height": 606
+    }
+  },
+  {
+    "key": "training/IMG_1695.jpeg",
+    "category": "training",
+    "name": "img-1695",
+    "alt": "A police dog lies beside the back of a white car while its handler holds the leash.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-04",
+    "featured": false,
+    "hash": "0998ba25befb",
+    "width": 640,
+    "height": 420,
+    "files": [
+      "gallery/training/img-1695-480.avif",
+      "gallery/training/img-1695-480.webp",
+      "gallery/training/img-1695-640.avif",
+      "gallery/training/img-1695-640.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/training/img-1695-480.avif",
+          480
+        ],
+        [
+          "gallery/training/img-1695-640.avif",
+          640
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/training/img-1695-480.webp",
+          480
+        ],
+        [
+          "gallery/training/img-1695-640.webp",
+          640
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoYABAAPu1orU2ppqSiMAgBMB2JZwDImCG5rZPrwZPEA8AA/kiPpMP1C+kEyKKVTvVjFUHsqatS4veIGTi+ToanMLxkZ6kAAAA=",
+    "source": {
+      "width": 640,
+      "height": 610
+    }
+  },
+  {
+    "key": "freight/freight-rig-sunset.jpg",
+    "category": "freight",
+    "name": "freight-rig-sunset",
+    "alt": "A red Ross Towing semi tractor hitched to a long trailer, parked on gravel at sunset.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "63fbf5fc2fd8",
+    "width": 1600,
+    "height": 1200,
+    "files": [
+      "gallery/freight/freight-rig-sunset-480.avif",
+      "gallery/freight/freight-rig-sunset-480.webp",
+      "gallery/freight/freight-rig-sunset-960.avif",
+      "gallery/freight/freight-rig-sunset-960.webp",
+      "gallery/freight/freight-rig-sunset-1600.avif",
+      "gallery/freight/freight-rig-sunset-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/freight-rig-sunset-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/freight-rig-sunset-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/freight-rig-sunset-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/freight-rig-sunset-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/freight-rig-sunset-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/freight-rig-sunset-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwBACdASoYABIAPuVepE2pJSMiMAwBIByJZQDM0CHT3fH1+edVLZA2PbWmAAD+w4sRvTiVI9WKlKnk/oHH1PME5f5u5gbD+BC1oo1IMKZB4gCHAAA=",
+    "source": {
+      "width": 1600,
+      "height": 1200
+    }
+  },
+  {
+    "key": "freight/landoll-forklifts.jpg",
+    "category": "freight",
+    "name": "landoll-forklifts",
+    "alt": "Two yellow forklifts strapped down on a black Landoll trailer in a gravel lot.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "0bac5ecbee64",
+    "width": 640,
+    "height": 480,
+    "files": [
+      "gallery/freight/landoll-forklifts-480.avif",
+      "gallery/freight/landoll-forklifts-480.webp",
+      "gallery/freight/landoll-forklifts-640.avif",
+      "gallery/freight/landoll-forklifts-640.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/landoll-forklifts-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/landoll-forklifts-640.avif",
+          640
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/landoll-forklifts-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/landoll-forklifts-640.webp",
+          640
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQBACdASoYABIAPu1iqE2ppaOiMAgBMB2JZQCqXCIjlD4NdVyL7RAUAAD+52BqlHo09qJuKlnJLlrDmVJQy/KaN+hdVypG9TkPOnWgglDh+Eny5/AAAA==",
+    "source": {
+      "width": 640,
+      "height": 480
+    }
+  },
+  {
+    "key": "freight/lowboy.jpg",
+    "category": "freight",
+    "name": "lowboy",
+    "alt": "An empty red lowboy trailer in a gravel yard.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "f7a932f7ef26",
+    "width": 1600,
+    "height": 1200,
+    "files": [
+      "gallery/freight/lowboy-480.avif",
+      "gallery/freight/lowboy-480.webp",
+      "gallery/freight/lowboy-960.avif",
+      "gallery/freight/lowboy-960.webp",
+      "gallery/freight/lowboy-1600.avif",
+      "gallery/freight/lowboy-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/lowboy-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/lowboy-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/lowboy-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/lowboy-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/lowboy-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/lowboy-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBACdASoYABIAPu1oqk8ppiOiMBgIATAdiWMAyJgQ9C+GKs5dTjAtAAD+wx5zckUJpyMgC6QZohIXvpnd1ZOOPidsQHAOAraQcgcWh4KIhCF7kIl98AAA",
+    "source": {
+      "width": 1600,
+      "height": 1200
+    }
+  },
+  {
+    "key": "freight/rollback-crane.jpg",
+    "category": "freight",
+    "name": "rollback-crane",
+    "alt": "A white Ross Towing rollback carrying a yellow mobile crane, chained down, outside an industrial building.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "282106ab80ed",
+    "width": 1600,
+    "height": 1200,
+    "files": [
+      "gallery/freight/rollback-crane-480.avif",
+      "gallery/freight/rollback-crane-480.webp",
+      "gallery/freight/rollback-crane-960.avif",
+      "gallery/freight/rollback-crane-960.webp",
+      "gallery/freight/rollback-crane-1600.avif",
+      "gallery/freight/rollback-crane-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/rollback-crane-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/rollback-crane-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/rollback-crane-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/rollback-crane-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/rollback-crane-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/rollback-crane-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABwBACdASoYABIAPu1kqk2ppaQpMAgBMB2JYwCsM2jCwUHKn3aEOygWBpVwAAD+jPRhOEu5PSo8UqOcR4rymd2GjFX4VuNdtmDgFPna9Li0V3e30nmMN+A2W1nhApZeAhkAAA==",
+    "source": {
+      "width": 1600,
+      "height": 1200
+    }
+  },
+  {
+    "key": "freight/rollback-excavator.jpg",
+    "category": "freight",
+    "name": "rollback-excavator",
+    "alt": "A white Ross Towing rollback with its bed tilted, loading a yellow compact excavator at a dirt job site.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "deb7c36711aa",
+    "width": 1206,
+    "height": 793,
+    "files": [
+      "gallery/freight/rollback-excavator-480.avif",
+      "gallery/freight/rollback-excavator-480.webp",
+      "gallery/freight/rollback-excavator-960.avif",
+      "gallery/freight/rollback-excavator-960.webp",
+      "gallery/freight/rollback-excavator-1206.avif",
+      "gallery/freight/rollback-excavator-1206.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/rollback-excavator-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/rollback-excavator-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/rollback-excavator-1206.avif",
+          1206
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/rollback-excavator-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/rollback-excavator-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/rollback-excavator-1206.webp",
+          1206
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAwCdASoYABAAPu1oqk6ppiQiMAgBMB2JYwC7ACHaSKxq9HYD37WgAP7eZS1zSlgp2aA2Wd7ogi0etQRkyd6DO5hcdDVgKblhoax4AAA=",
+    "source": {
+      "width": 1206,
+      "height": 793
+    }
+  },
+  {
+    "key": "freight/tractor-landoll.jpg",
+    "category": "freight",
+    "name": "tractor-landoll",
+    "alt": "A red Ross Towing semi tractor hooked to a black Landoll trailer in a gravel yard.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "b21b53269397",
+    "width": 1205,
+    "height": 845,
+    "files": [
+      "gallery/freight/tractor-landoll-480.avif",
+      "gallery/freight/tractor-landoll-480.webp",
+      "gallery/freight/tractor-landoll-960.avif",
+      "gallery/freight/tractor-landoll-960.webp",
+      "gallery/freight/tractor-landoll-1205.avif",
+      "gallery/freight/tractor-landoll-1205.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/tractor-landoll-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/tractor-landoll-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/tractor-landoll-1205.avif",
+          1205
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/tractor-landoll-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/tractor-landoll-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/tractor-landoll-1205.webp",
+          1205
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABQBACdASoYABEAPu1kqU2ppaOmMAgBMB2JZwCuHCHYc4q/YUtBXA4GgzoAAP7TG40km4pd/e5k+xnVCN0BugFjkOHzMLctjDUlMMRv2YHmM1nhgAA=",
+    "source": {
+      "width": 1205,
+      "height": 845
+    }
+  },
+  {
+    "key": "towing/rotator-88.jpg",
+    "category": "towing",
+    "name": "rotator-88",
+    "alt": "Ross Towing heavy wrecker number 88, a red truck marked Police Towing, with its boom stowed.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "b869df491dfb",
+    "width": 640,
+    "height": 480,
+    "files": [
+      "gallery/towing/rotator-88-480.avif",
+      "gallery/towing/rotator-88-480.webp",
+      "gallery/towing/rotator-88-640.avif",
+      "gallery/towing/rotator-88-640.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/rotator-88-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/rotator-88-640.avif",
+          640
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/rotator-88-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/rotator-88-640.webp",
+          640
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACQBACdASoYABIAPu1mqk2ppaQiMAgBMB2JZQC26SAB+gRaTrbq1prpiMWtvAAA/sQ/dBoUMCanxd4K0Qq9cOeWjWT///AfprLKUsiE7PN+qKFyEDrkzTr2/ANl8J4d5mCAAAAA",
+    "source": {
+      "width": 640,
+      "height": 480
+    }
+  },
+  {
+    "key": "towing/rotator-night.jpg",
+    "category": "towing",
+    "name": "rotator-night",
+    "alt": "A red Ross Towing rotator marked Police Towing, lit up at night in a lot with other trucks lined up behind it.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "f63e722369a8",
+    "width": 1206,
+    "height": 701,
+    "files": [
+      "gallery/towing/rotator-night-480.avif",
+      "gallery/towing/rotator-night-480.webp",
+      "gallery/towing/rotator-night-960.avif",
+      "gallery/towing/rotator-night-960.webp",
+      "gallery/towing/rotator-night-1206.avif",
+      "gallery/towing/rotator-night-1206.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/rotator-night-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/rotator-night-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/rotator-night-1206.avif",
+          1206
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/rotator-night-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/rotator-night-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/rotator-night-1206.webp",
+          1206
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoYAA4APu1iqU2ppaOiMAgBMB2JQBOmUABH5ap6S3pmyAgA/u9Il3GXLZ6oQ+8QHSNn+NYNuGRsVNFVlzDQn/UpLX2VDCUhWJLOYXhnWAAAAA==",
+    "source": {
+      "width": 1206,
+      "height": 701
+    }
+  },
+  {
+    "key": "towing/wrecker-79.jpg",
+    "category": "towing",
+    "name": "wrecker-79",
+    "alt": "Ross Towing wrecker number 79, a black tow truck marked Police Towing.",
+    "altIsDefault": false,
+    "caption": "",
+    "date": "2026-11-03",
+    "featured": false,
+    "hash": "8e5268730790",
+    "width": 640,
+    "height": 446,
+    "files": [
+      "gallery/towing/wrecker-79-480.avif",
+      "gallery/towing/wrecker-79-480.webp",
+      "gallery/towing/wrecker-79-640.avif",
+      "gallery/towing/wrecker-79-640.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/wrecker-79-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/wrecker-79-640.avif",
+          640
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/wrecker-79-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/wrecker-79-640.webp",
+          640
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACwBACdASoYABEAPu1oqE2ppqQiMBgMATAdiWUAwzQQ9LjmHqiyG2g/Ks/gJ4AAAP7eqkWUbRMNDjp/281fGOjkqkoXQLY8Vq1zBgfuWFMYterMspi8D2r9tJuHnjdUJdMmxbv2c+BtOZV8wAA=",
+    "source": {
+      "width": 640,
+      "height": 446
+    }
+  },
+  {
+    "key": "towing/IMG_6288.jpeg",
+    "category": "towing",
+    "name": "img-6288",
+    "alt": "Three red Ross Towing tow trucks parked side by side at night with their amber lights on.",
+    "altIsDefault": false,
+    "caption": "Ross trucks at night.",
+    "date": "2026-08-16",
+    "featured": true,
+    "hash": "c579f5eb25be",
+    "width": 4032,
+    "height": 3024,
+    "files": [
+      "gallery/towing/img-6288-480.avif",
+      "gallery/towing/img-6288-480.webp",
+      "gallery/towing/img-6288-960.avif",
+      "gallery/towing/img-6288-960.webp",
+      "gallery/towing/img-6288-1600.avif",
+      "gallery/towing/img-6288-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/img-6288-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/img-6288-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/img-6288-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/img-6288-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/img-6288-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/img-6288-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQBACdASoYABIAPu1qqk8ppiOiMBgIATAdiWMAACm5drx3rm6gCvrlRhGmi3/9sAD+voZHfZ0CqgAVFYFuT0vvf5I8LdRsemoqrKINeP7YaGNngRlRONkRTDMBbClYa4fesCaAAAA=",
+    "source": {
+      "width": 4032,
+      "height": 3024
+    }
+  },
+  {
+    "key": "towing/IMG_5561.jpeg",
+    "category": "towing",
+    "name": "img-5561",
+    "alt": "A black Ross Towing wrecker, truck number 79, towing a box truck with a fire damaged cab and cargo body across a gravel lot.",
+    "altIsDefault": false,
+    "caption": "Wrecker 79 towing a burned out box truck.",
+    "date": "2024-09-18",
+    "featured": true,
+    "hash": "2cbbccded022",
+    "width": 4032,
+    "height": 3024,
+    "files": [
+      "gallery/towing/img-5561-480.avif",
+      "gallery/towing/img-5561-480.webp",
+      "gallery/towing/img-5561-960.avif",
+      "gallery/towing/img-5561-960.webp",
+      "gallery/towing/img-5561-1600.avif",
+      "gallery/towing/img-5561-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/img-5561-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/img-5561-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/img-5561-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/img-5561-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/img-5561-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/img-5561-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwBACdASoYABIAPu1oq0+ppiOiMBgIATAdiWMAuwAQ61KKnjL9UWeVQfIA+l7XCrQOq0zR2WITHEicetDKG3LY5lK7l4aCxbGquX5WsysWASO6VgAAAA==",
+    "source": {
+      "width": 4032,
+      "height": 3024
+    }
+  },
+  {
+    "key": "towing/IMG_5382.jpeg",
+    "category": "towing",
+    "name": "img-5382",
+    "alt": "A black Ross Towing wrecker, truck number 79, towing a white shuttle bus by its front wheels in a gravel yard.",
+    "altIsDefault": false,
+    "caption": "Wrecker 79 with a shuttle bus in tow.",
+    "date": "2024-08-09",
+    "featured": true,
+    "hash": "06bedc1fe165",
+    "width": 4032,
+    "height": 3024,
+    "files": [
+      "gallery/towing/img-5382-480.avif",
+      "gallery/towing/img-5382-480.webp",
+      "gallery/towing/img-5382-960.avif",
+      "gallery/towing/img-5382-960.webp",
+      "gallery/towing/img-5382-1600.avif",
+      "gallery/towing/img-5382-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/img-5382-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/img-5382-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/img-5382-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/img-5382-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/img-5382-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/img-5382-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABwBACdASoYABIAPu1iqE2ppaOiMAgBMB2JYwDCuUAA2/VwyIkDm5u5VQVrcADxMraLaBbVhR81I+WQ60M7ltTev3I64J4xC2goJ9WT7B8yG9PMrCoKbH79l6rXUugKXAAAAA==",
+    "source": {
+      "width": 4032,
+      "height": 3024
+    }
+  },
+  {
+    "key": "towing/IMG_5089.jpeg",
+    "category": "towing",
+    "name": "img-5089",
+    "alt": "A red Ross Towing flatbed, truck number 80, carrying a black SUV strapped to its bed on a residential street.",
+    "altIsDefault": false,
+    "caption": "Flatbed tow of an SUV.",
+    "date": "2024-06-12",
+    "featured": true,
+    "hash": "fdd81c82a0d0",
+    "width": 4032,
+    "height": 3024,
+    "files": [
+      "gallery/towing/img-5089-480.avif",
+      "gallery/towing/img-5089-480.webp",
+      "gallery/towing/img-5089-960.avif",
+      "gallery/towing/img-5089-960.webp",
+      "gallery/towing/img-5089-1600.avif",
+      "gallery/towing/img-5089-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/img-5089-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/img-5089-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/img-5089-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/img-5089-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/img-5089-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/img-5089-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQBACdASoYABIAPu1kqlAppSOisBgIATAdiWIAvzgNyigCNiblxdvDI+6gAHzpa1W8BQ4w+6m8+pYybS2u85uXiFZX+uDyUnx1LjzCBCygbDsi3QY8XQ65wd8409hAzV/+HclH1MAAAA==",
+    "source": {
+      "width": 4032,
+      "height": 3024
+    }
+  }
+]

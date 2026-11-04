@@ -24,13 +24,16 @@ Push to `main` and `.github/workflows/deploy.yml` tests, builds and deploys in a
 | `src/partials/` | Shared CSS, icons, header, footer and call bar, filled in at build time |
 | `scripts/html.mjs` | Build-time HTML: partials, head tags, config-driven sections |
 | `journey.js` | The scroll journey (road and truck drawings only) |
-| `src/config.js` | Every switch: site URL, noindex, forms, Towbook, auction Sheet |
-| `src/main.js` | Freight form, tow request / Towbook block, auction banner |
-| `src/forms.js` | Shared form behavior: inline errors, spam checks, posting |
-| `src/messages.js` | `formatFreightQuote()` and `formatTowRequest()`: the text the office receives |
+| `src/config.js` | Every switch: site URL, noindex, tracker, Towbook links, auction Sheet |
+| `scripts/sections.mjs` | Reviews, partner logo rows, training strip, gallery, Towbook buttons and QR, written into the HTML at build time |
+| `src/main.js` | Auction banner and the Towbook embed fallback |
+| `src/gallery.js` | Gallery filters and lightbox |
+| `src/data/reviews.json`, `partners.json`, `gallery-captions.json`, `gallery.json` | Reviews, agency and dealer logos, photo captions, and the generated photo list |
+| `scripts/build-gallery.mjs` | Photo pipeline (`npm run gallery`) |
+| `scripts/check-dist.mjs` | Runs after every build; fails on image metadata, placeholders, a second phone number or dashes |
 | `src/auction.js` | `getAuctionState()`, the CSV parser and the .ics builder |
 | `src/data/auction.json` | Auction date fallback (Option A) |
-| `public/` | Images, fonts and vendored GSAP/Lenis, copied as is |
+| `public/` | Images, fonts, vendored GSAP/Lenis and processed gallery photos, copied as is |
 | `docs/auction-sheet-template.csv` | Starter file for the auction Sheet (Option B) |
 | `tests/` | Unit tests |
 
@@ -38,68 +41,92 @@ Everything in this repo is public, so keep private notes about the client out of
 
 The Journeyman preview tracker (`journeymanwebco.com/track.js`) loads while `JWC_TRACKING` is true in `src/config.js`. It records visits from `?r=` links in the CRM. It's switched off at launch.
 
-## Forms
-
-Both forms are static. They POST to a form service, which emails the office.
-
-1. Create a form at a service such as Formspree, Basin or Web3Forms, and set the recipient email in that service's dashboard.
-2. Paste the endpoint into `src/config.js`:
-   - `FORM_ENDPOINT_FREIGHT` for the freight quote
-   - `FORM_ENDPOINT_TOW` for the tow request (used only when `TOWBOOK_MODE` is `"none"`)
-3. Set `CONTACT_EMAIL` to the office address. It's the "email us" link in the fallback message.
-
-| Service | Endpoint looks like | Extra config |
-|---|---|---|
-| Formspree | `https://formspree.io/f/abcdwxyz` | none |
-| Basin | `https://usebasin.com/f/abc123` | none |
-| Web3Forms | `https://api.web3forms.com/submit` | `FORM_EXTRA_FIELDS: { access_key: "..." }` |
-
-`FORM_ENCODING` is `"json"` by default. Set it to `"form"` for a service that only takes urlencoded posts. No code changes either way.
-
-Every post includes the raw fields, a `subject` / `_subject`, and a `message` field with the readable summary, for example:
-
-```
-Load: 2 pieces, excavator
-Dimensions: 24 ft L x 8.5 ft W x 10 ft H
-Weight: 42,000 lbs (estimate)
-Equipment: Chains, Binders, Edge protectors
-```
-
-While an endpoint is empty, submitting shows "Thanks. Online quotes are almost ready. For now, please call 248-356-6011 or email us." and sends nothing. The form is never cleared on an error or a fallback.
-
-Spam: a hidden honeypot field (`website`) and a 3 second minimum time on the page. No CAPTCHA. Bots that trip the honeypot see a normal "thanks" and nothing is sent.
-
 ## Towbook
 
-Ross dispatches in Towbook. The tow block switches with one value in `src/config.js`. In every mode the big "Call dispatch 24/7: 248-356-6011" button comes first.
+Ross dispatches in Towbook, and its Web Request Form is the whole integration: a link where a customer's request lands in Towbook as a call. The site has no forms of its own. Ross sent three links on Nov 4, 2026, and they live in `src/config.js`:
 
-| `TOWBOOK_MODE` | What visitors see | Needs |
+| Config | Towbook form | Buttons on the site |
 |---|---|---|
-| `"none"` (now) | "Not urgent? Send us the details": name, phone, pickup location (with an optional "Use my location" button), vehicle, what happened. Posts to `FORM_ENDPOINT_TOW`, or shows the call-us fallback while it's empty | nothing |
-| `"link"` (expected final) | A "Request a tow online" button that opens `TOWBOOK_URL` in a new tab. Towbook's Web Request Form drops the request into Towbook as a call | `TOWBOOK_URL` |
-| `"embed"` | `TOWBOOK_URL` in a lazy loaded iframe (fixed height, no layout shift) with "Having trouble? Call 248-356-6011" and an "open the form in a new tab" link under it | `TOWBOOK_URL` that allows framing |
+| `TOWBOOK_URL` | Towing | Hero "Request online: Tow", the towing section, "Not urgent? Request a tow online" in the contact section, and the QR code |
+| `TOWBOOK_FREIGHT_URL` | Freight | Hero "Freight", the freight section's "Request a freight quote", the mobile call bar's "Freight quote", and the gallery page |
+| `TOWBOOK_MACHINERY_URL` | Machinery | Hero "Machinery" and "Request machinery hauling" in the machinery hauling block |
 
-To switch: set `TOWBOOK_URL` to the https link from Towbook, set `TOWBOOK_MODE`, commit, push. "link" or "embed" without a valid https `TOWBOOK_URL` falls back to "none" and logs a console warning.
+Every button opens Towbook in a new tab (`rel="noopener"`). The call button always comes first and stays the largest action. An empty link hides its buttons. The freight section falls back to a call button.
 
-About "embed": Towbook doesn't document embedding. Before turning it on, check whether Towbook allows framing:
+`TOWBOOK_MODE` controls the tow request in the contact section:
 
-```bash
-curl -sI "https://the-towbook-link" | grep -i -E 'x-frame-options|frame-ancestors'
-```
+| Mode | What visitors see |
+|---|---|
+| `"link"` (now) | A "Request a tow online" button. On desktop, a QR code beside it captioned "Scan to request a tow" (phones get the button instead) |
+| `"embed"` | `TOWBOOK_URL` in a lazy loaded, titled iframe (fixed height, no layout shift), with "Having trouble? Call 248-356-6011" and an "open the form in a new tab" link |
+| `"none"` | Call only, no online tow request (the freight and machinery buttons still show) |
 
-If either header shows up, use "link". The page falls back to the link button on its own when Towbook can't be reached or the frame never loads, but a browser can't tell the page when Towbook refuses to be framed. That's why the new tab link always sits under the frame.
+About "embed":
+- On Nov 4, Towbook sent no X-Frame-Options or frame-ancestors headers for Ross's links, so embedding works today. Check again before switching: `curl -sI "<link>" | grep -i -E 'x-frame-options|frame-ancestors'`.
+- If Towbook can't be reached, or the frame doesn't load within 10 seconds, the page falls back to the link button.
+- A browser can't tell the page when Towbook refuses to be framed. That's why the new tab link always sits under the frame.
 
-"Use my location" asks for location only when tapped, never on load. It fills the field with coordinates and a Google Maps link, for example `42.47612, -83.28741 (https://www.google.com/maps?q=42.47612,-83.28741)`.
+The QR code is generated at build time from `TOWBOOK_URL` (the `qrcode` package, SVG), so it always matches the link. To use an official QR image instead:
+1. Put it under `public/`.
+2. Set `TOWBOOK_QR_IMG` to that path.
 
-### Towbook QR code
+Never use the Meade Lexus link from Jennifer's screenshots. It belongs to a dealer account and would file website requests under that dealer.
 
-There's a hidden slot under the tow block for the QR code Jennifer is sending. To show it:
+## Reviews
 
-1. Save the image as `img/towbook-qr.png`.
-2. Set `TOWBOOK_QR_SRC: "img/towbook-qr.png"` in `src/config.js`.
-3. Replace the caption placeholder `[QR CAPTION: confirm what this QR does]` in `index.html` with what Jennifer says it does. Don't guess.
+- `src/data/reviews.json` holds the seven Google reviews Jennifer sent, word for word.
+- Three are featured, each next to the part of the story it fits:
+  - Aubrey D. under accident recovery
+  - Kathy D. in towing
+  - Jill S. in "Getting your vehicle back"
+- To swap one in, set its `"featured": true` and its `"slot"`, and set the one it replaces to `false`.
+- Never edit, merge or shorten review text. The one exception: Aubrey's shows the first part, exactly as approved (`"show": "excerpt"`).
+- Attribution is first name plus last initial. No stars, ratings or relative dates.
+- The three featured reviews also go into the JSON-LD as `Review` (no ratings).
+- A "Read more reviews on Google" link waits for Ross's Google Business Profile URL (TODO).
 
-The slot stays hidden while `TOWBOOK_QR_SRC` is empty or the file is missing.
+## Agency and dealer logos
+
+`src/data/partners.json` drives two logo rows: agencies (Farmington Hills PD, Michigan State Police) in the police section, and dealers in the dealer section.
+
+- A logo renders only when its file exists under `public/` AND `"permission": true`.
+- Without that, agencies show their name as plain text. Dealers show nothing at all, name or logo.
+- `[DEALER NAME 1]` to `[DEALER NAME 6]` are placeholders. They show in `npm run dev` only, and the build check fails if one ever reaches `dist/`.
+- **Permission rule.**
+  - Police patches, seals and the Michigan State Police emblem are controlled by those agencies, and MSP restricts outside use of its emblem.
+  - Dealership logos are their trademarks.
+  - A logo goes live only after Ross confirms in writing that each agency or dealership approved its use. Until then: names only (agencies) or nothing (dealers).
+  - Never draw, recreate or approximate a badge, seal or emblem.
+- **Files.**
+  - SVG preferred, else PNG at 2x (96 px tall). Under 30 KB, all about the same height. Put them in `public/logos/`.
+  - Logos show grayscale until hovered on desktop. Nothing depends on hover.
+- Logos received so far are prepared in `assets-incoming/logos/ready/` (gitignored, not published) until permission is confirmed.
+
+## Adding gallery photos
+
+The gallery page (`/gallery/`) shows towing and freight photos with All / Towing / Freight filters (`gallery/#towing` and `gallery/#freight` link straight to a tab) and a lightbox. The homepage "Recent work" row shows photos marked `"featured": true`.
+
+1. Drop the original photos in `gallery-src/towing/` or `gallery-src/freight/`. FHPD training photos go in `gallery-src/training/`, which feeds the strip in the police section. Originals never go in git.
+2. Optionally add an entry to `src/data/gallery-captions.json`, keyed `"towing/IMG_1234.jpeg"`:
+   - `alt` describes only what's visible.
+   - `caption`, `date` (`"2026-11"`) and `featured` are optional.
+   - `crop` takes `{x, y, w, h}`.
+   - `blurRegions` takes a list of `{x, y, w, h}` boxes, in the photo's own pixels, for plates, names and numbers.
+3. Run `npm run gallery` and check the page with `npm run dev`.
+4. Commit `public/gallery/` and `src/data/gallery.json`, then push.
+
+What the pipeline does:
+- It rotates each photo by EXIF.
+- It applies the crop and blurs.
+- It strips all metadata (EXIF, GPS).
+- It writes AVIF and WebP at 480, 960 and 1600 px, plus a tiny blurred placeholder.
+- It skips photos that haven't changed.
+- Photos without an `alt` get "Ross Towing towing job" or "Ross Towing freight load". Fill those in.
+
+Before adding any photo, check it:
+- Blur readable plates on customer vehicles.
+- Leave out people's faces at accident scenes, injured people, close ups of officers' faces, crash victims' belongings, and any scene before it's cleared.
+- When in doubt, leave it out and ask.
 
 ## Auction date
 
@@ -150,4 +177,6 @@ Screenshots for Jennifer's how-to (to capture):
 npm test
 ```
 
-Covers `formatFreightQuote` (every field, only the required ones, mixed units, "Other" equipment), `getAuctionState` (no rows, past only, 31 and 30 days out, today, yesterday, two upcoming rows, DST changes), the CSV parser and the .ics file.
+Covers `getAuctionState` (no rows, past only, 31 and 30 days out, today, yesterday, two upcoming rows, DST changes), the CSV parser, the .ics file, the three review quotes (word for word), the partner permission rules and the Towbook buttons.
+
+`npm run build` also runs `scripts/check-dist.mjs`, which fails the build if any image in `dist/` carries EXIF, GPS or XMP data, if a dealer placeholder or the Meade Lexus example appears, if a page shows a second phone number or an en or em dash, or if a page is missing noindex while `NOINDEX` is on.
