@@ -98,10 +98,10 @@ export function rowsFromCSV(text, warn = console.warn) {
   }).filter(Boolean);
 }
 
-// data/auction.json -> rows. { "date": null } means nothing is scheduled.
+// src/data/auction.json -> rows. { "date": null } means nothing is scheduled.
 export function rowsFromJSON(obj, warn = console.warn) {
   if (!obj || obj.date == null || obj.date === '') return [];
-  const r = normalize(obj, warn, 'data/auction.json');
+  const r = normalize(obj, warn, 'src/data/auction.json');
   return r ? [r] : [];
 }
 

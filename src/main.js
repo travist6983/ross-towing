@@ -4,6 +4,7 @@ import { CONFIG } from './config.js';
 import { setupForm, readForm, check, phoneRule, esc, callLink, emailUs, summaryList, PHONE } from './forms.js';
 import { formatFreightQuote, freightSummary, freightSubject, formatTowRequest, towSummary, towSubject } from './messages.js';
 import { rowsFromCSV, rowsFromJSON, getAuctionState, formatAuctionDate, buildICS } from './auction.js';
+import AUCTION_JSON from './data/auction.json';
 
 const D = document;
 const ADDRESS = '21360 Telegraph Rd, Southfield, MI 48033';
@@ -146,7 +147,8 @@ function towbookQR() {
 }
 
 // ---------- next public auction ----------
-// Source 1: the published Google Sheet (CONFIG.AUCTION_SHEET_CSV_URL). Source 2: data/auction.json.
+// Source 1: the published Google Sheet (CONFIG.AUCTION_SHEET_CSV_URL). Source 2: src/data/auction.json,
+// built into the page (Option A: edit it, push, the workflow redeploys).
 // Fetched after the page is idle, so it never touches first paint. ?auction=YYYY-MM-DD previews a date.
 const SHEET_KEY = 'ross-auction-sheet', SHEET_TTL = 10 * 60e3;
 
@@ -171,7 +173,6 @@ async function fetchText(url, ms) {
 }
 
 async function loadAuction() {
-  const jsonP = fetch('data/auction.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
   const url = String(CONFIG.AUCTION_SHEET_CSV_URL || '').trim();
   let rows = null;
   if (url) {
@@ -180,15 +181,15 @@ async function loadAuction() {
       try {
         rows = rowsFromCSV(await fetchText(url, 4000));
         if (rows.length) sheetCacheSet(url, rows);
-        else console.warn('[ross] auction sheet has no dated rows; using data/auction.json');
+        else console.warn('[ross] auction sheet has no dated rows; using src/data/auction.json');
       } catch (e) {
-        console.warn('[ross] auction sheet unavailable; using data/auction.json', e);
+        console.warn('[ross] auction sheet unavailable; using src/data/auction.json', e);
         rows = null;
       }
     }
     if (rows && !rows.length) rows = null;
   }
-  const json = (await jsonP) || {};
+  const json = AUCTION_JSON || {};
   return { rows: rows || rowsFromJSON(json), lead: json.showFromDaysBefore, location: json.location || ADDRESS };
 }
 

@@ -27,19 +27,7 @@ const DEG = 180 / Math.PI;
 const f1 = (n) => Math.round(n * 10) / 10;
 
 // ---------- small things that work with or without GSAP ----------
-(function menu() {
-  const btn = D.querySelector('.menu-btn'), nav = D.getElementById('site-nav');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', () => {
-    const open = btn.getAttribute('aria-expanded') !== 'true';
-    btn.setAttribute('aria-expanded', String(open));
-    nav.classList.toggle('open', open);
-    btn.textContent = open ? 'Close' : 'Menu';
-  });
-  nav.addEventListener('click', (e) => {
-    if (e.target.closest('a') && nav.classList.contains('open')) { btn.click(); }
-  });
-})();
+import './src/menu.js';
 
 // Forms, Towbook and the next auction banner live in src/main.js (works with or without this file).
 

@@ -1,25 +1,42 @@
-# Ross Towing preview
+# Ross Towing website
 
-Live at https://travist6983.github.io/ross-towing/. Plain static files on GitHub Pages (served from `main`, with `.nojekyll`): no build step, no backend. Commit and push, and the page updates in about a minute.
+Website for Ross Towing, Southfield, Michigan. Static site built with Vite and deployed to GitHub Pages: no backend, no server functions, no database.
 
-An older copy also lives at https://journeymanwebco.com/preview/ross-towing/ (the link Jennifer saw first). It's frozen at the Nov 4 update and isn't kept in sync; this repo is the one to edit.
+- Live (until launch): https://travist6983.github.io/ross-towing/
+- Final domain: rosstow.com, not connected yet. See `LAUNCH.md`.
+- Moved here from journeymanwebco.com/preview/ross-towing/, which now redirects here. See `MIGRATION.md`.
 
-Lead tracking (`?r=` links) and analytics from journeymanwebco.com don't run here: the tracking worker only accepts journeymanwebco.com, and Ross isn't in the leads database. The `data-track` attributes are left in place in case that changes.
+## Run and deploy
+
+```bash
+npm install
+npm run dev        # http://localhost:5173/ross-towing/
+npm test           # unit tests
+npm run build      # dist/, the same build GitHub Actions deploys
+npm run preview    # serve dist/ locally
+```
+
+Push to `main` and `.github/workflows/deploy.yml` tests, builds and deploys in about two minutes. Pages source is "GitHub Actions".
 
 | File | What it is |
 |---|---|
-| `index.html` | All copy, markup and CSS |
+| `index.html`, `gallery/index.html`, `404.html` | The pages |
+| `src/partials/` | Shared CSS, icons, header, footer and call bar, filled in at build time |
+| `scripts/html.mjs` | Build-time HTML: partials, head tags, config-driven sections |
 | `journey.js` | The scroll journey (road and truck drawings only) |
-| `src/config.js` | Every switch: form endpoints, Towbook mode, auction Sheet URL |
-| `src/main.js` | Wires the freight form, the tow request / Towbook block and the auction banner |
+| `src/config.js` | Every switch: site URL, noindex, forms, Towbook, auction Sheet |
+| `src/main.js` | Freight form, tow request / Towbook block, auction banner |
 | `src/forms.js` | Shared form behavior: inline errors, spam checks, posting |
 | `src/messages.js` | `formatFreightQuote()` and `formatTowRequest()`: the text the office receives |
 | `src/auction.js` | `getAuctionState()`, the CSV parser and the .ics builder |
-| `data/auction.json` | Auction date fallback (Option A) |
+| `src/data/auction.json` | Auction date fallback (Option A) |
+| `public/` | Images, fonts and vendored GSAP/Lenis, copied as is |
 | `docs/auction-sheet-template.csv` | Starter file for the auction Sheet (Option B) |
-| `tests/` | Unit tests (`npm test`) |
+| `tests/` | Unit tests |
 
-Everything in this repo is public, including this README, so keep notes about the prospect and internal QA out of it (those live in `lead-scout/private/ross-towing/`).
+Everything in this repo is public, so keep private notes about the client out of it.
+
+The Journeyman preview tracker (`journeymanwebco.com/track.js`) loads while `JWC_TRACKING` is true in `src/config.js`. It records visits from `?r=` links in the CRM. It's switched off at launch.
 
 ## Forms
 
@@ -95,18 +112,18 @@ To preview any date on the live page without changing anything, add `?auction=20
 ### Option A: care plan (Travis updates it)
 
 1. Leave `AUCTION_SHEET_CSV_URL` empty in `src/config.js`.
-2. Edit `data/auction.json`:
+2. Edit `src/data/auction.json`:
    ```json
    { "date": "2026-12-12", "time": "10:00 AM", "location": "21360 Telegraph Rd, Southfield, MI 48033", "showFromDaysBefore": 30, "note": null }
    ```
-3. Commit and push. It's live in about a minute. Set `date` back to `null` after the auction if no next date is known (it hides itself either way).
+3. Commit and push. The workflow redeploys in about two minutes. Set `date` back to `null` after the auction if no next date is known (it hides itself either way).
 
 ### Option B: self serve (Jennifer edits a Google Sheet)
 
 Set up once:
 
 1. Create a Google Sheet. Row 1 is the header, exactly: `date`, `time`, `location`, `note`. Or import `docs/auction-sheet-template.csv` (File > Import). Its example row has a past date, so it never shows.
-2. Type each auction on its own row. `date` as `2026-12-12` (`12/12/2026` also works). `time`, `location` and `note` are optional. A blank location uses the address from `data/auction.json`.
+2. Type each auction on its own row. `date` as `2026-12-12` (`12/12/2026` also works). `time`, `location` and `note` are optional. A blank location uses the address from `src/data/auction.json`.
 3. File > Share > Publish to web. Under Link, pick the sheet tab (not "Entire document") and "Comma-separated values (.csv)". Click Publish and copy the link. It looks like `https://docs.google.com/spreadsheets/d/e/<id>/pub?gid=0&single=true&output=csv`.
 4. Paste it into `AUCTION_SHEET_CSV_URL` in `src/config.js`, commit and push once.
 
@@ -116,8 +133,8 @@ Rules the page follows:
 
 - Several rows are fine. It uses the soonest date that hasn't passed. Old rows can stay.
 - Blank rows are ignored. A row with a date it can't read is skipped with a console warning. The page never breaks.
-- The Sheet is read after the page has loaded, with a 4 second timeout. If it's slow, unreachable, unpublished or empty, the page uses `data/auction.json` instead.
-- `showFromDaysBefore` in `data/auction.json` applies to the Sheet too.
+- The Sheet is read after the page has loaded, with a 4 second timeout. If it's slow, unreachable, unpublished or empty, the page uses `src/data/auction.json` instead.
+- `showFromDaysBefore` in `src/data/auction.json` applies to the Sheet too.
 
 Screenshots for Jennifer's how-to (to capture):
 
@@ -128,8 +145,6 @@ Screenshots for Jennifer's how-to (to capture):
 5. `[SCREENSHOT: the Sheet after adding the next auction date]`
 
 ## Tests
-
-Node 18 or newer, no install needed:
 
 ```bash
 npm test

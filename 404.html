@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found | Ross Towing</title>
+<!-- @head -->
+<meta name="description" content="That page isn't here. Ross Towing, Southfield, Michigan: call 248-356-6011, staffed 24 hours a day, 365 days a year.">
+<meta name="theme-color" content="#0E0F11">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0F11'/%3E%3Cpath d='M9 7h8.5c3.6 0 6 2 6 5.2 0 2.4-1.4 4.1-3.6 4.8L24 25h-5l-3.4-7.4H13.5V25H9z M13.5 10.8v3.4h3.6c1.2 0 1.9-.6 1.9-1.7s-.7-1.7-1.9-1.7z' fill='%23C70606'/%3E%3C/svg%3E">
+<link rel="preload" href="/fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+<!-- @include site.css -->
+.nf { min-height: 60vh; display: flex; align-items: center; }
+.nf .wrap { max-width: 760px; }
+.nf h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 14px; }
+.nf .links { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+</style>
+<script type="module" src="/src/page.js"></script>
+</head>
+<body>
+<!-- @include icons.svg -->
+<!-- @include header.html -->
+<main id="main" class="stage tone-night nf">
+  <div class="wrap">
+    <p class="eyebrow">Page not found</p>
+    <h1>That page isn't here.</h1>
+    <p class="lede">If you need a tow, call. We're staffed 24 hours a day, 365 days a year.</p>
+    <a class="big-call" href="tel:+12483566011" data-track="preview_call" data-track-detail="404"><small>Call dispatch 24/7</small><strong data-phone>248-356-6011</strong></a>
+    <p class="links"><a class="btn btn-line" href="{{BASE}}"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Go to the home page</a></p>
+  </div>
+</main>
+<!-- @include footer.html -->
+<!-- @include callbar.html -->
+</body>
+</html>

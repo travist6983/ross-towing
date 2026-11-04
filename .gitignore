@@ -1,2 +1,8 @@
-.DS_Store
 node_modules/
+dist/
+.env*
+.DS_Store
+# Original photos and incoming client files never go in git. Only processed output does
+# (public/gallery/ and src/data/gallery.json, written by npm run gallery).
+gallery-src/
+assets-incoming/
