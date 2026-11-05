@@ -558,9 +558,10 @@ fieldset:disabled .field input, fieldset:disabled .field select, fieldset:disabl
 .unit-row { display: grid; grid-template-columns: minmax(0, 1fr) 82px; gap: 8px; }
 .unit-row select { padding-right: 6px; }
 .checks { display: grid; gap: 4px 14px; grid-template-columns: 1fr; }
-.check { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 4px 0; font-weight: 600; cursor: pointer; flex-wrap: wrap; }
-.check input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--red); }
-.check .err { flex-basis: 100%; }
+/* Grid, not wrapping flex: a long label stays beside its box instead of dropping under it. */
+.check { display: grid; grid-template-columns: 22px minmax(0, 1fr); align-items: center; gap: 4px 12px; min-height: 44px; padding: 4px 0; font-weight: 600; cursor: pointer; }
+.check input { width: 22px; height: 22px; margin: 0; accent-color: var(--red); }
+.check .err { grid-column: 1 / -1; }
 .check-solo { align-self: end; }
 .other { margin-top: 10px; }
 .fq-turnstile { margin-top: 18px; }
