@@ -1,7 +1,9 @@
-// Ross Towing homepage: the Towbook embed fallback and the next auction banner. journey.js only draws
-// the road and truck; everything here works with or without it. Switches live in src/config.js.
-// The Towbook request buttons themselves are plain links written into the HTML at build time.
+// Ross Towing homepage: the freight quote form, the Towbook embed fallback and the next auction banner.
+// journey.js only draws the road and truck; everything here works with or without it. Switches live in
+// src/config.js. The Towbook request buttons themselves are plain links written into the HTML at build time.
 import { CONFIG } from './config.js';
+import { setupForm, readForm, check, phoneRule, callLink, summaryList } from './forms.js';
+import { freightSummary } from './messages.js';
 import { rowsFromCSV, rowsFromJSON, getAuctionState, formatAuctionDate, buildICS } from './auction.js';
 import AUCTION_JSON from './data/auction.json';
 
@@ -13,6 +15,83 @@ const idle = (fn) => {
   const go = () => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 3000 }) : setTimeout(fn, 1200));
   if (D.readyState === 'complete') go(); else addEventListener('load', go, { once: true });
 };
+
+// ---------- freight quote form ----------
+// Posts to the Worker (CONFIG.FORM_ENDPOINT_FREIGHT), which checks Turnstile and emails the office.
+const again = '<button class="btn btn-line btn-again" type="button" data-again>Start a new request</button>';
+(function freight() {
+  const form = D.getElementById('freight-quote');
+  if (!form) return;
+  // Each number is read with its unit ("Length, feet") through a hidden description that follows the select.
+  const WORDS = { ft: 'feet', in: 'inches', lbs: 'pounds', tons: 'tons' };
+  const units = [...form.querySelectorAll('select[data-unit-for]')];
+  const syncUnits = () => units.forEach((s) => { D.getElementById(s.dataset.unitFor).textContent = WORDS[s.value] || s.value; });
+  units.forEach((s) => s.addEventListener('change', syncUnits));
+  // "Other" reveals a short text field, which is then required
+  const other = form.querySelector('input[name="equipment"][value="Other"]');
+  const otherField = D.getElementById('fq-other-field'), otherInput = D.getElementById('fq-other');
+  const syncOther = () => { otherField.hidden = !other.checked; otherInput.required = other.checked; if (!other.checked) check(otherInput); };
+  other.addEventListener('change', syncOther);
+  // Delivery date can't be before the ready date
+  const ready = form.elements.ready_date, by = form.elements.deliver_by;
+  const syncDates = () => { by.min = ready.value || ''; if (by.getAttribute('aria-invalid')) check(by); };
+  ready.addEventListener('change', syncDates);
+  phoneRule(form.elements.phone);
+  form.addEventListener('reset-ui', () => { syncUnits(); syncOther(); syncDates(); });
+  syncUnits(); syncOther();
+
+  const endpoint = String(CONFIG.FORM_ENDPOINT_FREIGHT || '').trim();
+  const ts = turnstile(form, endpoint ? String(CONFIG.TURNSTILE_SITE_KEY || '').trim() : '');
+  setupForm(form, {
+    endpoint,
+    read: (f) => readForm(f, ['equipment']),
+    payload: (d) => ({ ...d, weight_estimate: d.weight_estimate ? 'yes' : '' }),
+    token: ts && ts.token,
+    after: ts && ts.reset,
+    fallback: () => `<p>Thanks. Online quotes aren't switched on yet. Please call ${callLink('freight form fallback')}, or use the freight request form above.</p>`,
+    done: (d) => d
+      ? `<p class="done-h" tabindex="-1"><strong>Thanks, your quote request was sent to the Ross Towing office.</strong> Please check these details:</p>${summaryList(freightSummary(d))}<p>Something wrong? Call ${callLink('freight form sent')}.</p>${again}`
+      : '<p class="done-h" tabindex="-1"><strong>Thanks, your quote request was sent.</strong></p>',
+  });
+})();
+
+// Cloudflare Turnstile, loaded only when the form comes near the screen, so it never touches first paint.
+// "interaction-only": invisible unless Cloudflare wants a click. Tokens are single use, so it resets after
+// every send. Returns null with no site key (the Worker then refuses quotes, which shows "please call").
+function turnstile(form, sitekey) {
+  if (!sitekey) return null;
+  const box = D.getElementById('fq-turnstile');
+  let id = null, ready = null;
+  const load = () => ready || (ready = new Promise((resolve, reject) => {
+    window.rossTurnstileReady = () => {
+      try {
+        id = window.turnstile.render(box, { sitekey, action: 'freight', appearance: 'interaction-only', 'refresh-expired': 'auto' });
+        resolve();
+      } catch (e) { reject(e); }
+    };
+    const s = D.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=rossTurnstileReady';
+    s.async = true; s.defer = true;
+    s.onerror = () => { ready = null; reject(new Error('turnstile script failed')); };
+    D.head.appendChild(s);
+  }));
+  const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); load().catch((e) => console.warn('[ross] turnstile', e.message)); } }, { rootMargin: '800px' });
+  io.observe(form);
+  form.addEventListener('focusin', () => { load().catch(() => {}); }, { once: true });
+  return {
+    // Waits up to 8 seconds for a token (the widget may still be checking), then gives up.
+    async token() {
+      try { await load(); } catch { return null; }
+      for (let i = 0; i < 40; i++) {
+        const t = window.turnstile.getResponse(id);
+        if (t) return t;
+        await new Promise((r) => setTimeout(r, 200));
+      }
+      return null;
+    },
+    reset() { try { if (id != null) window.turnstile.reset(id); } catch { /* fresh token on the next load */ } },
+  };
+}
 
 // ---------- Towbook embed (TOWBOOK_MODE "embed" only) ----------
 // Falls back to the link button when Towbook can't be reached or the frame never loads. Browsers still

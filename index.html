@@ -253,6 +253,87 @@
 
         <!-- Freight quote: Towbook freight request link (CONFIG.TOWBOOK_FREIGHT_URL). Empty shows a call button. -->
         <!-- @section online freight -->
+
+        <!-- Freight quote form. Posts to the Cloudflare Worker at CONFIG.FORM_ENDPOINT_FREIGHT (worker/), which emails
+             the office. Empty endpoint, or a failed send: shows "please call" and keeps what the visitor typed. -->
+        <form class="form fq" id="freight-quote" method="post" aria-labelledby="fq-h" novalidate>
+          <h3 id="fq-h">Or send us the details here</h3>
+          <p class="hint">Tell us what's moving, where, and how big it is, and the office will get back to you with a quote. Fields marked * are required.</p>
+          <div class="hp" aria-hidden="true"><label for="fq-website">Leave this empty</label><input id="fq-website" name="website" tabindex="-1" autocomplete="off"></div>
+
+          <fieldset class="fs">
+            <legend>Contact</legend>
+            <div class="grid2">
+              <div class="field"><label for="fq-company">Company <span class="opt">(optional)</span></label><input id="fq-company" name="company" autocomplete="organization" maxlength="200"></div>
+              <div class="field"><label for="fq-contact">Contact name *</label><input id="fq-contact" name="contact" autocomplete="name" required maxlength="200" data-msg="Enter your name."></div>
+              <div class="field"><label for="fq-phone">Phone *</label><input id="fq-phone" name="phone" type="tel" autocomplete="tel" required maxlength="40" data-msg="Enter a phone number."></div>
+              <div class="field"><label for="fq-email">Email *</label><input id="fq-email" name="email" type="email" autocomplete="email" required maxlength="254" data-msg="Enter your email address."></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend>Route</legend>
+            <div class="grid2">
+              <div class="field"><label for="fq-pickup">Pickup city and state *</label><input id="fq-pickup" name="pickup" placeholder="City, state" required maxlength="200" data-msg="Enter the pickup city and state."></div>
+              <div class="field"><label for="fq-delivery">Delivery city and state *</label><input id="fq-delivery" name="delivery" placeholder="City, state" required maxlength="200" data-msg="Enter the delivery city and state."></div>
+              <div class="field"><label for="fq-ready">Ready date <span class="opt">(optional)</span></label><input id="fq-ready" name="ready_date" type="date"></div>
+              <div class="field"><label for="fq-by">Delivery needed by <span class="opt">(optional)</span></label><input id="fq-by" name="deliver_by" type="date" data-msg-number="Pick a date on or after the ready date."></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend>Load</legend>
+            <div class="grid2">
+              <div class="field full"><label for="fq-load">What is being hauled *</label><textarea id="fq-load" name="load" placeholder="Machine, materials, vehicle..." required maxlength="2000" data-msg="Tell us what's being hauled."></textarea></div>
+              <div class="field"><label for="fq-pieces">Number of pieces <span class="opt">(optional)</span></label><input id="fq-pieces" name="pieces" type="number" inputmode="numeric" min="1" step="1" data-msg-number="Enter a whole number, 1 or more."></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend>Dimensions</legend>
+            <div class="dims">
+              <div class="field"><label for="fq-length">Length</label><div class="unit-row"><input id="fq-length" name="length" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-length-u"><select name="length_unit" aria-label="Length unit" data-unit-for="fq-length-u"><option value="ft" selected>ft</option><option value="in">in</option></select></div><span class="sr" id="fq-length-u">feet</span></div>
+              <div class="field"><label for="fq-width">Width</label><div class="unit-row"><input id="fq-width" name="width" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-width-u"><select name="width_unit" aria-label="Width unit" data-unit-for="fq-width-u"><option value="ft" selected>ft</option><option value="in">in</option></select></div><span class="sr" id="fq-width-u">feet</span></div>
+              <div class="field"><label for="fq-height">Height</label><div class="unit-row"><input id="fq-height" name="height" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-height-u"><select name="height_unit" aria-label="Height unit" data-unit-for="fq-height-u"><option value="ft" selected>ft</option><option value="in">in</option></select></div><span class="sr" id="fq-height-u">feet</span></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend>Weight</legend>
+            <div class="grid2">
+              <div class="field"><label for="fq-weight">Weight</label><div class="unit-row"><input id="fq-weight" name="weight" type="number" inputmode="decimal" min="0" step="any" aria-describedby="fq-weight-u"><select name="weight_unit" aria-label="Weight unit" data-unit-for="fq-weight-u"><option value="lbs" selected>lbs</option><option value="tons">tons</option></select></div><span class="sr" id="fq-weight-u">pounds</span></div>
+              <label class="check check-solo"><input type="checkbox" name="weight_estimate" value="yes"> Weight is an estimate</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend>Additional equipment needed</legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="equipment" value="Chains"> Chains</label>
+              <label class="check"><input type="checkbox" name="equipment" value="Binders"> Binders</label>
+              <label class="check"><input type="checkbox" name="equipment" value="Tarps"> Tarps</label>
+              <label class="check"><input type="checkbox" name="equipment" value="Edge protectors"> Edge protectors</label>
+              <label class="check"><input type="checkbox" name="equipment" value="Other"> Other</label>
+              <label class="check"><input type="checkbox" name="equipment" value="Not sure, please advise"> Not sure, please advise</label>
+            </div>
+            <div class="field other" id="fq-other-field" hidden><label for="fq-other">Other equipment *</label><input id="fq-other" name="equipment_other" maxlength="120" data-msg="Tell us what other equipment the load needs."></div>
+          </fieldset>
+
+          <fieldset class="fs">
+            <legend>Trailer and notes</legend>
+            <div class="grid2">
+              <div class="field"><label for="fq-trailer">Trailer preference <span class="opt">(optional)</span></label>
+                <select id="fq-trailer" name="trailer"><option value="">No preference</option><option>Flatbed</option><option>Conestoga</option><option>Step deck</option><option>Landoll</option><option>Lowboy</option></select>
+              </div>
+              <div class="field full"><label for="fq-notes">Notes <span class="opt">(optional)</span></label><textarea id="fq-notes" name="notes" placeholder="Loading dock hours, site access, anything else we should know" maxlength="2000"></textarea></div>
+            </div>
+          </fieldset>
+
+          <!-- Cloudflare Turnstile spam check (CONFIG.TURNSTILE_SITE_KEY). Invisible unless Cloudflare needs a click. -->
+          <div class="fq-turnstile" id="fq-turnstile"></div>
+          <button class="btn btn-call" type="submit">Send my quote request</button>
+          <div class="form-status" role="status" aria-live="polite" hidden></div>
+        </form>
       </div>
       <div class="lane" aria-hidden="true"></div>
     </div>

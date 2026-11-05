@@ -519,3 +519,58 @@ h3 { font-size: 1.4rem; font-weight: 700; }
   .machinery .mach-req .more-link { grid-column: 1; margin-top: 14px; }
   .machinery .mach-req .qr-fig { grid-column: 2; grid-row: 1 / span 4; align-self: start; }
 }
+
+/* Freight quote form (under the Towbook freight request). Posts to the Worker in worker/. */
+.form { position: relative; margin-top: 24px; padding: 22px 18px; border-radius: 16px; background: #fff; color: var(--ink); border: 1px solid var(--line-l); }
+.form h3 { font-size: 1.7rem; font-weight: 800; margin-bottom: 4px; }
+.form .hint { color: var(--muted-l); margin-bottom: 16px; }
+.fields { display: grid; gap: 14px; }
+.field { min-width: 0; }
+.field label { display: block; font-weight: 600; font-size: .95rem; margin-bottom: 6px; }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; min-height: 48px; padding: 11px 12px; border-radius: 10px; border: 2px solid #C2C7CB; background: #F9FAFB; color: var(--ink); font: 400 1.05rem var(--body); }
+.field textarea { min-height: 96px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); outline: 3px solid var(--focus); outline-offset: 1px; }
+.form .btn { width: 100%; margin-top: 18px; }
+.opt { font-weight: 400; color: var(--muted-l); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form .err { margin: 6px 0 0; font-weight: 600; font-size: .94rem; color: var(--red-text); }
+.field [aria-invalid="true"] { border-color: var(--red-text); background: #FFF7F7; }
+.form-status { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #FFF6CC; color: #4A3D00; font-weight: 600; }
+.form-status[hidden] { display: none; }
+.form-status.info { background: #FFF6CC; color: #4A3D00; }
+.form-status.bad { background: #FDECEC; color: #7A0606; border: 1px solid #F2B8B8; }
+.form-status.ok { background: #E8F4ED; color: #0B3D27; border: 1px solid #A9D3BB; }
+.form-status p + p, .form-status p + dl, .form-status dl + p { margin-top: 10px; }
+.form-status a { color: inherit; font-weight: 700; }
+.done-h:focus { outline: none; }
+.done-list { margin: 10px 0 0; display: grid; gap: 6px; }
+.done-list div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; }
+.done-list dt { font-weight: 700; }
+.done-list dd { margin: 0; overflow-wrap: anywhere; }
+.form .btn-again { width: auto; margin-top: 12px; min-height: 44px; font-size: .98rem; }
+fieldset:disabled .field input, fieldset:disabled .field select, fieldset:disabled .field textarea { opacity: .7; }
+.fq { container-type: inline-size; }
+.fs { border: 0; margin: 0; padding: 0; min-width: 0; }
+.fs + .fs { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line-l); }
+.fs legend { float: left; width: 100%; padding: 0; margin: 0 0 12px; font: 700 .9rem/1.2 var(--display); text-transform: uppercase; letter-spacing: .14em; color: var(--red-text); }
+.fs legend + * { clear: both; }
+.grid2, .dims { display: grid; gap: 14px; }
+.unit-row { display: grid; grid-template-columns: minmax(0, 1fr) 82px; gap: 8px; }
+.unit-row select { padding-right: 6px; }
+.checks { display: grid; gap: 4px 14px; grid-template-columns: 1fr; }
+.check { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 4px 0; font-weight: 600; cursor: pointer; flex-wrap: wrap; }
+.check input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--red); }
+.check .err { flex-basis: 100%; }
+.check-solo { align-self: end; }
+.other { margin-top: 10px; }
+.fq-turnstile { margin-top: 18px; }
+.fq-turnstile:empty { display: none; }
+@media (min-width: 640px) {
+  .form { padding: 28px; }
+  @container (min-width: 400px) {
+    .grid2 { grid-template-columns: 1fr 1fr; }
+    .grid2 .full { grid-column: 1 / -1; }
+    .checks { grid-template-columns: 1fr 1fr; }
+  }
+  @container (min-width: 540px) { .dims { grid-template-columns: repeat(3, minmax(0, 1fr)); } .unit-row { grid-template-columns: minmax(0, 1fr) 70px; } }
+}

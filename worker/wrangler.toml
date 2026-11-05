@@ -1,0 +1,29 @@
+# Ross Towing forms Worker. Deploy: see worker/README.md.
+name = "ross-towing-forms"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+preview_urls = false
+
+# Plain settings, not secret. MAIL_TO is comma separated: drop travisjterry@gmail.com at launch.
+[vars]
+MAIL_FROM = "Ross Towing Website <quotes@send.journeymanwebco.com>"
+MAIL_TO = "travisjterry@gmail.com, rosstowing1@gmail.com"
+ALLOWED_ORIGINS = "https://travist6983.github.io, https://rosstow.com, https://www.rosstow.com, http://localhost:5173"
+
+# Per IP: 3 quotes a minute (Cloudflare's limiter counts over 10 or 60 seconds). Turnstile does the
+# heavy lifting; this stops one browser hammering the form. namespace_id is any number unique to this account.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "62483566"
+
+  [ratelimits.simple]
+  limit = 3
+  period = 60
+
+[observability]
+enabled = true
+
+# Secrets (never in this file or git):
+#   npx wrangler secret put RESEND_API_KEY
+#   npx wrangler secret put TURNSTILE_SECRET

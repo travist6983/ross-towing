@@ -1,0 +1,8 @@
+# Copy to .dev.vars for `npx wrangler dev`. .dev.vars is git ignored. Placeholder names only here.
+# Cloudflare's always-pass Turnstile test secret, for local runs only:
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+# A Resend API key with sending access to send.journeymanwebco.com. Leave the placeholder to test
+# everything but the send (the Worker then answers send_failed).
+RESEND_API_KEY=re_your_key_here
+# Local only: send everything to one inbox while testing.
+MAIL_TO=travisjterry@gmail.com

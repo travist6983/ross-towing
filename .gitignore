@@ -6,3 +6,6 @@ dist/
 # (public/gallery/ and src/data/gallery.json, written by npm run gallery).
 gallery-src/
 assets-incoming/
+# Worker: local secrets and wrangler state never go in git (worker/.dev.vars.example is the template).
+worker/.dev.vars
+worker/.wrangler/

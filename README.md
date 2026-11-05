@@ -26,7 +26,9 @@ Push to `main` and `.github/workflows/deploy.yml` tests, builds and deploys in a
 | `journey.js` | The scroll journey (road and truck drawings only) |
 | `src/config.js` | Every switch: site URL, noindex, tracker, Towbook links, auction Sheet |
 | `scripts/sections.mjs` | Reviews, partner logo rows, training strip, gallery, Towbook buttons and QR, written into the HTML at build time |
-| `src/main.js` | Auction banner and the Towbook embed fallback |
+| `src/main.js` | Freight quote form, auction banner and the Towbook embed fallback |
+| `src/forms.js`, `src/messages.js` | Freight form validation and sending; the quote's wording, shared with the Worker's email |
+| `worker/` | Cloudflare Worker that emails freight quotes (own package, not in the Pages build) |
 | `src/gallery.js` | Gallery filters and lightbox |
 | `src/data/reviews.json`, `partners.json`, `gallery-captions.json`, `gallery.json` | Reviews, agency and dealer logos, photo captions, and the generated photo list |
 | `scripts/build-gallery.mjs` | Photo pipeline (`npm run gallery`) |
@@ -43,7 +45,7 @@ The Journeyman preview tracker (`journeymanwebco.com/track.js`) loads while `JWC
 
 ## Towbook
 
-Ross dispatches in Towbook, and its Web Request Form is the whole integration: a link where a customer's request lands in Towbook as a call. The site has no forms of its own. Ross sent three links on Nov 4, 2026, and they live in `src/config.js`:
+Ross dispatches in Towbook, and its Web Request Form is the main integration: a link where a customer's request lands in Towbook as a call. The freight section also has its own quote form under the Towbook button, emailed to the office by the Cloudflare Worker in `worker/` (see worker/README.md). Ross sent three links on Nov 4, 2026, and they live in `src/config.js`:
 
 | Config | Towbook form | Buttons on the site |
 |---|---|---|
