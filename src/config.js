@@ -16,14 +16,14 @@ export const CONFIG = {
   JWC_TRACKING: true,
 
   // ---- Freight quote form (see worker/README.md) ----
-  // The Cloudflare Worker that emails each freight quote to the office. Empty (now): the form shows
+  // The Cloudflare Worker that emails each freight quote to the office. Empty: the form shows
   // "please call 248-356-6011", keeps what the visitor typed, and sends nothing.
-  // Once deployed: "https://ross-towing-forms.<your-subdomain>.workers.dev/freight".
-  FORM_ENDPOINT_FREIGHT: "",
+  // Deployed Nov 5, 2026 from worker/ (see worker/README.md).
+  FORM_ENDPOINT_FREIGHT: "https://ross-towing-forms.travisjterry.workers.dev/freight",
   // Cloudflare Turnstile site key for the form's spam check. Public, fine to commit. The matching
   // secret lives only in the Worker (wrangler secret put TURNSTILE_SECRET). Empty skips the widget,
   // and the Worker then turns every quote away, so set both together.
-  TURNSTILE_SITE_KEY: "",
+  TURNSTILE_SITE_KEY: "0x4AAAAAAF09awsDk-OsY_TY",
 
   // ---- Towbook online requests (see README.md, "Towbook") ----
   // Ross's Towbook Web Request Form links, sent by the office on Nov 4, 2026. Each request lands in
