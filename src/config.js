@@ -15,10 +15,20 @@ export const CONFIG = {
   // records visits from ?r=<tracking id> links in the CRM. Set to false at launch.
   JWC_TRACKING: true,
 
+  // ---- Freight quote form (see worker/README.md) ----
+  // The Cloudflare Worker that emails each freight quote to the office. Empty (now): the form shows
+  // "please call 248-356-6011", keeps what the visitor typed, and sends nothing.
+  // Once deployed: "https://ross-towing-forms.<your-subdomain>.workers.dev/freight".
+  FORM_ENDPOINT_FREIGHT: "",
+  // Cloudflare Turnstile site key for the form's spam check. Public, fine to commit. The matching
+  // secret lives only in the Worker (wrangler secret put TURNSTILE_SECRET). Empty skips the widget,
+  // and the Worker then turns every quote away, so set both together.
+  TURNSTILE_SITE_KEY: "",
+
   // ---- Towbook online requests (see README.md, "Towbook") ----
   // Ross's Towbook Web Request Form links, sent by the office on Nov 4, 2026. Each request lands in
-  // Towbook as a call. The site has no forms of its own: these buttons are the online path, and the
-  // phone call stays the main action. An empty link hides its buttons.
+  // Towbook as a call. These buttons come first; the freight section also has its own quote form
+  // (above). The phone call stays the main action. An empty link hides its buttons.
   // Never use the Meade Lexus example link from the screenshots: it belongs to a dealer account.
   TOWBOOK_MODE: "link",     // "link" (buttons) | "embed" (tow form in an iframe) | "none" (call only)
   TOWBOOK_URL: "https://public.towbook.com/06f43477310d49bea1319677408aba23c2d13143cb074d88aa04b5d3b6c60113",           // towing
