@@ -48,8 +48,8 @@ Ross dispatches in Towbook, and its Web Request Form is the whole integration: a
 | Config | Towbook form | Buttons on the site |
 |---|---|---|
 | `TOWBOOK_URL` | Towing | Hero "Request online: Tow", the towing section, "Not urgent? Request a tow online" in the contact section, and the QR code |
-| `TOWBOOK_FREIGHT_URL` | Freight | Hero "Freight", the freight section's "Request a freight quote", the mobile call bar's "Freight quote", and the gallery page |
-| `TOWBOOK_MACHINERY_URL` | Machinery | Hero "Machinery" and "Request machinery hauling" in the machinery hauling block |
+| `TOWBOOK_FREIGHT_URL` | Freight | Hero "Freight", the freight section's "Request a freight quote" (with a QR code on desktop), the mobile call bar's "Freight quote", and the gallery page |
+| `TOWBOOK_MACHINERY_URL` | Machinery | Hero "Machinery" and "Request machinery hauling" in the machinery hauling block (with a QR code on desktop) |
 
 Every button opens Towbook in a new tab (`rel="noopener"`). The call button always comes first and stays the largest action. An empty link hides its buttons. The freight section falls back to a call button.
 
@@ -66,7 +66,7 @@ About "embed":
 - If Towbook can't be reached, or the frame doesn't load within 10 seconds, the page falls back to the link button.
 - A browser can't tell the page when Towbook refuses to be framed. That's why the new tab link always sits under the frame.
 
-The QR code is generated at build time from `TOWBOOK_URL` (the `qrcode` package, SVG), so it always matches the link. To use an official QR image instead:
+The three QR codes (tow, freight, machinery) are generated at build time from the same config values as their buttons (the `qrcode` package, SVG). They always match the links and show at 1024px and wider only. To use an official QR image instead:
 1. Put it under `public/`.
 2. Set `TOWBOOK_QR_IMG` to that path.
 
@@ -75,13 +75,13 @@ Never use the Meade Lexus link from Jennifer's screenshots. It belongs to a deal
 ## Reviews
 
 - `src/data/reviews.json` holds the seven Google reviews Jennifer sent, word for word.
-- Three are featured, each next to the part of the story it fits:
-  - Aubrey D. under accident recovery
-  - Kathy D. in towing
-  - Jill S. in "Getting your vehicle back"
-- To swap one in, set its `"featured": true` and its `"slot"`, and set the one it replaces to `false`.
+- The featured three show as cards in "What customers say" (`#reviews`), in the file's order: Aubrey D., Kathy D., Jill S.
+  - That section sits right after "Family owned since 1962", with the 4.7 rating and "What reviewers bring up most".
+  - It's in the main nav as "Reviews".
+- To swap a review in, set its `"featured": true` and set the one it replaces to `false`.
 - Never edit, merge or shorten review text. The one exception: Aubrey's shows the first part, exactly as approved (`"show": "excerpt"`).
 - Attribution is first name plus last initial. No stars, ratings or relative dates.
+- The cards have no reveal animation, so they show with JavaScript off and with reduced motion.
 - The three featured reviews also go into the JSON-LD as `Review` (no ratings).
 - A "Read more reviews on Google" link waits for Ross's Google Business Profile URL (TODO).
 

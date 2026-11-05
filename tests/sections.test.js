@@ -15,16 +15,15 @@ const APPROVED = {
   'Jill S.': 'I spoke with someone on the phone and they explained everything I needed to know very clearly and they were quick when I went in to pick my car up. Made a stressful situation a little more bearable.',
 };
 
-test('reviews: the three featured quotes match the approved text word for word, in their slots', () => {
+test('reviews: one section with the three featured quotes, word for word, in order', () => {
   const f = featuredReviews(reviews);
-  assert.deepEqual(f.map((r) => [r.author, r.slot]), [['Aubrey D.', 'recovery'], ['Kathy D.', 'towing'], ['Jill S.', 'release']]);
-  for (const slot of ['recovery', 'towing', 'release']) {
-    const html = renderReviews(reviews, slot);
-    const [r] = featuredReviews(reviews, slot);
-    assert.ok(html.includes(`<p>${APPROVED[r.author].replace(/'/g, '&#39;')}</p>`), `${r.author} text changed`);
-    assert.ok(html.includes(`${r.author}, Google review`));
-    assert.doesNotMatch(html, /star|ago|rating/i);
-  }
+  assert.deepEqual(f.map((r) => r.author), ['Aubrey D.', 'Kathy D.', 'Jill S.']);
+  const html = renderReviews(reviews);
+  const texts = [...html.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((m) => m[1].replace(/&#39;/g, "'"));
+  assert.deepEqual(texts, f.map((r) => APPROVED[r.author]));
+  for (const r of f) assert.ok(html.includes(`${r.author}, Google review`));
+  assert.ok(html.includes('the next day- even'));
+  assert.doesNotMatch(html, /reveal|star|ago|rating/i);   // no reveal animation: visible with JS off or reduced motion
   assert.equal(reviewSchema(reviews).length, 3);
   assert.equal(reviews.reviews.filter((r) => !r.featured).length, 4);
 });
@@ -54,6 +53,10 @@ test('Towbook: three request links, call stays first, empty links hide their but
   const hero = renderOnline(CONFIG, 'hero');
   assert.equal((hero.match(/target="_blank" rel="noopener"/g) || []).length, 3);
   assert.match(renderOnline(CONFIG, 'freight'), /Request a freight quote/);
+  const qr = { freight: '<svg data-x="f"></svg>', machinery: '<svg data-x="m"></svg>' };
+  assert.match(renderOnline(CONFIG, 'freight', qr), /has-qr[\s\S]*<svg data-x="f"><\/svg><figcaption>Scan to request a freight quote<\/figcaption>/);
+  assert.match(renderOnline(CONFIG, 'machinery', qr), /<svg data-x="m"><\/svg><figcaption>Scan to request machinery hauling<\/figcaption>/);
+  assert.doesNotMatch(renderOnline(CONFIG, 'freight'), /qr-fig/);
   assert.match(renderOnline(CONFIG, 'machinery'), /Request machinery hauling/);
   assert.match(renderOnline(CONFIG, 'contact'), /Not urgent\? Request a tow online/);
   const none = { ...CONFIG, TOWBOOK_URL: '', TOWBOOK_FREIGHT_URL: '', TOWBOOK_MACHINERY_URL: '' };

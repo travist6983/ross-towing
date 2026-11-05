@@ -54,31 +54,40 @@
     "featured": true
   },
   "towing/rotator-night.jpg": {
-    "alt": "A red Ross Towing rotator marked Police Towing, lit up at night in a lot with other trucks lined up behind it."
+    "alt": "A red Ross Towing rotator marked Police Towing, lit up at night in a lot with other trucks lined up behind it.",
+    "caption": "Ross rotator lit up at night."
   },
   "towing/rotator-88.jpg": {
-    "alt": "Ross Towing heavy wrecker number 88, a red truck marked Police Towing, with its boom stowed."
+    "alt": "Ross Towing heavy wrecker number 88, a red truck marked Police Towing, with its boom stowed.",
+    "caption": "Heavy wrecker 88."
   },
   "towing/wrecker-79.jpg": {
-    "alt": "Ross Towing wrecker number 79, a black tow truck marked Police Towing."
+    "alt": "Ross Towing wrecker number 79, a black tow truck marked Police Towing.",
+    "caption": "Wrecker 79."
   },
   "freight/freight-rig-sunset.jpg": {
-    "alt": "A red Ross Towing semi tractor hitched to a long trailer, parked on gravel at sunset."
+    "alt": "A red Ross Towing semi tractor hitched to a long trailer, parked on gravel at sunset.",
+    "caption": "Ross semi tractor and trailer at sunset."
   },
   "freight/rollback-excavator.jpg": {
-    "alt": "A white Ross Towing rollback with its bed tilted, loading a yellow compact excavator at a dirt job site."
+    "alt": "A white Ross Towing rollback with its bed tilted, loading a yellow compact excavator at a dirt job site.",
+    "caption": "Loading a compact excavator onto a rollback."
   },
   "freight/rollback-crane.jpg": {
-    "alt": "A white Ross Towing rollback carrying a yellow mobile crane, chained down, outside an industrial building."
+    "alt": "A white Ross Towing rollback carrying a yellow mobile crane, chained down, outside an industrial building.",
+    "caption": "A mobile crane chained down on a rollback."
   },
   "freight/landoll-forklifts.jpg": {
-    "alt": "Two yellow forklifts strapped down on a black Landoll trailer in a gravel lot."
+    "alt": "Two yellow forklifts strapped down on a black Landoll trailer in a gravel lot.",
+    "caption": "Two forklifts strapped down on a Landoll trailer."
   },
   "freight/lowboy.jpg": {
-    "alt": "An empty red lowboy trailer in a gravel yard."
+    "alt": "An empty red lowboy trailer in a gravel yard.",
+    "caption": "Red lowboy trailer."
   },
   "freight/tractor-landoll.jpg": {
-    "alt": "A red Ross Towing semi tractor hooked to a black Landoll trailer in a gravel yard."
+    "alt": "A red Ross Towing semi tractor hooked to a black Landoll trailer in a gravel yard.",
+    "caption": "Ross semi tractor with a Landoll trailer."
   },
   "training/IMG_1668.jpeg": {
     "alt": "A K-9 handler leads a police dog along a silver sedan in a gravel lot while another officer walks nearby."

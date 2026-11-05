@@ -1,5 +1,5 @@
 {
-  "_note": "Google reviews Jennifer Gatt sent on Nov 4, 2026, quoted word for word (only line breaks joined). Never edit, merge or invent review text. To show a different review, set \"featured\": true and a \"slot\" (towing, recovery, release); set the one it replaces to false. Attribution is first name plus last initial. No stars, ratings or relative dates.",
+  "_note": "Google reviews Jennifer Gatt sent on Nov 4, 2026, quoted word for word (only line breaks joined). Never edit, merge or invent review text. Featured reviews show as cards in the \"What customers say\" section (#reviews), in this file's order. To show a different review, set its \"featured\" to true and the one it replaces to false. \"slot\" is kept for reference only. Attribution is first name plus last initial. No stars, ratings or relative dates.",
   "reviews": [
     {
       "id": "aubrey",

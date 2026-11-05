@@ -100,7 +100,7 @@ Applies the Nov 4 call with Jennifer Gatt, her follow-up email, and Ross's Towbo
 | Dealer names and logos | `src/data/partners.json` | Nothing shows (see below) |
 | "Read more reviews on Google" link | Reviews | Needs Ross's Google Business Profile URL. None is in the codebase |
 | Official Towbook QR image (optional) | `TOWBOOK_QR_IMG` | Empty; the built-in QR is generated from the tow link |
-| Release hours | `[RELEASE HOURS]` in "Getting your vehicle back" | From Nov 3, still open |
+| Release hours | "Getting your vehicle back" | Card now says office hours (see "Pre-send fixes" below). Confirm release hours with Jennifer |
 | Excluded photos | Photo review above | Travis to decide |
 | Delete the old preview folder | lead-scout `preview/ross-towing/` | Kept until Travis confirms the move worked |
 
@@ -175,3 +175,67 @@ The home page is unchanged from Nov 3 (mobile LCP 0.8s). SEO is 66 on every page
 ## Launch
 
 The steps to connect rosstow.com are written in `LAUNCH.md` and haven't been run. They need GoDaddy access, saved DNS records, Jennifer's email records written down, and Travis saying "launch".
+
+## Pre-send fixes (Nov 4, evening)
+
+These are fixes from an audit of the live page before Travis sends it to Jennifer. Nothing else changed.
+
+**Reviews section.**
+- New "What customers say" section (`#reviews`), right after "Family owned since 1962".
+- It holds the 4.7 rating, three review cards (Aubrey D., Kathy D., Jill S., each "Google review") and "What reviewers bring up most". The rating and themes moved in from the trust section.
+- The text is unchanged and quoted exactly, including "the next day- even".
+- The three inline reviews in Towing, Heavy duty and Vehicle release are removed, so no review appears twice. No gaps were left behind.
+- The cards have no reveal animation. They show with JavaScript off and with reduced motion (both tested).
+- "Reviews" is in the main nav between Auctions and Gallery, desktop and mobile. It fits on one line at 1024, so "Vehicle Release" kept its full name.
+- Review schema is still the three reviews, with no ratings and no AggregateRating.
+
+**Release hours.**
+- The placeholder is gone. The card now reads "During office hours: Monday to Friday 9am to 5pm, Saturday 9am to 1pm. Call ahead to make sure your vehicle is ready."
+- The release cards now align to the top, so "Cash only." sits right under "Payment".
+
+**QR codes.**
+- Two new QR codes, built at build time from the same config links as their buttons, desktop only (1024px and wider):
+  - "Scan to request a freight quote", beside the freight button.
+  - "Scan to request machinery hauling", beside the machinery button.
+- The tow QR now uses the same 1024px rule.
+- All three were decoded in the browser test, and each scans to the exact link of the button next to it.
+- There was no `assets-incoming/qr/` folder and no QR PDFs anywhere in Downloads. So Ross's own QR codes weren't compared with ours: nothing to decode, and no match or mismatch to report. If Travis drops the PDFs in `assets-incoming/qr/`, decode them (`zbarimg`) and compare with `TOWBOOK_URL`, `TOWBOOK_FREIGHT_URL` and `TOWBOOK_MACHINERY_URL`.
+
+**Map label.** "I-75 to Ohio ↓" now reads "I-75 to Ohio and Indiana ↓". It's set on two lines at the right edge, with a light outline so it reads over the road line. It fits at 390 with no overlap.
+
+**Gallery captions.** The 9 photos without one got a short caption based only on what each shows, for example "Heavy wrecker 88." and "Two forklifts strapped down on a Landoll trailer." All 13 now have one.
+
+### QA (pre-send)
+
+**Browser:** 31 of 31 new checks pass at 390, 1024 and 1440.
+- The reviews section is visible on scroll, with the exact text.
+- The nav fits, and the mobile menu link reaches the section.
+- No horizontal overflow, and the console is clean.
+- The release card text and alignment are right.
+- The QR codes show on desktop only, and each decodes to its button's link.
+- The map label fits.
+- With JavaScript off and with reduced motion, all three reviews show.
+- Every gallery photo has a caption, and the lightbox shows it.
+
+**Regression:** the earlier 50 checks still pass.
+
+**Build:** `npm test` passes 21 of 21. `check-dist` is clean on 196 files.
+
+**Greps on `dist/`:**
+- No "[RELEASE HOURS]" and no en or em dashes.
+- The only bracket text is "[IN BRACKETS]", 3 times. That's the concept-preview banner on the home, gallery and 404 pages, which explains placeholders. It isn't one itself.
+
+**Lighthouse:** 100 / 100 / 100 on home and gallery, mobile and desktop.
+- Mobile: LCP 0.8s, CLS 0.003.
+- Desktop: LCP 0.2s (home) and 0.4s (gallery).
+
+### Remaining TODOs
+
+- Confirm release hours with Jennifer.
+- Compare Ross's QR PDFs with the config links once they're in `assets-incoming/qr/`.
+- Still open from above:
+  - Agency and dealer logo permissions, and the dealer list.
+  - The auction Sheet (Option B only).
+  - Ross's Google reviews link.
+  - Decisions on the excluded photos.
+  - Deleting the old journeymanwebco preview folder once the move is confirmed.

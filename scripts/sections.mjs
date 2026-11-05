@@ -14,7 +14,7 @@ export function featuredReviews(data, slot) {
 }
 export function renderReviews(data, slot) {
   return featuredReviews(data, slot).map((r) =>
-    `<figure class="quote reveal"><blockquote><p>${esc(reviewText(r))}</p></blockquote><figcaption>${esc(r.author)}, Google review</figcaption></figure>`).join('\n');
+    `<figure class="quote"><blockquote><p>${esc(reviewText(r))}</p></blockquote><figcaption>${esc(r.author)}, Google review</figcaption></figure>`).join('\n');
 }
 export function reviewSchema(data) {
   return featuredReviews(data).map((r) => ({ '@type': 'Review', author: { '@type': 'Person', name: r.author }, reviewBody: reviewText(r), publisher: { '@type': 'Organization', name: 'Google' } }));
@@ -86,7 +86,10 @@ const NEW_TAB = '<span class="sr"> (opens in a new tab)</span>';
 const ext = (url, cls, label, detail) => `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener" data-track="preview_book" data-track-detail="${esc(detail)}">${label}${NEW_TAB}</a>`;
 const TEL = (detail) => `<a href="tel:+12483566011" data-track="preview_call" data-track-detail="${esc(detail)}"><span data-phone>248-356-6011</span></a>`;
 
-export function renderOnline(config, where) {
+// A QR code next to its button, desktop only (phones tap the button). qr = { tow, freight, machinery } SVG strings.
+const qrFig = (svg, caption) => (svg ? `<figure class="qr-fig">${svg}<figcaption>${caption}</figcaption></figure>` : '');
+
+export function renderOnline(config, where, qr = {}) {
   const L = towbookLinks(config), mode = String(config.TOWBOOK_MODE || 'link').toLowerCase();
   if (where === 'hero') {
     const btns = [[L.tow, 'Tow', 'tow'], [L.freight, 'Freight', 'freight'], [L.machinery, 'Machinery', 'machinery']].filter(([u]) => u);
@@ -94,13 +97,14 @@ export function renderOnline(config, where) {
     return `<div class="path path-online"><small id="ro-h">Request online</small><div class="ro-btns" role="group" aria-labelledby="ro-h">${btns.map(([u, label, k]) => ext(u, 'ro-btn', label, `hero ${k} request`)).join('')}</div></div>`;
   }
   if (where === 'tow') return L.tow && mode !== 'none' ? ext(L.tow, 'btn btn-line', 'Request a tow online', 'towing section tow request') : '';
-  if (where === 'machinery') return L.machinery ? `<p class="more-link">${ext(L.machinery, 'btn btn-line', 'Request machinery hauling', 'machinery request')}</p>` : '';
+  if (where === 'machinery') return L.machinery ? `<div class="mach-req"><p class="more-link">${ext(L.machinery, 'btn btn-line', 'Request machinery hauling', 'machinery request')}</p>${qrFig(qr.machinery, 'Scan to request machinery hauling')}</div>` : '';
   if (where === 'freight') {
-    return `<div class="freight-towbook" id="freight-request"><h3>Request a freight quote</h3>`
+    const fq = L.freight ? qrFig(qr.freight, 'Scan to request a freight quote') : '';
+    return `<div class="freight-towbook${fq ? ' has-qr' : ''}" id="freight-request"><div class="ft-body"><h3>Request a freight quote</h3>`
       + (L.freight
         ? `<p class="hint">Tell us what's moving, where, and how big it is on our freight request form. It opens in a new tab.</p>${ext(L.freight, 'btn btn-call', 'Request a freight quote', 'freight request')}<p class="or-call">Or call ${TEL('freight request')}.</p>`
         : `<p class="hint">Call and tell us what's moving and where.</p><a class="btn btn-call" href="tel:+12483566011" data-track="preview_call" data-track-detail="freight"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Call <span class="num" data-phone>248-356-6011</span></a>`)
-      + '</div>';
+      + `</div>${fq}</div>`;
   }
   if (where === 'freight-inline') return L.freight ? ext(L.freight, 'btn btn-line', 'Request a freight quote', 'gallery freight request') : '';
   if (where === 'callbar') return L.freight ? ext(L.freight, 'cb-quote', 'Freight quote', 'call bar freight request') : '<a class="cb-quote" href="{{HOME}}#freight-request" data-track="preview_book" data-track-detail="call bar freight quote">Freight quote</a>';
@@ -126,6 +130,15 @@ export async function renderTowQr(config, qrToSvg) {
     ? `<img src="/${esc(img.replace(/^\/+/, ''))}" width="148" height="148" alt="QR code for the online tow request">`
     : (await qrToSvg(url)).replace('<svg ', '<svg role="img" aria-label="QR code for the online tow request" ');
   return `<figure class="tb-qr">${art}<figcaption>Scan to request a tow</figcaption></figure>`;
+}
+
+// QR SVGs for each Towbook link that's set, all from the same config values as the buttons.
+export async function buildQrs(config, qrToSvg) {
+  const L = towbookLinks(config), out = {};
+  for (const [k, label] of [['tow', 'tow request'], ['freight', 'freight quote request'], ['machinery', 'machinery hauling request']]) {
+    if (L[k]) out[k] = (await qrToSvg(L[k])).replace('<svg ', `<svg role="img" aria-label="QR code for the online ${label}" data-url="${esc(L[k])}" `);
+  }
+  return out;
 }
 
 export function loadData(root) {

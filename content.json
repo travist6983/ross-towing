@@ -77,7 +77,7 @@
     "cashOnly": "Payment at release must be in cash.",
     "bring": "The registered owner must present ID plus proof of ownership: registration, insurance, or title.",
     "where": "21360 Telegraph Rd, Southfield, MI 48033",
-    "hours": "[RELEASE HOURS] Office hours are Monday to Friday 9am to 5pm and Saturday 9am to 1pm."
+    "hours": "During office hours: Monday to Friday 9am to 5pm, Saturday 9am to 1pm. Call ahead to make sure your vehicle is ready. (TODO: confirm release hours with Jennifer)"
   },
   "auctions": {
     "heading": "Public auctions about every two months",
@@ -95,7 +95,6 @@
     "training": "Police and fire departments in Oakland, Wayne and Macomb counties train here, including K-9 units."
   },
   "placeholders": {
-    "[RELEASE HOURS]": "When impounded vehicles can be picked up, if different from office hours",
     "reviews": "Three real Google reviews from Jennifer's Nov 4 email, in src/data/reviews.json"
   }
 }
