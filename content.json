@@ -10,12 +10,13 @@
     "staffed": "24 hours a day, 365 days a year for towing and impound services (docx)",
     "officeHours": "Monday to Friday 9am to 5pm, Saturday 9am to 1pm (docx)",
     "usdot": "1196761",
+    "kentucky": "673351",
     "mc": "621070",
     "spillLicense": "98000-105807-24-122024 (docx; email says 9800-105807-24-122024)",
     "facebook": "https://facebook.com/accidentrecovery",
     "rating": { "value": 4.7, "label": "4.7 on Google", "todo": "Wire a live value from the Google Business Profile" }
   },
-  "nav": ["Towing", "Heavy Duty", "Spill Response", "Freight", "Vehicle Release", "Auctions", "Contact"],
+  "nav": ["Towing", "Heavy Duty", "Spill Response", "Freight", "Vehicle Release", "Auctions", "Private Property", "Reviews", "Gallery", "Contact"],
   "hero": {
     "heading": "24/7 towing and recovery in Southfield and Metro Detroit since 1962",
     "sub": "Family owned. Towing, heavy recovery and spill response around the clock, plus a licensed freight carrier for Michigan, Ohio and Indiana.",
@@ -31,7 +32,7 @@
   "heavy": {
     "heading": "Heavy duty, recovery and lifting",
     "feature": "50 ton rotator: handles semi trucks, fire trucks, buses and similar heavy vehicles",
-    "cards": ["Heavy duty and truck towing", "Winch outs", "Accident recovery", "Crane and lifting service"],
+    "cards": ["Heavy duty and truck towing", "Winch outs", "Accident recovery", "Crane and lifting service", "Machinery hauling and rigging: machine hauling, off loading, staging and rigging (Nov 5 email)"],
     "facebook": "See our recent recovery work"
   },
   "spill": {
@@ -65,7 +66,7 @@
       { "trailer": "Quad axle lowboy", "length": "53 ft", "scale": "100,000 lbs" }
     ],
     "towTrucks": ["50 ton rotator", "Flatbed tow truck", "Wrecker"],
-    "credentials": "USDOT 1196761 · MC 621070 · Authorized for hire · Interstate · Active"
+    "credentials": "USDOT 1196761 · MC 621070 · Kentucky license 673351 (Nov 5 email: needed for loads just over the Ohio border) · Authorized for hire · Interstate · Active"
   },
   "trust": {
     "heading": "Family owned since 1962",
@@ -88,6 +89,19 @@
     "call": "Call dispatch 24/7: 248-356-6011",
     "towRequest": "Not urgent? Request a tow online. For emergencies, call. We answer 24/7.",
     "towbook": "TOWBOOK_MODE link with TOWBOOK_URL; QR code (Scan to request a tow) on desktop"
+  },
+  "ppi": {
+    "heading": "Private Property Impounds (PPI)",
+    "lede": "Unauthorized or abandoned vehicles on your property? We post a Ross Towing sign and remove unauthorized vehicles at the vehicle owner's expense, 24 hours a day.",
+    "law": "Under Michigan Law (MCL 257.252a), an abandoned vehicle is any motor vehicle left on public or private property without the consent of the owner. (Jennifer's wording, linked to legislature.mi.gov)",
+    "steps": ["Download and print the property owner authorization form", "Fill it out and sign it", "Email it to rosstowing1@gmail.com"],
+    "form": "public/forms/ross-towing-ppi-authorization-form.pdf (scripts/forms/ppi_form.py, her wording kept as is)",
+    "photo": "Her sign photo IMG_1070 (public/img/ppi-sign-480)"
+  },
+  "careers": {
+    "heading": "Want to drive for Ross?",
+    "text": "Print our driver employment application, fill it out completely, and drop it off at our office at 21360 Telegraph Rd during office hours. (TODO: confirm how applications come back)",
+    "form": "public/forms/ross-towing-driver-employment-application.pdf (scripts/forms/application.py)"
   },
   "facility": {
     "heading": "Seven acres on Telegraph Rd",
