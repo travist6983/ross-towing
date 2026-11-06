@@ -13,7 +13,7 @@
   --green: #0E6B45; --ph: #FFE58A; --focus: #3B8CFF;
   --display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
   --body: 'Barlow', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --header: 64px; --lane-m: 52px;
+  --header: 70px; --lane-m: 52px;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -38,8 +38,11 @@ img { max-width: 100%; height: auto; }
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(14,15,17,.96); border-bottom: 1px solid var(--edge); }
 @supports (backdrop-filter: blur(8px)) { .site-header { background: rgba(14,15,17,.86); backdrop-filter: blur(8px); } }
 .site-header .bar { display: flex; align-items: center; gap: 10px; height: var(--header); max-width: 1240px; margin: 0 auto; padding: 0 12px 0 10px; }
-.brand { display: block; flex: none; border-radius: 6px; }
-.brand img { height: 54px; width: auto; }
+.brand { display: flex; align-items: center; gap: 10px; flex: none; border-radius: 6px; text-decoration: none; color: var(--paint); }
+.brand img { height: 60px; width: auto; }
+/* Company name beside the logo (Jenn, Nov 6: "Ross Towing" across the top so people recognize the company) */
+.brand-name { display: flex; flex-direction: column; font: 800 1.3rem/.9 var(--display); text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; }
+.brand-name .bn-1 { color: var(--red-on-dark); font-size: 1.2em; }
 .nav { margin-left: auto; }
 .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; }
 .nav a { display: block; padding: 8px 10px; text-decoration: none; color: var(--muted-d); font-weight: 600; font-size: .95rem; border-radius: 8px; }
@@ -362,12 +365,13 @@ h3 { font-size: 1.4rem; font-weight: 700; }
 /* Desktop: two columns, road in the open column */
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) {
   body { padding-bottom: 0; }
-  :root { --header: 76px; }
+  :root { --header: 86px; }
   .callbar { display: none; }
   .menu-btn { display: none; }
   .nav { display: block; }
   .fb { margin-left: 0; }
-  .brand img { height: 64px; }
+  .brand img { height: 74px; }
+  .brand-name { font-size: 1.5rem; }
   .btn.head-call { display: inline-flex; min-height: 44px; padding: 8px 16px; }
   .head-call small { font: 700 .8rem var(--display); text-transform: uppercase; letter-spacing: .12em; }
   .site-header .bar { padding: 0 32px 0 26px; gap: 16px; }
@@ -377,7 +381,7 @@ h3 { font-size: 1.4rem; font-weight: 700; }
   .stage[data-road="left"] > .wrap > .copy { grid-column: 2; }
   .stage[data-road="left"] > .wrap > .lane { grid-column: 1; grid-row: 1; }
   .lane { display: block; min-height: 1px; }
-  .hero { padding-top: 56px; min-height: calc(100vh - 106px); }
+  .hero { padding-top: 56px; min-height: calc(100vh - 116px); }
   .hero .paths { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); max-width: 660px; }
   .cards { grid-template-columns: 1fr 1fr; }
   .card.feature { grid-column: 1 / -1; }
@@ -392,7 +396,8 @@ h3 { font-size: 1.4rem; font-weight: 700; }
 .nav a, .btn .num { white-space: nowrap; }
 @media (min-width: 900px) and (max-width: 1199px) and (hover: hover) and (pointer: fine) {
   .site-header .bar { padding: 0 16px 0 12px; gap: 8px; }
-  .brand img { height: 56px; }
+  .brand img { height: 62px; }
+  .brand-name { font-size: 1.3rem; }
   .nav a { padding: 8px 6px; font-size: .88rem; }
   .head-call small { display: none; }
   .btn.head-call { padding: 8px 12px; }
@@ -407,11 +412,23 @@ h3 { font-size: 1.4rem; font-weight: 700; }
 @media (min-width: 900px) and (max-width: 1399px) and (hover: hover) and (pointer: fine) {
   .nav .nav-wide { display: none; }
 }
+@media (min-width: 1200px) and (max-width: 1399px) and (hover: hover) and (pointer: fine) {
+  .site-header .bar { padding: 0 20px 0 16px; gap: 12px; }
+  .head-call small { display: none; }
+}
 @media (min-width: 1400px) and (hover: hover) and (pointer: fine) {
   .site-header .bar { max-width: 1400px; }
 }
+/* Below 1100px the desktop links no longer fit beside the logo, name and call button, so the Menu button takes over */
+@media (min-width: 900px) and (max-width: 1099px) and (hover: hover) and (pointer: fine) {
+  .menu-btn { display: inline-flex; }
+  .nav { display: none; }
+  .nav.open { display: block; }
+  .nav .nav-wide { display: list-item; }
+  .fb { margin-left: auto; }
+}
 @media (min-width: 1200px) and (hover: hover) and (pointer: fine) {
-  .nav a { padding: 8px 11px; }
+  .nav a { padding: 8px 7px; }
   .auction-slot { --ab-h: 152px; }
 }
 @media (max-width: 899px), (hover: none), (pointer: coarse) {

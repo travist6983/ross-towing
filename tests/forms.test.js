@@ -28,10 +28,15 @@ test('PPI: section, her sentence word for word, the statute link and the email t
 });
 
 test('freight credentials include the Kentucky license; heavy duty lists rigging; 79 is no longer the first photo', () => {
-  assert.match(page, /<dt>Kentucky<\/dt><dd>673351<\/dd>/);
-  assert.ok(footer.includes('Kentucky 673351'));
+  assert.match(page, /<dt>KY License<\/dt><dd>673351<\/dd>/);
+  assert.ok(footer.includes('KY License #673351'));
   assert.ok(page.includes('Machine hauling, off loading, staging and rigging.'));
   assert.ok(!page.includes('/img/wrecker-79'));
   const firstImg = page.match(/<img src="([^"]+)"/)[1];
   assert.equal(firstImg, '/img/flatbeds-two-cars-1024.jpg');
+});
+
+test('header shows the company name beside the logo (Jenn, Nov 6)', () => {
+  assert.match(header, /<span class="brand-name"[^>]*><span class="bn-1">Ross<\/span> <span class="bn-2">Towing<\/span><\/span><\/a>/);
+  assert.ok(header.includes('aria-label="Ross Towing, back to top"'));
 });
