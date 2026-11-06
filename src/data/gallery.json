@@ -932,6 +932,62 @@
     }
   },
   {
+    "key": "towing/fire-truck-haul.jpg",
+    "category": "towing",
+    "name": "fire-truck-haul",
+    "alt": "A white Ross Towing semi tractor pulling a Landoll trailer with a red Farmington Hills Fire Rescue engine loaded on it, parked on a wet lot.",
+    "altIsDefault": false,
+    "caption": "Hauling a fire engine on the Landoll.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "29baf67ede69",
+    "width": 2258,
+    "height": 2258,
+    "files": [
+      "gallery/towing/fire-truck-haul-480.avif",
+      "gallery/towing/fire-truck-haul-480.webp",
+      "gallery/towing/fire-truck-haul-960.avif",
+      "gallery/towing/fire-truck-haul-960.webp",
+      "gallery/towing/fire-truck-haul-1600.avif",
+      "gallery/towing/fire-truck-haul-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/fire-truck-haul-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/fire-truck-haul-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/fire-truck-haul-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/fire-truck-haul-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/fire-truck-haul-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/fire-truck-haul-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQBACdASoYABgAPu1kqk2ppaQiMAgBMB2JZQDLpCHfH8hT0ZT1wu2vL+wd/4AA/t5o8pGahci2OMJiHZAXSUSWx+V4aRh3Lj2llcehn650dCh7wAA=",
+    "source": {
+      "width": 2258,
+      "height": 2258
+    }
+  },
+  {
     "key": "towing/fire-truck-tow-night.jpg",
     "category": "towing",
     "name": "fire-truck-tow-night",
