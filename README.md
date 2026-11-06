@@ -35,7 +35,8 @@ Push to `main` and `.github/workflows/deploy.yml` tests, builds and deploys in a
 | `scripts/check-dist.mjs` | Runs after every build; fails on image metadata, placeholders, a second phone number or dashes |
 | `src/auction.js` | `getAuctionState()`, the CSV parser and the .ics builder |
 | `src/data/auction.json` | Auction date fallback (Option A) |
-| `public/` | Images, fonts, vendored GSAP/Lenis and processed gallery photos, copied as is |
+| `public/` | Images, fonts, vendored GSAP/Lenis, processed gallery photos and the downloadable forms, copied as is |
+| `public/forms/`, `scripts/forms/` | Property owner authorization form (PPI) and driver employment application PDFs, and the Python scripts that make them |
 | `docs/auction-sheet-template.csv` | Starter file for the auction Sheet (Option B) |
 | `tests/` | Unit tests |
 
@@ -182,3 +183,14 @@ npm test
 Covers `getAuctionState` (no rows, past only, 31 and 30 days out, today, yesterday, two upcoming rows, DST changes), the CSV parser, the .ics file, the three review quotes (word for word), the partner permission rules and the Towbook buttons.
 
 `npm run build` also runs `scripts/check-dist.mjs`, which fails the build if any image in `dist/` carries EXIF, GPS or XMP data, if a dealer placeholder or the Meade Lexus example appears, if a page shows a second phone number or an en or em dash, or if a page is missing noindex while `NOINDEX` is on.
+
+## Downloadable forms
+
+Two PDFs live in `public/forms/` and are linked from the page and the footer:
+
+| File | Linked from | Made by |
+|---|---|---|
+| `ross-towing-ppi-authorization-form.pdf` | Private Property Impounds (`#ppi`) | `scripts/forms/ppi_form.py`. Jennifer's "Unauthorized Vehicle Removal Form", word for word, as a printable PDF with boxes to type in (the signature is signed by hand) |
+| `ross-towing-driver-employment-application.pdf` | Careers (`#careers`, in the "Family owned" section) | `scripts/forms/application.py`. The example driver application she sent, with Ross's name, address, phone and email filled into its company line and the note to carriers covered |
+
+To change one, edit its script and run it (`pip install reportlab pypdf`, then `python3 scripts/forms/ppi_form.py` or `python3 scripts/forms/application.py`), then commit the new PDF. Don't change the authorization form's wording without Ross's OK.
