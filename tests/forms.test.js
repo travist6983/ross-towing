@@ -41,12 +41,12 @@ test('header shows the company name beside the logo (Jenn, Nov 6)', () => {
   assert.ok(header.includes('aria-label="Ross Towing, back to top"'));
 });
 
-test('photos from Jenn, Nov 6: new freight main photo, fire truck tow in heavy duty, every image file exists', () => {
+test('photos from Jenn, Nov 6: new freight main photo, fire truck haul in heavy duty, every image file exists', () => {
   const freight = page.slice(page.indexOf('id="freight"'));
   assert.equal(freight.match(/<img src="([^"]+)"/)[1], '/img/freight-main-1024.jpg');
   const heavy = page.slice(page.indexOf('id="heavy"'), page.indexOf('id="spill"'));
   const heavyImgs = [...heavy.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
-  assert.equal(heavyImgs.at(-1), '/img/fire-truck-tow-night-1024.jpg');
+  assert.equal(heavyImgs.at(-1), '/img/fire-truck-haul-1024.jpg');
   for (const m of page.matchAll(/(?:src|srcset)="([^"]+)"/g)) {
     for (const part of m[1].split(',')) {
       const url = part.trim().split(' ')[0];
