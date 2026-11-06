@@ -103,5 +103,155 @@
       "w": 640,
       "h": 420
     }
+  },
+  "freight/tractors-on-flatbed.jpg": {
+    "alt": "A white Ross Towing truck marked Police Towing carrying a white semi tractor on its flatbed and towing a second one behind it on a wet road.",
+    "caption": "Two semi tractors on one haul.",
+    "date": "2026-11-06"
+  },
+  "freight/blue-steel-bins.jpg": {
+    "alt": "A white semi tractor pulling a flatbed loaded with two long blue steel bins across a gravel lot.",
+    "caption": "Two blue steel bins on a flatbed.",
+    "date": "2026-11-06"
+  },
+  "freight/crated-freight-step-deck.jpg": {
+    "alt": "A white Ross Towing semi tractor marked Police Towing hauling a step deck trailer stacked with crated and wrapped freight.",
+    "caption": "Crated freight on a step deck.",
+    "date": "2026-11-06"
+  },
+  "freight/covered-load-dusk.jpg": {
+    "alt": "A semi with a fully covered dark blue trailer, its lights on, in a frosty lot at dusk.",
+    "caption": "Covered load heading out at dusk.",
+    "date": "2026-11-06"
+  },
+  "freight/tarped-load-flatbed.jpg": {
+    "alt": "A white Ross Towing semi tractor marked Police Towing pulling a flatbed with a tarped load across a parking lot.",
+    "caption": "Tarped load on a flatbed.",
+    "date": "2026-11-06"
+  },
+  "freight/light-towers.jpg": {
+    "alt": "Green mobile light towers loaded on a flatbed trailer next to a green telehandler in a dirt lot under a cloudy sky.",
+    "caption": "Light towers on a flatbed.",
+    "date": "2026-11-06"
+  },
+  "freight/military-humvees.jpg": {
+    "alt": "Two military Humvees, one green camouflage and one tan, strapped down on a long flatbed trailer in a parking lot.",
+    "caption": "Two military Humvees on a flatbed.",
+    "date": "2026-11-06"
+  },
+  "freight/steel-coil-loading.jpg": {
+    "alt": "A worker in a safety vest secures a large steel coil on a flatbed trailer inside a warehouse.",
+    "caption": "Securing a steel coil.",
+    "date": "2026-11-06"
+  },
+  "freight/tarped-load-dusk.jpg": {
+    "alt": "A dark blue semi tractor with a tarped flatbed load parked beside a warehouse at dusk, headlights on.",
+    "caption": "Tarped load at dusk.",
+    "date": "2026-11-06"
+  },
+  "freight/steel-coil-chained.jpg": {
+    "alt": "A large steel coil chained down on the wooden deck of a flatbed trailer.",
+    "caption": "Steel coil chained down.",
+    "date": "2026-11-06"
+  },
+  "freight/robot-arms.jpg": {
+    "alt": "Six yellow industrial robot arms strapped down on a flatbed trailer inside a warehouse.",
+    "caption": "Industrial robots on a flatbed.",
+    "date": "2026-11-06",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 770
+    }
+  },
+  "freight/lumber-sunset.jpg": {
+    "alt": "A flatbed trailer loaded with strapped bundles of lumber, parked in a lot at sunset.",
+    "caption": "Lumber load at sunset.",
+    "date": "2026-11-06"
+  },
+  "freight/wrapped-coils.jpg": {
+    "alt": "Five large coils wrapped in red, white and blue, strapped down on a flatbed trailer inside a warehouse.",
+    "caption": "Wrapped coils on a flatbed.",
+    "date": "2026-11-06"
+  },
+  "freight/cable-reels.jpg": {
+    "alt": "Four red cable reels and wrapped freight strapped down on a flatbed trailer in a parking lot.",
+    "caption": "Cable reels on a flatbed.",
+    "date": "2026-11-06"
+  },
+  "freight/rollback-wrecker.jpg": {
+    "alt": "A white Ross Towing rollback carrying a black Ross Towing wrecker on its bed, parked under autumn trees.",
+    "caption": "A wrecker riding on a rollback.",
+    "date": "2026-11-06"
+  },
+  "towing/fire-truck-tow.jpg": {
+    "alt": "A red Ross Towing heavy wrecker, truck 88, towing a Southfield fire department ladder truck along an industrial road.",
+    "caption": "Towing a Southfield ladder truck.",
+    "date": "2026-11-06"
+  },
+  "towing/fire-truck-tow-night.jpg": {
+    "alt": "At night, a red Ross Towing rotator towing a Farmington Hills Fire Rescue engine with its front wheels lifted.",
+    "caption": "Fire engine tow at night.",
+    "date": "2026-11-06"
+  },
+  "towing/rotator-tank-lift.jpg": {
+    "alt": "A red Ross Towing rotator lifting a large silver tank off a flatbed trailer as two workers in safety vests guide it.",
+    "caption": "Lifting a tank with the rotator.",
+    "date": "2026-11-06"
+  },
+  "towing/semi-tow.jpg": {
+    "alt": "A red Ross Towing wrecker hooked to a white semi tractor with its hood off, in a gravel yard.",
+    "caption": "Heavy tow of a disabled semi.",
+    "date": "2026-11-06"
+  },
+  "towing/rotator-container-lift.jpg": {
+    "alt": "A red Ross Towing rotator lifting a white storage container high over a yard.",
+    "caption": "Lifting a storage container.",
+    "date": "2026-11-06"
+  },
+  "towing/rotator-boom-up.jpg": {
+    "alt": "A red Ross Towing rotator with its boom raised high, parked in a lot.",
+    "caption": "Rotator with the boom up.",
+    "date": "2026-11-06"
+  },
+  "towing/flatbed-utvs.jpg": {
+    "alt": "A red Ross Towing flatbed marked Police Towing carrying two side by side off road vehicles.",
+    "caption": "Two UTVs on a flatbed.",
+    "date": "2026-11-06"
+  },
+  "towing/freeway-semi-recovery.jpg": {
+    "alt": "On a coned off freeway lane, a red heavy wrecker with its outriggers down next to a white Ross Towing truck carrying a damaged blue semi tractor.",
+    "caption": "Freeway semi recovery.",
+    "date": "2026-11-06",
+    "blurRegions": [
+      {
+        "x": 1950,
+        "y": 1118,
+        "w": 98,
+        "h": 72
+      }
+    ]
+  },
+  "towing/burned-trailer-tow.jpg": {
+    "alt": "A black Ross Towing wrecker towing a fire damaged food trailer across a dirt lot.",
+    "caption": "Towing a burned food trailer.",
+    "date": "2026-11-06"
+  },
+  "towing/street-sweeper.jpg": {
+    "alt": "A white street sweeper lettered Ross Towing, 248-356-6011, parked inside a garage.",
+    "caption": "Ross Towing street sweeper.",
+    "date": "2026-11-06",
+    "crop": {
+      "x": 0,
+      "y": 672,
+      "w": 946,
+      "h": 706
+    }
+  },
+  "towing/ev-fire-blanket.jpg": {
+    "alt": "A green Fire Cloak electric vehicle fire blanket in its carry bag, standing in a corner.",
+    "caption": "Electric vehicle fire blanket.",
+    "date": "2026-11-06"
   }
 }

@@ -1,5 +1,1421 @@
 [
   {
+    "key": "freight/blue-steel-bins.jpg",
+    "category": "freight",
+    "name": "blue-steel-bins",
+    "alt": "A white semi tractor pulling a flatbed loaded with two long blue steel bins across a gravel lot.",
+    "altIsDefault": false,
+    "caption": "Two blue steel bins on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "9118ec3dc74e",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/blue-steel-bins-480.avif",
+      "gallery/freight/blue-steel-bins-480.webp",
+      "gallery/freight/blue-steel-bins-960.avif",
+      "gallery/freight/blue-steel-bins-960.webp",
+      "gallery/freight/blue-steel-bins-1600.avif",
+      "gallery/freight/blue-steel-bins-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/blue-steel-bins-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/blue-steel-bins-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/blue-steel-bins-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/blue-steel-bins-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/blue-steel-bins-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/blue-steel-bins-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwBACdASoYABIAPu1mpU4ppaMiMBgMATAdiUAZmgIdiSy/YChVcszjspjNaAYAAPGjTEUlyMdqdmx/5+8UL4sdkFAzm+9pfSj8xWVjcmq2dgagAAAAAA==",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/cable-reels.jpg",
+    "category": "freight",
+    "name": "cable-reels",
+    "alt": "Four red cable reels and wrapped freight strapped down on a flatbed trailer in a parking lot.",
+    "altIsDefault": false,
+    "caption": "Cable reels on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "a2b726d686be",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/cable-reels-480.avif",
+      "gallery/freight/cable-reels-480.webp",
+      "gallery/freight/cable-reels-960.avif",
+      "gallery/freight/cable-reels-960.webp",
+      "gallery/freight/cable-reels-1600.avif",
+      "gallery/freight/cable-reels-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/cable-reels-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/cable-reels-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/cable-reels-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/cable-reels-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/cable-reels-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/cable-reels-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQBACdASoYABIAPu1iqU2ppaOiMAgBMB2JYwC9eSAC+MytDqpgJ7w3GvIAAP7nNXjVVE2fT9NcTkZoIQyo+w5ViENzUzW17q68UEKBXUvQjQP1rVrT0Av7EAA=",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/covered-load-dusk.jpg",
+    "category": "freight",
+    "name": "covered-load-dusk",
+    "alt": "A semi with a fully covered dark blue trailer, its lights on, in a frosty lot at dusk.",
+    "altIsDefault": false,
+    "caption": "Covered load heading out at dusk.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "3c68eaa72315",
+    "width": 960,
+    "height": 720,
+    "files": [
+      "gallery/freight/covered-load-dusk-480.avif",
+      "gallery/freight/covered-load-dusk-480.webp",
+      "gallery/freight/covered-load-dusk-960.avif",
+      "gallery/freight/covered-load-dusk-960.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/covered-load-dusk-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/covered-load-dusk-960.avif",
+          960
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/covered-load-dusk-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/covered-load-dusk-960.webp",
+          960
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQBACdASoYABIAPu1qqk8ppiOpsBgIATAdiUAYG4W5qlMI8tIaw6l9LOlPlfAA9wQp4C2h0udF/SadKhd+9PtzTKrJ36Gtrjw2tTg4cQjVhpblgbdiuBPwAAA=",
+    "source": {
+      "width": 960,
+      "height": 720
+    }
+  },
+  {
+    "key": "freight/crated-freight-step-deck.jpg",
+    "category": "freight",
+    "name": "crated-freight-step-deck",
+    "alt": "A white Ross Towing semi tractor marked Police Towing hauling a step deck trailer stacked with crated and wrapped freight.",
+    "altIsDefault": false,
+    "caption": "Crated freight on a step deck.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "ec0d3f01a941",
+    "width": 960,
+    "height": 454,
+    "files": [
+      "gallery/freight/crated-freight-step-deck-480.avif",
+      "gallery/freight/crated-freight-step-deck-480.webp",
+      "gallery/freight/crated-freight-step-deck-960.avif",
+      "gallery/freight/crated-freight-step-deck-960.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/crated-freight-step-deck-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/crated-freight-step-deck-960.avif",
+          960
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/crated-freight-step-deck-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/crated-freight-step-deck-960.webp",
+          960
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABwAwCdASoYAAsAPu1mqk4ppaOiMAgBMB2JZQAAW7vkFGUOT4AA/duH4v1JZr8u7oG/ZdCdhd7m10rh6mLzCAz429jPAAAA",
+    "source": {
+      "width": 960,
+      "height": 454
+    }
+  },
+  {
+    "key": "freight/light-towers.jpg",
+    "category": "freight",
+    "name": "light-towers",
+    "alt": "Green mobile light towers loaded on a flatbed trailer next to a green telehandler in a dirt lot under a cloudy sky.",
+    "altIsDefault": false,
+    "caption": "Light towers on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "e289b0d34d17",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/light-towers-480.avif",
+      "gallery/freight/light-towers-480.webp",
+      "gallery/freight/light-towers-960.avif",
+      "gallery/freight/light-towers-960.webp",
+      "gallery/freight/light-towers-1600.avif",
+      "gallery/freight/light-towers-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/light-towers-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/light-towers-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/light-towers-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/light-towers-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/light-towers-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/light-towers-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwBACdASoYABIAPu1kqU2ppaQmMAgBMB2JZwDGfB5qs6oyLgyVY7WkPyLQAAD8gqNndUiHvHhTgySHBA4wdzbHPUeu9JYaxkeAIP6g0gTCL79RIAA=",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/lumber-sunset.jpg",
+    "category": "freight",
+    "name": "lumber-sunset",
+    "alt": "A flatbed trailer loaded with strapped bundles of lumber, parked in a lot at sunset.",
+    "altIsDefault": false,
+    "caption": "Lumber load at sunset.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "4dd44080af90",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/lumber-sunset-480.avif",
+      "gallery/freight/lumber-sunset-480.webp",
+      "gallery/freight/lumber-sunset-960.avif",
+      "gallery/freight/lumber-sunset-960.webp",
+      "gallery/freight/lumber-sunset-1600.avif",
+      "gallery/freight/lumber-sunset-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/lumber-sunset-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/lumber-sunset-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/lumber-sunset-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/lumber-sunset-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/lumber-sunset-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/lumber-sunset-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQBACdASoYABIAPuVgpE2pJbMiMAwCYByJZwAAXFfA5ec/OQKCQyRxzAD+i2suIuQvO3Pr8qi/yqpPtGLiV+U1VXDoBAluZAAAAA==",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/military-humvees.jpg",
+    "category": "freight",
+    "name": "military-humvees",
+    "alt": "Two military Humvees, one green camouflage and one tan, strapped down on a long flatbed trailer in a parking lot.",
+    "altIsDefault": false,
+    "caption": "Two military Humvees on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "0dd8730d63a3",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/military-humvees-480.avif",
+      "gallery/freight/military-humvees-480.webp",
+      "gallery/freight/military-humvees-960.avif",
+      "gallery/freight/military-humvees-960.webp",
+      "gallery/freight/military-humvees-1600.avif",
+      "gallery/freight/military-humvees-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/military-humvees-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/military-humvees-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/military-humvees-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/military-humvees-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/military-humvees-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/military-humvees-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwBACdASoYABIAPu1eqk6ppKOiMBgMATAdiWcAAC4vZPkHreoUu/5EwcT4DXYJj8AA/sSvzoiyqyV7VHqnQp6baEPL/GpjDIZ+eyBL4d+6N6HyakKIJw1mPH84dF6AAAA=",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/robot-arms.jpg",
+    "category": "freight",
+    "name": "robot-arms",
+    "alt": "Six yellow industrial robot arms strapped down on a flatbed trailer inside a warehouse.",
+    "altIsDefault": false,
+    "caption": "Industrial robots on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "0dbb3c327bb0",
+    "width": 1440,
+    "height": 770,
+    "files": [
+      "gallery/freight/robot-arms-480.avif",
+      "gallery/freight/robot-arms-480.webp",
+      "gallery/freight/robot-arms-960.avif",
+      "gallery/freight/robot-arms-960.webp",
+      "gallery/freight/robot-arms-1440.avif",
+      "gallery/freight/robot-arms-1440.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/robot-arms-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/robot-arms-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/robot-arms-1440.avif",
+          1440
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/robot-arms-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/robot-arms-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/robot-arms-1440.webp",
+          1440
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAwCdASoYAA0APu1yrU+pp6QiMAgBMB2JZwDKACPv2W8as4HigAD93Yg/HYkLn5c6Kz4Q2L+kvVyFJl6JhVXcrhHrlVpAAAA=",
+    "source": {
+      "width": 1440,
+      "height": 1080
+    }
+  },
+  {
+    "key": "freight/rollback-wrecker.jpg",
+    "category": "freight",
+    "name": "rollback-wrecker",
+    "alt": "A white Ross Towing rollback carrying a black Ross Towing wrecker on its bed, parked under autumn trees.",
+    "altIsDefault": false,
+    "caption": "A wrecker riding on a rollback.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "3a7eb2c6588a",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/rollback-wrecker-480.avif",
+      "gallery/freight/rollback-wrecker-480.webp",
+      "gallery/freight/rollback-wrecker-960.avif",
+      "gallery/freight/rollback-wrecker-960.webp",
+      "gallery/freight/rollback-wrecker-1600.avif",
+      "gallery/freight/rollback-wrecker-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/rollback-wrecker-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/rollback-wrecker-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/rollback-wrecker-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/rollback-wrecker-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/rollback-wrecker-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/rollback-wrecker-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABQBACdASoYABIAPuFeqE2opSQiMAwBEBwJQBOgAnflt35uY/jeqnkAvtgAAP6eotxq2mH6t+OdJn3cQE/AAJ7MpDuWyrVC+Zv2/4F3Zr+eAdH9o/MBuftrosyzDx559hDbWyP0zDWM/AAA",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/steel-coil-chained.jpg",
+    "category": "freight",
+    "name": "steel-coil-chained",
+    "alt": "A large steel coil chained down on the wooden deck of a flatbed trailer.",
+    "altIsDefault": false,
+    "caption": "Steel coil chained down.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "9903d3ab3196",
+    "width": 1536,
+    "height": 2048,
+    "files": [
+      "gallery/freight/steel-coil-chained-480.avif",
+      "gallery/freight/steel-coil-chained-480.webp",
+      "gallery/freight/steel-coil-chained-960.avif",
+      "gallery/freight/steel-coil-chained-960.webp",
+      "gallery/freight/steel-coil-chained-1536.avif",
+      "gallery/freight/steel-coil-chained-1536.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/steel-coil-chained-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/steel-coil-chained-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/steel-coil-chained-1536.avif",
+          1536
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/steel-coil-chained-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/steel-coil-chained-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/steel-coil-chained-1536.webp",
+          1536
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBQCdASoYACAAPuVcqE2pJSQiN/VYASAciWMArhw7JfZvUWthmcuE4+x2zLrObKFD2OFQWADJy/aNNzXWY5SsORpSgeNoB+aMd/k0U8fr9rUVWPSqlQgOAIdzW0vjoeSBmpShwNYM+QrHrG2sc2H3V67e84K5aTiDSFefviACC2Fn5MwrT6dISDrNuPKlAAA=",
+    "source": {
+      "width": 1536,
+      "height": 2048
+    }
+  },
+  {
+    "key": "freight/steel-coil-loading.jpg",
+    "category": "freight",
+    "name": "steel-coil-loading",
+    "alt": "A worker in a safety vest secures a large steel coil on a flatbed trailer inside a warehouse.",
+    "altIsDefault": false,
+    "caption": "Securing a steel coil.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "4053df775ad8",
+    "width": 1200,
+    "height": 1600,
+    "files": [
+      "gallery/freight/steel-coil-loading-480.avif",
+      "gallery/freight/steel-coil-loading-480.webp",
+      "gallery/freight/steel-coil-loading-960.avif",
+      "gallery/freight/steel-coil-loading-960.webp",
+      "gallery/freight/steel-coil-loading-1200.avif",
+      "gallery/freight/steel-coil-loading-1200.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/steel-coil-loading-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/steel-coil-loading-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/steel-coil-loading-1200.avif",
+          1200
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/steel-coil-loading-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/steel-coil-loading-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/steel-coil-loading-1200.webp",
+          1200
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBQCdASoYACAAPtlepE2oJaOiN/qoAQAbCWcAxvQh6UQL/4Kffi+yiIGgJWQgt+MY4cAA/NYz3i54RYd4Bt3Lgg9nvjogc/VozaSVSYrqyz7JSEOB+FsNT2wA9c0iAULx3EZ0EOdHFV8DtzTuZO+IOS5AAA==",
+    "source": {
+      "width": 1200,
+      "height": 1600
+    }
+  },
+  {
+    "key": "freight/tarped-load-dusk.jpg",
+    "category": "freight",
+    "name": "tarped-load-dusk",
+    "alt": "A dark blue semi tractor with a tarped flatbed load parked beside a warehouse at dusk, headlights on.",
+    "altIsDefault": false,
+    "caption": "Tarped load at dusk.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "60126bb87462",
+    "width": 1536,
+    "height": 2048,
+    "files": [
+      "gallery/freight/tarped-load-dusk-480.avif",
+      "gallery/freight/tarped-load-dusk-480.webp",
+      "gallery/freight/tarped-load-dusk-960.avif",
+      "gallery/freight/tarped-load-dusk-960.webp",
+      "gallery/freight/tarped-load-dusk-1536.avif",
+      "gallery/freight/tarped-load-dusk-1536.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/tarped-load-dusk-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/tarped-load-dusk-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/tarped-load-dusk-1536.avif",
+          1536
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/tarped-load-dusk-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/tarped-load-dusk-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/tarped-load-dusk-1536.webp",
+          1536
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQBQCdASoYACAAPtlcpE2oJaOiN/qoAQAbCWgAAFt63q8moPmfWHmLxIh4fF/NNkdqTZ66AAD+uV3Nr0DPoRS2w+f//JLh3b6hgQ//r7nk9ybiQfp2KlDS4Tt68Dot7ZDlnJakL96JFrriRe7uiIAgukHU2ij+7VIAES0vgAA=",
+    "source": {
+      "width": 1536,
+      "height": 2048
+    }
+  },
+  {
+    "key": "freight/tarped-load-flatbed.jpg",
+    "category": "freight",
+    "name": "tarped-load-flatbed",
+    "alt": "A white Ross Towing semi tractor marked Police Towing pulling a flatbed with a tarped load across a parking lot.",
+    "altIsDefault": false,
+    "caption": "Tarped load on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "48e090846a2e",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/tarped-load-flatbed-480.avif",
+      "gallery/freight/tarped-load-flatbed-480.webp",
+      "gallery/freight/tarped-load-flatbed-960.avif",
+      "gallery/freight/tarped-load-flatbed-960.webp",
+      "gallery/freight/tarped-load-flatbed-1600.avif",
+      "gallery/freight/tarped-load-flatbed-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/tarped-load-flatbed-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/tarped-load-flatbed-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/tarped-load-flatbed-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/tarped-load-flatbed-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/tarped-load-flatbed-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/tarped-load-flatbed-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoYABIAPu1mq02ppaQiMAgBMB2JZQCyzB5TBrY4sIUmxydBzAAA/H/ro2Ga+JsMj7DYcdHs0OmHD8zQb7tB4y+x+E3nPyCsdXuu8Ua9aLwOydsBJOkwAAAA",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/tractors-on-flatbed.jpg",
+    "category": "freight",
+    "name": "tractors-on-flatbed",
+    "alt": "A white Ross Towing truck marked Police Towing carrying a white semi tractor on its flatbed and towing a second one behind it on a wet road.",
+    "altIsDefault": false,
+    "caption": "Two semi tractors on one haul.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "f68c9e539114",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/tractors-on-flatbed-480.avif",
+      "gallery/freight/tractors-on-flatbed-480.webp",
+      "gallery/freight/tractors-on-flatbed-960.avif",
+      "gallery/freight/tractors-on-flatbed-960.webp",
+      "gallery/freight/tractors-on-flatbed-1600.avif",
+      "gallery/freight/tractors-on-flatbed-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/tractors-on-flatbed-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/tractors-on-flatbed-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/tractors-on-flatbed-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/tractors-on-flatbed-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/tractors-on-flatbed-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/tractors-on-flatbed-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABwBACdASoYABIAPtleo02oJaMiN/qoAQAbCWUAygAh1c39bZIAani5Q2Z0AAD+6q/j/83eeytl/UItb9zQQYwF0RnNn2JVAV4kBYFQGHE6eUcPQJLgYlAvEiIiotTpfoAAAA==",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "freight/wrapped-coils.jpg",
+    "category": "freight",
+    "name": "wrapped-coils",
+    "alt": "Five large coils wrapped in red, white and blue, strapped down on a flatbed trailer inside a warehouse.",
+    "altIsDefault": false,
+    "caption": "Wrapped coils on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "a5ae6a582acf",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/freight/wrapped-coils-480.avif",
+      "gallery/freight/wrapped-coils-480.webp",
+      "gallery/freight/wrapped-coils-960.avif",
+      "gallery/freight/wrapped-coils-960.webp",
+      "gallery/freight/wrapped-coils-1600.avif",
+      "gallery/freight/wrapped-coils-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/freight/wrapped-coils-480.avif",
+          480
+        ],
+        [
+          "gallery/freight/wrapped-coils-960.avif",
+          960
+        ],
+        [
+          "gallery/freight/wrapped-coils-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/freight/wrapped-coils-480.webp",
+          480
+        ],
+        [
+          "gallery/freight/wrapped-coils-960.webp",
+          960
+        ],
+        [
+          "gallery/freight/wrapped-coils-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQBACdASoYABIAPt1apE2opSOjN/qoARAbiWcAvzgiBai+Vef9SvWrr884HPQ0YAD+W9va/zSVzaxTeBUpP+CVEEat6R2ajhdKGp93bBZKCdz+f7JjwtYKMqZLwISAAAA=",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/burned-trailer-tow.jpg",
+    "category": "towing",
+    "name": "burned-trailer-tow",
+    "alt": "A black Ross Towing wrecker towing a fire damaged food trailer across a dirt lot.",
+    "altIsDefault": false,
+    "caption": "Towing a burned food trailer.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "337482c229e4",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/towing/burned-trailer-tow-480.avif",
+      "gallery/towing/burned-trailer-tow-480.webp",
+      "gallery/towing/burned-trailer-tow-960.avif",
+      "gallery/towing/burned-trailer-tow-960.webp",
+      "gallery/towing/burned-trailer-tow-1600.avif",
+      "gallery/towing/burned-trailer-tow-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/burned-trailer-tow-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/burned-trailer-tow-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/burned-trailer-tow-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/burned-trailer-tow-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/burned-trailer-tow-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/burned-trailer-tow-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACQAwCdASoYABIAPu1kqU2ppaQiMAgBMB2JZQAAUvfjBhw/BkaAAP7TlWCiNMXPg4BLf2GSq7e5B7yZ8HjVfZeEF/9oUqbIZd9oVfzooUAAAA==",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/ev-fire-blanket.jpg",
+    "category": "towing",
+    "name": "ev-fire-blanket",
+    "alt": "A green Fire Cloak electric vehicle fire blanket in its carry bag, standing in a corner.",
+    "altIsDefault": false,
+    "caption": "Electric vehicle fire blanket.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "54d10c3e4630",
+    "width": 1536,
+    "height": 2048,
+    "files": [
+      "gallery/towing/ev-fire-blanket-480.avif",
+      "gallery/towing/ev-fire-blanket-480.webp",
+      "gallery/towing/ev-fire-blanket-960.avif",
+      "gallery/towing/ev-fire-blanket-960.webp",
+      "gallery/towing/ev-fire-blanket-1536.avif",
+      "gallery/towing/ev-fire-blanket-1536.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/ev-fire-blanket-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/ev-fire-blanket-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/ev-fire-blanket-1536.avif",
+          1536
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/ev-fire-blanket-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/ev-fire-blanket-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/ev-fire-blanket-1536.webp",
+          1536
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABwBQCdASoYACAAPu1krU2ppaSiMBgMATAdiWwArCiAApk3AhEVJkCjJteVOhDPpsAmNg4AAP7e7G6+Sqn+tt5dju0qI5HA+h+AmT628bn3XU9/xxdj9NBW4SdetJMd+3z9c6pWZEhwAHPOrJZL6jv0WN5N0Od9pmQi6Vt5PKNAsgAA",
+    "source": {
+      "width": 1536,
+      "height": 2048
+    }
+  },
+  {
+    "key": "towing/fire-truck-tow-night.jpg",
+    "category": "towing",
+    "name": "fire-truck-tow-night",
+    "alt": "At night, a red Ross Towing rotator towing a Farmington Hills Fire Rescue engine with its front wheels lifted.",
+    "altIsDefault": false,
+    "caption": "Fire engine tow at night.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "d87a4b9b1fed",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/towing/fire-truck-tow-night-480.avif",
+      "gallery/towing/fire-truck-tow-night-480.webp",
+      "gallery/towing/fire-truck-tow-night-960.avif",
+      "gallery/towing/fire-truck-tow-night-960.webp",
+      "gallery/towing/fire-truck-tow-night-1600.avif",
+      "gallery/towing/fire-truck-tow-night-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/fire-truck-tow-night-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/fire-truck-tow-night-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/fire-truck-tow-night-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/fire-truck-tow-night-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/fire-truck-tow-night-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/fire-truck-tow-night-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQBACdASoYABIAPu1mq0+ppSOiMBgIATAdiWUAuwAQ8LLHjpvzV0LLn9R9RlcjAAD+8NBxqK34PLZi1fSOGKuHMsg3Yow2YOjpdV9RomldprTMBAlZdY71Vczk0AKoEgA=",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/fire-truck-tow.jpg",
+    "category": "towing",
+    "name": "fire-truck-tow",
+    "alt": "A red Ross Towing heavy wrecker, truck 88, towing a Southfield fire department ladder truck along an industrial road.",
+    "altIsDefault": false,
+    "caption": "Towing a Southfield ladder truck.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "4b189776758e",
+    "width": 2048,
+    "height": 1152,
+    "files": [
+      "gallery/towing/fire-truck-tow-480.avif",
+      "gallery/towing/fire-truck-tow-480.webp",
+      "gallery/towing/fire-truck-tow-960.avif",
+      "gallery/towing/fire-truck-tow-960.webp",
+      "gallery/towing/fire-truck-tow-1600.avif",
+      "gallery/towing/fire-truck-tow-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/fire-truck-tow-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/fire-truck-tow-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/fire-truck-tow-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/fire-truck-tow-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/fire-truck-tow-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/fire-truck-tow-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAwCdASoYAA4APu1orU6ppiSiMAgBMB2JYgCdACIFe0Y/3TLD2YAA/cuDIalumhs4OQ1X1B8om+6C5M1Mz4Yl+K6YiKiZaxPKFrJbq3AAAA==",
+    "source": {
+      "width": 2048,
+      "height": 1152
+    }
+  },
+  {
+    "key": "towing/flatbed-utvs.jpg",
+    "category": "towing",
+    "name": "flatbed-utvs",
+    "alt": "A red Ross Towing flatbed marked Police Towing carrying two side by side off road vehicles.",
+    "altIsDefault": false,
+    "caption": "Two UTVs on a flatbed.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "8f862458bd3a",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/towing/flatbed-utvs-480.avif",
+      "gallery/towing/flatbed-utvs-480.webp",
+      "gallery/towing/flatbed-utvs-960.avif",
+      "gallery/towing/flatbed-utvs-960.webp",
+      "gallery/towing/flatbed-utvs-1600.avif",
+      "gallery/towing/flatbed-utvs-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/flatbed-utvs-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/flatbed-utvs-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/flatbed-utvs-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/flatbed-utvs-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/flatbed-utvs-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/flatbed-utvs-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwBACdASoYABIAPu1mqk2ppaQiMAgBMB2JZwDLpCHZrEsieBYbQ7GhmnAA/ucZmvR0ui9QmjrOeFuIOrXJGC4Y8paLN+FenbUXnzqQwx/HrQ6lIjAAAA==",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/freeway-semi-recovery.jpg",
+    "category": "towing",
+    "name": "freeway-semi-recovery",
+    "alt": "On a coned off freeway lane, a red heavy wrecker with its outriggers down next to a white Ross Towing truck carrying a damaged blue semi tractor.",
+    "altIsDefault": false,
+    "caption": "Freeway semi recovery.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "5f45c8e86235",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/towing/freeway-semi-recovery-480.avif",
+      "gallery/towing/freeway-semi-recovery-480.webp",
+      "gallery/towing/freeway-semi-recovery-960.avif",
+      "gallery/towing/freeway-semi-recovery-960.webp",
+      "gallery/towing/freeway-semi-recovery-1600.avif",
+      "gallery/towing/freeway-semi-recovery-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/freeway-semi-recovery-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/freeway-semi-recovery-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/freeway-semi-recovery-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/freeway-semi-recovery-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/freeway-semi-recovery-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/freeway-semi-recovery-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQBQCdASoYABIAPu1qqk8ppiOiMBgIATAdiWcAxNgPRnQFpc05Xu3M1LaO90uWTBcAAP6vceA2YWkp00almPq7kqhKZ3x7bT37fwR0k8nQIP/oKA5Hzpgm3jstkhkAAAA=",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/rotator-boom-up.jpg",
+    "category": "towing",
+    "name": "rotator-boom-up",
+    "alt": "A red Ross Towing rotator with its boom raised high, parked in a lot.",
+    "altIsDefault": false,
+    "caption": "Rotator with the boom up.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "6de53c55af3d",
+    "width": 640,
+    "height": 480,
+    "files": [
+      "gallery/towing/rotator-boom-up-480.avif",
+      "gallery/towing/rotator-boom-up-480.webp",
+      "gallery/towing/rotator-boom-up-640.avif",
+      "gallery/towing/rotator-boom-up-640.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/rotator-boom-up-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/rotator-boom-up-640.avif",
+          640
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/rotator-boom-up-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/rotator-boom-up-640.webp",
+          640
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoYABIAPu1iqE2ppaOmMAgBMB2JZQCw7B7H7354AMic+IAA/M8YG6a3LYwv4gDyJNzPSyjUE6ufsSJDz/G3jvkVIFii0BmEUTKf0DiaoKS8d3gA",
+    "source": {
+      "width": 640,
+      "height": 480
+    }
+  },
+  {
+    "key": "towing/rotator-container-lift.jpg",
+    "category": "towing",
+    "name": "rotator-container-lift",
+    "alt": "A red Ross Towing rotator lifting a white storage container high over a yard.",
+    "altIsDefault": false,
+    "caption": "Lifting a storage container.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "afc378e16a4f",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/towing/rotator-container-lift-480.avif",
+      "gallery/towing/rotator-container-lift-480.webp",
+      "gallery/towing/rotator-container-lift-960.avif",
+      "gallery/towing/rotator-container-lift-960.webp",
+      "gallery/towing/rotator-container-lift-1600.avif",
+      "gallery/towing/rotator-container-lift-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/rotator-container-lift-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/rotator-container-lift-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/rotator-container-lift-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/rotator-container-lift-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/rotator-container-lift-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/rotator-container-lift-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwBACdASoYABIAPu1gq1AppKOisBgIATAdiWIAnQAQ78nUGQxuExS/KWHsJ+c5MPgA/qHIZbcN6FVCJ73i6UjMTQr7AUvEty8jsdx6bxe56oyN0sIhry71grjApAzC95UviY7Rc+4ypq8xMtk8CTbpDRsENiogAAA=",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/rotator-tank-lift.jpg",
+    "category": "towing",
+    "name": "rotator-tank-lift",
+    "alt": "A red Ross Towing rotator lifting a large silver tank off a flatbed trailer as two workers in safety vests guide it.",
+    "altIsDefault": false,
+    "caption": "Lifting a tank with the rotator.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "aa16db2cf9ba",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/towing/rotator-tank-lift-480.avif",
+      "gallery/towing/rotator-tank-lift-480.webp",
+      "gallery/towing/rotator-tank-lift-960.avif",
+      "gallery/towing/rotator-tank-lift-960.webp",
+      "gallery/towing/rotator-tank-lift-1600.avif",
+      "gallery/towing/rotator-tank-lift-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/rotator-tank-lift-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/rotator-tank-lift-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/rotator-tank-lift-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/rotator-tank-lift-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/rotator-tank-lift-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/rotator-tank-lift-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACwBACdASoYABIAPu1qrlCppaQiqAqpMB2JYwCw7BEd5z69Lq+V3/tk5ewH8DRwAPyPe9wu7s0YuRJp/9dUaexYNizOEFX9Ehy2u2zWOWlswhpjSO0l7IoqH61PpmbtQI4xSNP2yCcWO+yuIqoGYTzHqJPAAA==",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/semi-tow.jpg",
+    "category": "towing",
+    "name": "semi-tow",
+    "alt": "A red Ross Towing wrecker hooked to a white semi tractor with its hood off, in a gravel yard.",
+    "altIsDefault": false,
+    "caption": "Heavy tow of a disabled semi.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "ac49fcf46717",
+    "width": 2048,
+    "height": 1536,
+    "files": [
+      "gallery/towing/semi-tow-480.avif",
+      "gallery/towing/semi-tow-480.webp",
+      "gallery/towing/semi-tow-960.avif",
+      "gallery/towing/semi-tow-960.webp",
+      "gallery/towing/semi-tow-1600.avif",
+      "gallery/towing/semi-tow-1600.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/semi-tow-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/semi-tow-960.avif",
+          960
+        ],
+        [
+          "gallery/towing/semi-tow-1600.avif",
+          1600
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/semi-tow-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/semi-tow-960.webp",
+          960
+        ],
+        [
+          "gallery/towing/semi-tow-1600.webp",
+          1600
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACwBACdASoYABIAPulep02pJSOiN/VYASAdCUAXYAip+Cun0JVxt9qY5MkVAkiAAP7I/IQm7HRc8HabNYCraiF/S35+fh5cKVrXGt44zbTxzRwzZU7E9Wgdkc/osLZanIx8Pnr9r7UfR5TAOtDgAA==",
+    "source": {
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  {
+    "key": "towing/street-sweeper.jpg",
+    "category": "towing",
+    "name": "street-sweeper",
+    "alt": "A white street sweeper lettered Ross Towing, 248-356-6011, parked inside a garage.",
+    "altIsDefault": false,
+    "caption": "Ross Towing street sweeper.",
+    "date": "2026-11-06",
+    "featured": false,
+    "hash": "7d069d885dde",
+    "width": 946,
+    "height": 706,
+    "files": [
+      "gallery/towing/street-sweeper-480.avif",
+      "gallery/towing/street-sweeper-480.webp",
+      "gallery/towing/street-sweeper-946.avif",
+      "gallery/towing/street-sweeper-946.webp"
+    ],
+    "srcset": {
+      "avif": [
+        [
+          "gallery/towing/street-sweeper-480.avif",
+          480
+        ],
+        [
+          "gallery/towing/street-sweeper-946.avif",
+          946
+        ]
+      ],
+      "webp": [
+        [
+          "gallery/towing/street-sweeper-480.webp",
+          480
+        ],
+        [
+          "gallery/towing/street-sweeper-946.webp",
+          946
+        ]
+      ]
+    },
+    "placeholder": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwBACdASoYABIAPuFeqE2opSQiMAwBEBwJZQC2yBU2fCh8ZR+LmozNK+9784ZwAP7pQw0pDBlPfQO5Qtr2FWxESRGE9jHVYDxZPm7I5EFUOEf5Kp3CoPIe7uElBuVWrGMjxroG4AA=",
+    "source": {
+      "width": 946,
+      "height": 2048
+    }
+  },
+  {
     "key": "training/IMG_1668.jpeg",
     "category": "training",
     "name": "img-1668",
