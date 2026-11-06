@@ -100,7 +100,7 @@
   },
   "careers": {
     "heading": "Want to drive for Ross?",
-    "text": "Print our driver employment application, fill it out completely, and drop it off at our office at 21360 Telegraph Rd during office hours. (TODO: confirm how applications come back)",
+    "text": "We hire towing and freight drivers. Print our driver employment application, fill it out completely, and email it to rosstowing1@gmail.com or drop it off at our office at 21360 Telegraph Rd during office hours. (Jennifer, Nov 6: email or drop off, towing and freight drivers only)",
     "form": "public/forms/ross-towing-driver-employment-application.pdf (scripts/forms/application.py)"
   },
   "facility": {
