@@ -66,7 +66,7 @@
       { "trailer": "Quad axle lowboy", "length": "53 ft", "scale": "100,000 lbs" }
     ],
     "towTrucks": ["50 ton rotator", "Flatbed tow truck", "Wrecker"],
-    "credentials": "USDOT 1196761 · MC 621070 · Kentucky license 673351 (Nov 5 email: needed for loads just over the Ohio border) · Authorized for hire · Interstate · Active"
+    "credentials": "USDOT 1196761 · MC 621070 · KY License #673351 (Nov 6 email: a state license required to haul in Kentucky, since they do not file IFTA) · Authorized for hire · Interstate · Active"
   },
   "trust": {
     "heading": "Family owned since 1962",
