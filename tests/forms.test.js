@@ -63,3 +63,9 @@ test('gallery: every photo has its own alt text and its files exist', () => {
   }
   assert.ok(gallery.some((p) => p.key === 'towing/fire-truck-tow.jpg'));
 });
+
+test('no concept preview banner or wording left (Travis, Nov 6)', () => {
+  for (const [name, text] of [['header', header], ['footer', footer], ['index', page]]) {
+    assert.ok(!/concept preview|Not the official site|IN BRACKETS/i.test(text), name);
+  }
+});

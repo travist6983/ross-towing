@@ -31,8 +31,6 @@ img { max-width: 100%; height: auto; }
 /* Placeholders: every unconfirmed fact uses this, so nobody mistakes it for real */
 .ph { background: var(--ph); color: #15171A !important; border-radius: .18em; padding: 0 .22em; white-space: nowrap; outline: 1px dashed rgba(0,0,0,.4); outline-offset: -1px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .ph-wrap { white-space: normal; }
-.concept { background: #FFF6CC; color: #4A3D00; font-size: 13px; line-height: 1.4; text-align: center; padding: 7px 16px; }
-.concept b { font-weight: 600; }
 
 /* Header */
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(14,15,17,.96); border-bottom: 1px solid var(--edge); }
