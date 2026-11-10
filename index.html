@@ -13,41 +13,6 @@
 <style>
 <!-- @include site.css -->
 </style>
-<!-- LocalBusiness JSON-LD. {{SITE_URL}} comes from CONFIG.SITE_URL. TODO: aggregateRating once a live Google value is wired. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Ross Towing",
-  "legalName": "Larry Ross Garage, Inc.",
-  "description": "Family owned towing, recovery and storage in Southfield, Michigan since 1962. Staffed 24 hours a day, 365 days a year. 50 ton rotator for semi trucks, fire trucks and buses, licensed hazardous spill cleanup, impound release, public auctions, and a licensed for-hire freight carrier (USDOT 1196761, MC 621070, KY License #673351).",
-  "image": "{{SITE_URL}}img/rotator-night-1206.jpg",
-  "logo": "{{SITE_URL}}img/logo-360.png",
-  "url": "{{SITE_URL}}",
-  "telephone": "+1-248-356-6011",
-  "foundingDate": "1962",
-  "address": { "@type": "PostalAddress", "streetAddress": "21360 Telegraph Rd", "addressLocality": "Southfield", "addressRegion": "MI", "postalCode": "48033", "addressCountry": "US" },
-  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }],
-  "sameAs": ["https://facebook.com/accidentrecovery"],
-  "areaServed": [
-    { "@type": "City", "name": "Southfield, MI" }, { "@type": "City", "name": "Detroit, MI" }, { "@type": "City", "name": "Farmington Hills, MI" },
-    { "@type": "City", "name": "Dearborn, MI" }, { "@type": "City", "name": "Oak Park, MI" }, { "@type": "City", "name": "Lathrup Village, MI" },
-    { "@type": "City", "name": "Royal Oak, MI" }, { "@type": "AdministrativeArea", "name": "Oakland County, MI" }, { "@type": "AdministrativeArea", "name": "Wayne County, MI" },
-    { "@type": "AdministrativeArea", "name": "Macomb County, MI" }, { "@type": "State", "name": "Michigan" }
-  ],
-  "knowsAbout": ["Light duty towing","Flatbed towing","Police towing and impounds","Heavy duty towing","50 ton rotator recovery","Winch outs","Accident recovery","Crane and lifting service","Machinery hauling, off loading, staging and rigging","Private property impounds","Hazardous spill cleanup","Diesel and oil spill containment","Electric vehicle fire storage","Roadside assistance","Vehicle storage","Public vehicle auctions","Freight hauling","Machinery hauling"],
-  "review": "{{REVIEW_SCHEMA}}",
-  "makesOffer": [{
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Service",
-      "name": "Freight hauling",
-      "serviceType": "For-hire freight carrier: machinery, equipment and materials on flatbed, Conestoga, step deck, Landoll and lowboy trailers",
-      "areaServed": [{ "@type": "State", "name": "Michigan" }, { "@type": "State", "name": "Ohio" }, { "@type": "State", "name": "Indiana" }]
-    }
-  }]
-}
-</script>
 <script src="vendor/gsap.min.js" defer></script>
 <script src="vendor/ScrollTrigger.min.js" defer></script>
 <script type="module" src="journey.js"></script>

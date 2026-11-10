@@ -3,7 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CONFIG as FILE_CONFIG } from './src/config.js';
-import { renderPage, sitemap } from './scripts/html.mjs';
+import { renderPage, sitemap, siteUrl } from './scripts/html.mjs';
+import { robotsTxt, llmsTxt } from './scripts/seo.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
@@ -34,6 +35,8 @@ function rossSite() {
     },
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(CONFIG, root) });
+      this.emitFile({ type: 'asset', fileName: 'robots.txt', source: robotsTxt(siteUrl(CONFIG)) });
+      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt(siteUrl(CONFIG)) });
     },
   };
 }

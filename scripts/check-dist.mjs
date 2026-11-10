@@ -1,7 +1,8 @@
 // Runs after every build (npm run build). Fails the build if something that must never ship is in dist/:
 // image metadata (EXIF, GPS, XMP), dealer placeholders, a Towbook link that isn't one of Ross's own (such as
 // the Meade Lexus example link from the screenshots), en or em dashes in page copy, a second phone number,
-// or a page missing noindex while CONFIG.NOINDEX is on.
+// a page missing noindex while CONFIG.NOINDEX is on, an indexable page without exactly one canonical, og:title,
+// meta description and JSON-LD block, JSON-LD that doesn't parse, or a missing sitemap.xml, robots.txt or llms.txt.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,9 +29,19 @@ for (const f of files.filter((p) => /\.html$/.test(p))) {
   for (const t of html.match(/tel:[^"']+/g) || []) if (t !== 'tel:+12483566011') problems.push(`${rel(f)} links ${t}`);
   for (const n of text.match(/\(?\b\d{3}\)?[-. ]\d{3}[-. ]\d{4}\b/g) || []) if (n !== '248-356-6011') problems.push(`${rel(f)} shows phone ${n}`);
   if (CONFIG.NOINDEX && !/<meta name="robots" content="noindex">/.test(html)) problems.push(`${rel(f)} is missing noindex`);
+  for (const [, j] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try { JSON.parse(j); } catch { problems.push(`${rel(f)} has JSON-LD that doesn't parse`); }
+  }
+  if (!/<meta name="robots" content="noindex">/.test(html)) {
+    for (const [tag, re] of [['canonical', /<link rel="canonical"/g], ['og:title', /property="og:title"/g], ['meta description', /<meta name="description"/g], ['JSON-LD', /application\/ld\+json/g]]) {
+      const n = (html.match(re) || []).length;
+      if (n !== 1) problems.push(`${rel(f)} has ${n} ${tag} tags`);
+    }
+  }
 }
+for (const name of ['sitemap.xml', 'robots.txt', 'llms.txt']) if (!fs.existsSync(path.join(dist, name))) problems.push(`${name} is missing`);
 if (problems.length) {
   console.error(`check-dist: ${problems.length} problem(s)\n  ${problems.join('\n  ')}`);
   process.exit(1);
 }
-console.log(`check-dist: ${files.length} files OK (no image metadata, no placeholders, one phone number, no dashes${CONFIG.NOINDEX ? ', noindex on every page' : ''})`);
+console.log(`check-dist: ${files.length} files OK (no image metadata, no placeholders, one phone number, no dashes, search tags on every page${CONFIG.NOINDEX ? ', noindex on every page' : ''})`);
