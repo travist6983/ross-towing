@@ -7,8 +7,8 @@ import { renderPage, sitemap } from './scripts/html.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
-// Pages project URL until launch ("/ross-towing/"); "/" once rosstow.com is connected (see LAUNCH.md).
-const BASE = process.env.VITE_BASE || '/ross-towing/';
+// The site is live at the root of rosstow.com (Nov 10, 2026, see LAUNCH.md). Set VITE_BASE=/ross-towing/ only to build for the old github.io project path.
+const BASE = process.env.VITE_BASE || '/';
 
 // One-off builds (QA, previews of a mode) can override config without editing the file:
 //   ROSS_CONFIG='{"TOWBOOK_MODE":"link","TOWBOOK_URL":"https://example.com"}' npm run build

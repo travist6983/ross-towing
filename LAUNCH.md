@@ -1,6 +1,6 @@
 # Launch: connect rosstow.com
 
-**Prepared only. Do not run any of this until every precondition below is true.** Nothing here has been done: there's no CNAME file, no Pages custom domain, and no DNS change.
+**Launched Nov 10, 2026** on Travis's go ahead. Step 1 is in the repo; the GitHub, DNS and HTTPS steps were done in the account settings the same day. Kept for the rollback steps.
 
 Ross owns rosstow.com at GoDaddy. Until launch the site lives at https://travist6983.github.io/ross-towing/.
 

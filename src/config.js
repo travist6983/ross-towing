@@ -4,16 +4,16 @@
 export const CONFIG = {
   // ---- Site ----
   // The public address. Canonical, og:url, sitemap and JSON-LD come from it.
-  // Until launch: the GitHub Pages address. At launch: "https://rosstow.com/" (see LAUNCH.md).
-  SITE_URL: "https://travist6983.github.io/ross-towing/",
+  // Live on rosstow.com since Nov 10, 2026 (see LAUNCH.md).
+  SITE_URL: "https://rosstow.com/",
 
   // true until launch: every page gets <meta name="robots" content="noindex"> so the preview copies
   // don't compete with rosstow.com in search. Set to false at launch.
-  NOINDEX: true,
+  NOINDEX: false,
 
   // true until launch: loads the Journeyman preview tracker (journeymanwebco.com/track.js), which
   // records visits from ?r=<tracking id> links in the CRM. Set to false at launch.
-  JWC_TRACKING: true,
+  JWC_TRACKING: false,
 
   // ---- Freight quote form (see worker/README.md) ----
   // The Cloudflare Worker that emails each freight quote to the office. Empty: the form shows
