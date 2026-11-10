@@ -38,13 +38,28 @@ test('partners: names only without permission, logos only with permission AND a 
 });
 
 test('partners: dealers show nothing without permission; placeholders only in dev', () => {
-  assert.equal(renderPartners(partners.dealers, { group: 'dealers', dev: false }), '');
-  assert.match(renderPartners(partners.dealers, { group: 'dealers', dev: true }), /\[DEALER NAME 1\]/);
+  const ph = [{ name: '[DEALER NAME 1]', logo: '', permission: false, url: '' }];
+  assert.equal(renderPartners(ph, { group: 'dealers', dev: false }), '');
+  assert.match(renderPartners(ph, { group: 'dealers', dev: true }), /\[DEALER NAME 1\]/);
   const d = [{ name: 'Some Dealer', logo: 'logos/d.png', permission: false }, { name: 'OK Dealer', logo: '', permission: true, url: 'https://ok.example' }];
   assert.deepEqual(partnerItems(d, { group: 'dealers' }).map((i) => [i.kind, i.name]), [['name', 'OK Dealer']]);
-  // the shipped partners.json: agencies as names, no logos, no dealers
+  // the shipped partners.json: agencies as names with no logos
   assert.equal((renderPartners(partners.agencies, { group: 'agencies', logoExists: () => true }).match(/<img/g) || []).length, 0);
   assert.ok(partners.agencies.every((a) => a.permission === false));
+});
+
+test('partners: the five dealers from Jennifer (Nov 9) show as logos with their names as alt text', () => {
+  const exists = (rel) => fs.existsSync(new URL(`../public/${rel}`, import.meta.url));
+  const html = renderPartners(partners.dealers, { group: 'dealers', logoExists: exists });
+  const alts = [...html.matchAll(/<img [^>]*alt="([^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(alts, ['Meade Lexus of Southfield', 'Glassman Automotive Group', 'The Tamaroff Group', 'Serra Ford Farmington Hills', 'Avis Ford']);
+  for (const d of partners.dealers.filter((x) => x.permission)) {
+    assert.ok(exists(d.logo), d.logo);
+    assert.ok(d.width > 0 && d.height > 0 && d.height <= 48, d.name);
+    assert.match(d.source, /^https:\/\//, d.name);
+  }
+  assert.match(html, /<li class="pt-logo pt-wide"><img src="\/logos\/dealers\/tamaroff\.png" alt="The Tamaroff Group" width="260" height="18"/);
+  assert.doesNotMatch(html, /DEALER NAME|<a /);   // remaining slot stays hidden; logos don't link away
 });
 
 test('Towbook: three request links, call stays first, empty links hide their buttons', () => {

@@ -1,15 +1,15 @@
 {
-  "_note": "Logos are trademarks. A logo shows only when its file exists under public/ AND \"permission\" is true, and only after Ross confirms in writing that the agency or dealership approved it. Agencies without permission show as plain text names. Dealers show nothing at all until \"permission\" is true (name or logo). Entries named like \"[DEALER NAME 1]\" are placeholders: they show only in npm run dev, never in a build. Logos: SVG preferred, else PNG at 2x, under 30 KB, all about the same height.",
+  "_note": "Logos are trademarks. A logo shows only when its file exists under public/ AND \"permission\" is true. Agencies without permission show as plain text names; the police logos stay off until Ross confirms in writing that the agency approved. Dealers show nothing at all until \"permission\" is true (name or logo). The five dealers below are the ones Jennifer listed in her Nov 9, 2026 email; Travis approved adding them with logos on Nov 10. Each logo was taken from the dealer's own website (\"source\"). \"width\" and \"height\" are the display size in CSS pixels; the files are 2x. Sizes are balanced by area so a wide logo and a tall one look the same weight. Entries named like \"[DEALER NAME 6]\" are placeholders: they show only in npm run dev, never in a build.",
   "agencies": [
     { "name": "Farmington Hills Police Department", "logo": "", "permission": false },
     { "name": "Michigan State Police", "logo": "", "permission": false }
   ],
   "dealers": [
-    { "name": "[DEALER NAME 1]", "logo": "", "permission": false, "url": "" },
-    { "name": "[DEALER NAME 2]", "logo": "", "permission": false, "url": "" },
-    { "name": "[DEALER NAME 3]", "logo": "", "permission": false, "url": "" },
-    { "name": "[DEALER NAME 4]", "logo": "", "permission": false, "url": "" },
-    { "name": "[DEALER NAME 5]", "logo": "", "permission": false, "url": "" },
+    { "name": "Meade Lexus of Southfield", "logo": "logos/dealers/meade-lexus.png", "width": 147, "height": 35, "permission": true, "url": "", "source": "https://lexusofsouthfield.com/" },
+    { "name": "Glassman Automotive Group", "logo": "logos/dealers/glassman.png", "width": 98, "height": 48, "permission": true, "url": "", "source": "https://www.glassmanautogroup.com/" },
+    { "name": "The Tamaroff Group", "logo": "logos/dealers/tamaroff.png", "width": 260, "height": 18, "permission": true, "url": "", "source": "https://thetamaroffgroup.com/" },
+    { "name": "Serra Ford Farmington Hills", "logo": "logos/dealers/serra-ford.png", "width": 140, "height": 37, "permission": true, "url": "", "source": "https://www.serrafordfarmingtonhills.com/" },
+    { "name": "Avis Ford", "logo": "logos/dealers/avis-ford.png", "width": 129, "height": 40, "permission": true, "url": "", "source": "https://www.avisford.com/" },
     { "name": "[DEALER NAME 6]", "logo": "", "permission": false, "url": "" }
   ]
 }
