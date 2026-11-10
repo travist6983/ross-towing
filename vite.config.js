@@ -3,7 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CONFIG as FILE_CONFIG } from './src/config.js';
-import { renderPage, sitemap, siteUrl } from './scripts/html.mjs';
+import { renderPage, sitemap, siteUrl, PAGE_FILES } from './scripts/html.mjs';
+import { CITIES, cityPath } from './scripts/cities.mjs';
 import { robotsTxt, llmsTxt } from './scripts/seo.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -36,7 +37,7 @@ function rossSite() {
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(CONFIG, root) });
       this.emitFile({ type: 'asset', fileName: 'robots.txt', source: robotsTxt(siteUrl(CONFIG)) });
-      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt(siteUrl(CONFIG)) });
+      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt(siteUrl(CONFIG), CITIES.map((c) => ({ name: c.name, path: cityPath(c) }))) });
     },
   };
 }
@@ -50,9 +51,9 @@ export default defineConfig({
     rollupOptions: {
       // Every page is its own HTML entry.
       input: Object.fromEntries(
-        [['main', 'index.html'], ['gallery', 'gallery/index.html'], ['notFound', '404.html']]
-          .filter(([, f]) => fs.existsSync(path.join(root, f)))
-          .map(([k, f]) => [k, path.join(root, f)]),
+        PAGE_FILES
+          .filter((f) => fs.existsSync(path.join(root, f)))
+          .map((f) => [f.replace(/\/index\.html$|\.html$/, '').replace(/\W+/g, '_') || 'main', path.join(root, f)]),
       ),
     },
   },

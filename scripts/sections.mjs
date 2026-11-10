@@ -50,7 +50,7 @@ export function renderPartners(list, opts) {
 }
 
 // ---------- photos ----------
-function picture(p, { sizes, eager = false, cls = '', high = false } = {}) {
+export function picture(p, { sizes, eager = false, cls = '', high = false } = {}) {
   const set = (fmt) => p.srcset[fmt].map(([f, w]) => `/${f} ${w}w`).join(', ');
   const mid = p.srcset.webp.find(([, w]) => w >= 900) || p.srcset.webp.at(-1);
   return `<picture><source type="image/avif" srcset="${set('avif')}" sizes="${sizes}"><source type="image/webp" srcset="${set('webp')}" sizes="${sizes}">`

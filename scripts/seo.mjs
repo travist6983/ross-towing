@@ -43,7 +43,8 @@ const state = (name) => ({ '@type': 'State', name });
 const city = (name) => ({ '@type': 'City', name: `${name}, MI` });
 
 // The business as JSON-LD. reviews: Review objects for the page that shows them (the home page), else none.
-export function businessSchema(url, { reviews = [] } = {}) {
+// extra: more nodes for this page's @graph (a city page adds its Service and BreadcrumbList).
+export function businessSchema(url, { reviews = [], extra = [] } = {}) {
   const b = BUSINESS;
   const id = `${url}#business`;
   const business = {
@@ -89,6 +90,7 @@ export function businessSchema(url, { reviews = [] } = {}) {
     '@graph': [
       business,
       { '@type': 'WebSite', '@id': `${url}#website`, url, name: b.name, publisher: { '@id': id } },
+      ...extra,
     ],
   };
 }
@@ -101,7 +103,7 @@ export function robotsTxt(url) {
 }
 
 // llms.txt (https://llmstxt.org): a plain summary for AI assistants and AI search. Facts from the site only.
-export function llmsTxt(url) {
+export function llmsTxt(url, cityPages = []) {
   const b = BUSINESS;
   const lines = [
     `# ${b.name}`,
@@ -131,6 +133,7 @@ export function llmsTxt(url) {
     '## Pages',
     `- [Home](${url}): all services, service area, vehicle release, auctions, private property impounds and contact`,
     `- [Gallery](${url}gallery/): photos of towing jobs and freight loads`,
+    ...cityPages.map((c) => `- [Towing in ${c.name}, MI](${url}${c.path}): distance from the yard, services and contact for ${c.name}`),
     '',
   ];
   return lines.join('\n');
