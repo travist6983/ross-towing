@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import QRCode from 'qrcode';
 import { businessSchema, jsonLd } from './seo.mjs';
+import { CITIES, cityPath, cityTitle, citySchema, renderCity } from './cities.mjs';
 import { loadData, renderReviews, reviewSchema, renderPartners, renderTraining, renderGallery, renderTeaser, renderTowQr, renderOnline, buildQrs } from './sections.mjs';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -16,7 +17,10 @@ const PAGES = {
   'index.html': { path: '', home: '', schema: 'reviews' },
   'gallery/index.html': { path: 'gallery/', schema: 'plain' },
   '404.html': { path: null },
+  // One "Towing in <city>" page per city in the home page's service area list (scripts/cities.mjs).
+  ...Object.fromEntries(CITIES.map((c) => [`${cityPath(c)}index.html`, { path: cityPath(c), schema: 'plain', city: c.slug }])),
 };
+export const PAGE_FILES = Object.keys(PAGES);
 
 const attr = (html, re) => (html.match(re) || [])[1] || '';
 const decode = (s) => s.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"');
@@ -43,7 +47,7 @@ function head({ page, config }, { title, description, reviews }) {
   out.push('<meta property="og:image:width" content="1206">', '<meta property="og:image:height" content="701">');
   out.push('<meta property="og:image:alt" content="Ross Towing rotator lit up at night">');
   out.push('<meta name="twitter:card" content="summary_large_image">');
-  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [] })));
+  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [], extra: info.city ? citySchema(url, info.city) : [] })));
   if (config.JWC_TRACKING) {
     out.push('<meta name="jwc-endpoint" content="https://journeyman-contact.travisjterry.workers.dev">');
     out.push('<script src="https://journeymanwebco.com/track.js" defer></script>');
@@ -68,6 +72,11 @@ export async function renderPage(html, ctx) {
     online: (where) => renderOnline(config, where, qr),
   };
   let out = includes(html, root);
+  if (info.city) {
+    const c = CITIES.find((x) => x.slug === info.city);
+    out = out.replace('{{CITY_TITLE}}', esc(cityTitle(c))).replace('{{CITY_DESCRIPTION}}', esc(c.description))
+      .replace('<!-- @city -->', renderCity(c.slug, { base, gallery: data.gallery }));
+  }
   const title = decode(attr(out, /<title>([^<]*)<\/title>/));
   const description = decode(attr(out, /<meta name="description" content="([^"]*)">/));
   out = out.replace('<!-- @head -->', head(ctx, { title, description, reviews: reviewSchema(data.reviews) }));
@@ -77,6 +86,7 @@ export async function renderPage(html, ctx) {
     .replaceAll('{{HOME}}', info.home ?? base)
     .replaceAll('{{BASE}}', base)
     .replaceAll('{{SITE_URL}}', siteUrl(config))
+    .replace('<!-- @city-links -->', CITIES.map((c) => `<a href="${base}${cityPath(c)}">${esc(c.name)}</a>`).join(' · '))
     .replaceAll('{{NAV_GALLERY}}', page === 'gallery/index.html' ? ' aria-current="page"' : '');
 }
 

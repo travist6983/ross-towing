@@ -629,3 +629,28 @@ fieldset:disabled .field input, fieldset:disabled .field select, fieldset:disabl
   }
   @container (min-width: 540px) { .dims { grid-template-columns: repeat(3, minmax(0, 1fr)); } .unit-row { grid-template-columns: minmax(0, 1fr) 70px; } }
 }
+
+/* ---------- Added Nov 10: "Towing in <city>" pages and links to them ---------- */
+.chips-links a, .city-others a { display: inline-flex; align-items: center; gap: 9px; color: inherit; text-decoration: none; }
+.chips-links li, .city-others li { padding: 0; }
+.chips-links a, .city-others a { padding: 10px 14px; border-radius: 999px; min-height: 44px; }
+.chips-links a:hover, .chips-links a:focus-visible, .city-others a:hover, .city-others a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.crumbs ol { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 4px 0; font-size: .95rem; color: var(--muted-d); }
+.crumbs li + li::before { content: '/'; margin: 0 8px; opacity: .6; }
+.crumbs a { color: var(--paint); }
+.city-head h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 12px; }
+.city-head .lede { max-width: 56ch; }
+.city-body h2, .city-visit h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 8px; }
+.city-note { margin-top: 18px; max-width: 62ch; font-size: 1.05rem; }
+.city-note a { font-weight: 600; }
+.city-shot { margin: 24px 0 0; }
+.city-shot img { width: 100%; height: auto; border-radius: 12px; background-size: cover; }
+.city-shot figcaption { margin-top: 8px; font-size: .92rem; color: var(--muted-l); }
+.city-visit .big-call { margin-top: 18px; }
+.city-visit .visit, .city-visit .muted { margin-top: 12px; }
+.city-others-h { margin-top: 34px; font-size: 1.3rem; font-weight: 800; }
+.city-page .city-visit { padding-bottom: 96px; }
+@media (min-width: 900px) {
+  .city-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+  .city-shot { margin-top: 56px; }
+}
