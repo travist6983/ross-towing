@@ -20,7 +20,7 @@ export const BUSINESS = {
   // The "Where we tow" chips on the home page, in the same order.
   cities: ['Southfield', 'Detroit', 'Farmington Hills', 'Dearborn', 'Oak Park', 'Lathrup Village', 'Royal Oak'],
   credentials: { USDOT: '1196761', MC: '621070', 'KY License': '673351', 'Spill response license': '98000-105807-24-122024' },
-  officeHours: 'Monday to Friday 9am to 5pm, Saturday 9am to 1pm',
+  officeHours: 'Monday to Friday 9am to 5pm, Saturday 9am to 1pm, closed Sunday',
 };
 
 export const serviceUrl = (url, s) => (s.page ? url + s.page : `${url}#${s.anchor}`);
@@ -67,7 +67,7 @@ export function businessSchema(url, { reviews = [], extra = [] } = {}) {
     contactPoint: [{ '@type': 'ContactPoint', telephone: '+1-248-356-6011', contactType: 'dispatch', hoursAvailable: 'Mo-Su 00:00-23:59', areaServed: 'US-MI' }],
     sameAs: [b.facebook],
     areaServed: [...b.cities.map(city), state('Michigan')],
-    paymentAccepted: 'Cash (vehicle release)',
+    paymentAccepted: 'Cash, Credit Card',
     identifier: Object.entries(b.credentials).map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
     knowsAbout: SERVICES.flatMap((s) => s.items),
     hasOfferCatalog: {
@@ -105,7 +105,7 @@ export function robotsTxt(url) {
 }
 
 // llms.txt (https://llmstxt.org): a plain summary for AI assistants and AI search. Facts from the site only.
-export function llmsTxt(url, cityPages = [], servicePages = []) {
+export function llmsTxt(url, cityPages = [], servicePages = [], faqs = []) {
   const b = BUSINESS;
   const lines = [
     `# ${b.name}`,
@@ -117,6 +117,8 @@ export function llmsTxt(url, cityPages = [], servicePages = []) {
     `- Address: ${address()}`,
     `- Email: ${b.email}`,
     `- Office and vehicle release hours: ${b.officeHours}. Vehicle release is cash only.`,
+    '- Towing: 24 hours a day, 7 days a week, 365 days a year.',
+    '- Payment: vehicle release is cash only. Cards are accepted for towing and roadside calls, with a 5% credit card fee.',
     `- Facebook: ${b.facebook}`,
     '',
     '## Services',
@@ -135,9 +137,11 @@ export function llmsTxt(url, cityPages = [], servicePages = []) {
     '## Pages',
     `- [Home](${url}): all services, service area, vehicle release, auctions, private property impounds and contact`,
     `- [Gallery](${url}gallery/): photos of towing jobs and freight loads`,
+    `- [Questions and answers](${url}faq/): vehicle release, paying, hours, insurance and what we tow`,
     ...servicePages.map((s) => `- [${s.name}](${url}${s.path}): ${s.summary}`),
     ...cityPages.map((c) => `- [Towing in ${c.name}, MI](${url}${c.path}): distance from the yard, services and contact for ${c.name}`),
     '',
+    ...(faqs.length ? ['## Questions and answers', ...faqs.flatMap(([q, a]) => [`- Q: ${q}`, `  A: ${a}`]), ''] : []),
   ];
   return lines.join('\n');
 }

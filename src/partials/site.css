@@ -667,3 +667,12 @@ fieldset:disabled .field input, fieldset:disabled .field select, fieldset:disabl
 .service-page .steps { margin: 10px 0 0; padding-left: 1.4em; display: grid; gap: 6px; }
 .service-page .dl-row { margin-top: 16px; }
 .card h3 a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Added Nov 10: questions and answers page (scripts/faq.mjs) ---------- */
+.faq-list { max-width: 760px; }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--line-l); }
+.faq-item h2 { font-size: clamp(1.3rem, 2.6vw, 1.6rem); font-weight: 800; margin-bottom: 8px; }
+.faq-item p { font-size: 1.05rem; color: var(--muted-l); max-width: 66ch; }
+.faq-item a { color: var(--red-text); font-weight: 600; }
+.faq-link { margin-top: 14px; }
+.faq-link a { color: var(--paint); font-weight: 600; }
