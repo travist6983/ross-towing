@@ -1,7 +1,7 @@
 // One page for each service the home page lists (Nov 10, 2026), at services/<slug>/. Each page is built from
 // this file at build time; the HTML files under services/<slug>/ are identical shells. Every fact here is
 // already on the site (index.html, the gallery captions or scripts/seo.mjs). Add nothing here that isn't on
-// the site too: no response times, no prices, no testimonials. The FAQ waits on answers from the office.
+// the site too: no response times, no prices, no testimonials. Questions and answers live in scripts/faq.mjs.
 import { BUSINESS, SERVICES, address } from './seo.mjs';
 import { CITIES, cityPath } from './cities.mjs';
 import { esc, picture } from './sections.mjs';
@@ -31,7 +31,7 @@ export const SERVICE_PAGES = [
       'Our tow fleet runs flatbeds, wreckers and a 50 ton rotator, so a bigger vehicle is a call to the same number.',
       'We\'ve been towing out of the same Southfield yard on Telegraph Rd since 1962.',
     ],
-    links: [['impound-release', 'Towed to our yard? Getting your vehicle back'], ['roadside', 'Just need a jump or a lockout? Roadside help']],
+    links: [['impound-release', 'Towed to our yard? Getting your vehicle back'], ['roadside', 'Just need a jump or a lockout? Roadside help'], ['faq', 'Paying by card, insurance and other questions']],
     photo: 'towing/IMG_5089.jpeg', cta: 'tow', hours24: true,
   },
   {
@@ -49,7 +49,7 @@ export const SERVICE_PAGES = [
       ['i-battery', 'Battery service', 'Battery trouble that needs a hand.'],
     ],
     notes: ['If the vehicle needs a tow after all, we do light duty and flatbed towing too.'],
-    links: [['towing', 'Light duty and flatbed towing'], ['heavy-duty', 'Stuck in a ditch? Winch outs']],
+    links: [['towing', 'Light duty and flatbed towing'], ['heavy-duty', 'Stuck in a ditch? Winch outs'], ['faq', 'Paying by card and other questions']],
     photo: 'towing/wrecker-79.jpg', cta: 'tow', hours24: true,
   },
   {
@@ -168,7 +168,7 @@ export const SERVICE_PAGES = [
         <p class="city-note">Open to the public. Parking for over 100 customers across from our lobby, with ADA spots right by the front door. Call for the next date.</p>`,
     ],
     notes: ['We tow and impound for the Michigan State Police and the Farmington Hills Police Department, and the yard is staffed 24 hours a day, 365 days a year for towing and impound services.'],
-    links: [['private-property-impounds', 'Property owners: private property impounds']],
+    links: [['faq', 'Someone else picking up, belongings and other questions'], ['private-property-impounds', 'Property owners: private property impounds']],
     photo: 'towing/IMG_6288.jpeg', cta: null,
   },
   {
@@ -188,7 +188,7 @@ export const SERVICE_PAGES = [
         </ol>
         <p class="dl-row"><a class="btn btn-line" href="{{BASE}}forms/ross-towing-ppi-authorization-form.pdf" download><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>Download the authorization form <span class="ftype">(PDF)</span></a></p>`,
     ],
-    links: [['impound-release', 'Looking for a vehicle we towed? Getting your vehicle back']],
+    links: [['impound-release', 'Looking for a vehicle we towed? Getting your vehicle back'], ['faq', 'Questions and answers']],
     photo: null, cta: null, hours24: true,
   },
 ];
@@ -200,7 +200,7 @@ const pageOf = (slug) => SERVICE_PAGES.find((s) => s.slug === slug);
 function linkHref(key, base) {
   const p = pageOf(key);
   if (p) return base + servicePath(p);
-  return { gallery: `${base}gallery/#towing`, 'gallery-freight': `${base}gallery/#freight`, quote: `${base}#freight-quote` }[key];
+  return { faq: `${base}faq/`, gallery: `${base}gallery/#towing`, 'gallery-freight': `${base}gallery/#freight`, quote: `${base}#freight-quote` }[key];
 }
 
 const state = (name) => ({ '@type': 'State', name });

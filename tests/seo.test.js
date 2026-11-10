@@ -128,3 +128,20 @@ test('services: schema adds the service and a breadcrumb to the one business gra
   assert.equal(g.find((n) => n['@type'] === 'BreadcrumbList').itemListElement.at(-1).item, 'https://rosstow.com/services/freight/');
   assert.ok(g[0].hasOfferCatalog.itemListElement.some((o) => o.itemOffered.url === 'https://rosstow.com/services/freight/'));
 });
+
+test('faq: page, FAQPage schema and links, with no prices or storage fees', async () => {
+  const { FAQS, faqSchema, renderFaq, plain } = await import('../scripts/faq.mjs');
+  assert.ok(fs.existsSync(new URL('../faq/index.html', import.meta.url)));
+  const html = renderFaq();
+  assert.ok(!/[–—]/.test(html), 'dashes');
+  assert.ok(!/\$\d|storage fee|per mile/i.test(html), 'no prices or storage fees');
+  assert.ok(!/\b\d{3}[-. ]\d{3}[-. ]\d{4}\b/.test(html.replaceAll(BUSINESS.phone, '')), 'another phone number');
+  assert.ok(!html.includes('{{BASE}}'), 'unfilled base');
+  const g = businessSchema(URL_, { extra: faqSchema(URL_) })['@graph'];
+  const faq = g.find((n) => n['@type'] === 'FAQPage');
+  assert.equal(faq.mainEntity.length, FAQS.length);
+  for (const q of faq.mainEntity) assert.ok(!/[<>]/.test(q.acceptedAnswer.text), q.name);
+  assert.ok(fs.readFileSync(new URL('../src/partials/footer.html', import.meta.url), 'utf8').includes('{{BASE}}faq/'));
+  const t = llmsTxt(URL_, [], [], FAQS.map(([q, a]) => [q, plain(a)]));
+  assert.ok(t.includes('https://rosstow.com/faq/') && t.includes('Q: Do you take credit cards?'));
+});

@@ -7,6 +7,7 @@ import QRCode from 'qrcode';
 import { businessSchema, jsonLd } from './seo.mjs';
 import { CITIES, cityPath, cityTitle, citySchema, renderCity } from './cities.mjs';
 import { SERVICE_PAGES, servicePath, serviceSchema, renderService } from './services.mjs';
+import { FAQ_PATH, faqSchema, renderFaq } from './faq.mjs';
 import { loadData, renderReviews, reviewSchema, renderPartners, renderTraining, renderGallery, renderTeaser, renderTowQr, renderOnline, buildQrs } from './sections.mjs';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -21,6 +22,8 @@ const PAGES = {
   // One "Towing in <city>" page per city in the home page's service area list (scripts/cities.mjs).
   ...Object.fromEntries(CITIES.map((c) => [`${cityPath(c)}index.html`, { path: cityPath(c), schema: 'plain', city: c.slug }])),
   // One page per service the home page lists (scripts/services.mjs).
+  // Questions and answers (scripts/faq.mjs).
+  [`${FAQ_PATH}index.html`]: { path: FAQ_PATH, schema: 'plain', faq: true },
   ...Object.fromEntries(SERVICE_PAGES.map((s) => [`${servicePath(s)}index.html`, { path: servicePath(s), schema: 'plain', service: s.slug }])),
 };
 export const PAGE_FILES = Object.keys(PAGES);
@@ -50,7 +53,7 @@ function head({ page, config }, { title, description, reviews }) {
   out.push('<meta property="og:image:width" content="1206">', '<meta property="og:image:height" content="701">');
   out.push('<meta property="og:image:alt" content="Ross Towing rotator lit up at night">');
   out.push('<meta name="twitter:card" content="summary_large_image">');
-  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [], extra: info.city ? citySchema(url, info.city) : info.service ? serviceSchema(url, info.service) : [] })));
+  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [], extra: info.city ? citySchema(url, info.city) : info.service ? serviceSchema(url, info.service) : info.faq ? faqSchema(url) : [] })));
   if (config.JWC_TRACKING) {
     out.push('<meta name="jwc-endpoint" content="https://journeyman-contact.travisjterry.workers.dev">');
     out.push('<script src="https://journeymanwebco.com/track.js" defer></script>');
@@ -80,6 +83,7 @@ export async function renderPage(html, ctx) {
     out = out.replace('{{CITY_TITLE}}', esc(cityTitle(c))).replace('{{CITY_DESCRIPTION}}', esc(c.description))
       .replace('<!-- @city -->', renderCity(c.slug, { base, gallery: data.gallery }));
   }
+  if (info.faq) out = out.replace('<!-- @faq -->', renderFaq({ base }));
   if (info.service) {
     const s = SERVICE_PAGES.find((x) => x.slug === info.service);
     out = out.replace('{{PAGE_TITLE}}', esc(s.title)).replace('{{PAGE_DESCRIPTION}}', esc(s.description))
