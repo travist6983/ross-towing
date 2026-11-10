@@ -26,10 +26,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-      # Until launch the site lives at /ross-towing/. At launch (LAUNCH.md) this becomes "/".
+      # Live on rosstow.com since Nov 10, 2026, so the site sits at the root.
       - run: npm run build
         env:
-          VITE_BASE: /ross-towing/
+          VITE_BASE: /
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
