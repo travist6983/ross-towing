@@ -6,6 +6,7 @@ import path from 'node:path';
 import QRCode from 'qrcode';
 import { businessSchema, jsonLd } from './seo.mjs';
 import { CITIES, cityPath, cityTitle, citySchema, renderCity } from './cities.mjs';
+import { SERVICE_PAGES, servicePath, serviceSchema, renderService } from './services.mjs';
 import { loadData, renderReviews, reviewSchema, renderPartners, renderTraining, renderGallery, renderTeaser, renderTowQr, renderOnline, buildQrs } from './sections.mjs';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -19,6 +20,8 @@ const PAGES = {
   '404.html': { path: null },
   // One "Towing in <city>" page per city in the home page's service area list (scripts/cities.mjs).
   ...Object.fromEntries(CITIES.map((c) => [`${cityPath(c)}index.html`, { path: cityPath(c), schema: 'plain', city: c.slug }])),
+  // One page per service the home page lists (scripts/services.mjs).
+  ...Object.fromEntries(SERVICE_PAGES.map((s) => [`${servicePath(s)}index.html`, { path: servicePath(s), schema: 'plain', service: s.slug }])),
 };
 export const PAGE_FILES = Object.keys(PAGES);
 
@@ -47,7 +50,7 @@ function head({ page, config }, { title, description, reviews }) {
   out.push('<meta property="og:image:width" content="1206">', '<meta property="og:image:height" content="701">');
   out.push('<meta property="og:image:alt" content="Ross Towing rotator lit up at night">');
   out.push('<meta name="twitter:card" content="summary_large_image">');
-  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [], extra: info.city ? citySchema(url, info.city) : [] })));
+  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [], extra: info.city ? citySchema(url, info.city) : info.service ? serviceSchema(url, info.service) : [] })));
   if (config.JWC_TRACKING) {
     out.push('<meta name="jwc-endpoint" content="https://journeyman-contact.travisjterry.workers.dev">');
     out.push('<script src="https://journeymanwebco.com/track.js" defer></script>');
@@ -77,6 +80,11 @@ export async function renderPage(html, ctx) {
     out = out.replace('{{CITY_TITLE}}', esc(cityTitle(c))).replace('{{CITY_DESCRIPTION}}', esc(c.description))
       .replace('<!-- @city -->', renderCity(c.slug, { base, gallery: data.gallery }));
   }
+  if (info.service) {
+    const s = SERVICE_PAGES.find((x) => x.slug === info.service);
+    out = out.replace('{{PAGE_TITLE}}', esc(s.title)).replace('{{PAGE_DESCRIPTION}}', esc(s.description))
+      .replace('<!-- @service -->', renderService(s.slug, { base, gallery: data.gallery }));
+  }
   const title = decode(attr(out, /<title>([^<]*)<\/title>/));
   const description = decode(attr(out, /<meta name="description" content="([^"]*)">/));
   out = out.replace('<!-- @head -->', head(ctx, { title, description, reviews: reviewSchema(data.reviews) }));
@@ -87,6 +95,7 @@ export async function renderPage(html, ctx) {
     .replaceAll('{{BASE}}', base)
     .replaceAll('{{SITE_URL}}', siteUrl(config))
     .replace('<!-- @city-links -->', CITIES.map((c) => `<a href="${base}${cityPath(c)}">${esc(c.name)}</a>`).join(' · '))
+    .replace('<!-- @service-links -->', SERVICE_PAGES.map((s) => `<a href="${base}${servicePath(s)}">${esc(s.name)}</a>`).join(' · '))
     .replaceAll('{{NAV_GALLERY}}', page === 'gallery/index.html' ? ' aria-current="page"' : '');
 }
 

@@ -654,3 +654,16 @@ fieldset:disabled .field input, fieldset:disabled .field select, fieldset:disabl
   .city-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
   .city-shot { margin-top: 56px; }
 }
+
+/* ---------- Added Nov 10: service pages (scripts/services.mjs), on the light body section ---------- */
+.service-page .city-body h3 { margin-top: 26px; font-size: 1.35rem; }
+.service-page .city-body .facts li { background: #fff; border-color: var(--line-l); }
+.service-page .city-body .facts .ico { color: var(--red-text); }
+.service-page .city-body .license { border-color: var(--red); background: #fff; }
+.service-page .city-body .license small { color: var(--muted-l); }
+.svc-list { margin: 10px 0 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 62ch; }
+.service-page .law { margin-top: 22px; max-width: 62ch; padding: 14px 16px; border-left: 4px solid var(--red); background: #fff; border-radius: 0 12px 12px 0; }
+.service-page .law a, .service-page .steps a { color: var(--red-text); }
+.service-page .steps { margin: 10px 0 0; padding-left: 1.4em; display: grid; gap: 6px; }
+.service-page .dl-row { margin-top: 16px; }
+.card h3 a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }

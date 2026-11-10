@@ -105,13 +105,14 @@ export function citySchema(url, slug) {
   ];
 }
 
+// [icon, heading, text, the service page it links to (services/<slug>/, scripts/services.mjs)]
 const SERVICES_HTML = [
-  ['i-hook', 'Light duty towing', 'Cars, SUVs and pickups.'],
-  ['i-flatbed', 'Flatbed towing', 'Your whole vehicle rides on the bed.'],
-  ['i-key', 'Roadside help', 'Lockouts, jump starts, flat tires, fuel delivery and battery service.'],
-  ['i-truck', 'Heavy duty and truck towing', 'Semi trucks, buses and other big vehicles, with a 50 ton rotator.'],
-  ['i-crash', 'Accident recovery', 'Getting vehicles off the road after a crash.'],
-  ['i-winch', 'Winch outs', 'Pulling vehicles out of ditches, mud and snow.'],
+  ['i-hook', 'Light duty towing', 'Cars, SUVs and pickups.', 'towing'],
+  ['i-flatbed', 'Flatbed towing', 'Your whole vehicle rides on the bed.', 'towing'],
+  ['i-key', 'Roadside help', 'Lockouts, jump starts, flat tires, fuel delivery and battery service.', 'roadside'],
+  ['i-truck', 'Heavy duty and truck towing', 'Semi trucks, buses and other big vehicles, with a 50 ton rotator.', 'heavy-duty'],
+  ['i-crash', 'Accident recovery', 'Getting vehicles off the road after a crash.', 'heavy-duty'],
+  ['i-winch', 'Winch outs', 'Pulling vehicles out of ditches, mud and snow.', 'heavy-duty'],
 ];
 
 // The page body (inside <main>). base is the site's base path, gallery the photo data.
@@ -139,10 +140,10 @@ export function renderCity(slug, { base = '/', gallery = [] } = {}) {
       <div>
         <h2 id="city-what-h">What we do in ${esc(c.name)}</h2>
         <div class="cards">
-          ${SERVICES_HTML.map(([ico, h, p]) => `<article class="card"><svg class="ico" aria-hidden="true"><use href="#${ico}"/></svg><h3>${h}</h3><p>${p}</p></article>`).join('\n          ')}
+          ${SERVICES_HTML.map(([ico, h, p, svc]) => `<article class="card"><svg class="ico" aria-hidden="true"><use href="#${ico}"/></svg><h3><a href="${base}services/${svc}/">${h}</a></h3><p>${p}</p></article>`).join('\n          ')}
         </div>
         ${c.notes.map((n) => `<p class="city-note">${esc(n)}</p>`).join('\n        ')}
-        <p class="city-note">Spill response is licensed anywhere in Michigan, and freight hauling covers Michigan, Ohio and Indiana. <a href="${base}#spill">Spill response</a> · <a href="${base}#freight">Freight</a> · <a href="${base}#release">Getting your vehicle back</a></p>
+        <p class="city-note">Spill response is licensed anywhere in Michigan, and freight hauling covers Michigan, Ohio and Indiana. <a href="${base}services/spill-response/">Spill response</a> · <a href="${base}services/freight/">Freight</a> · <a href="${base}services/impound-release/">Getting your vehicle back</a> · <a href="${base}services/private-property-impounds/">Private property impounds</a></p>
       </div>
       ${photo ? `<figure class="shot city-shot">${picture(photo, { sizes: '(min-width: 900px) 520px, calc(100vw - 32px)' })}<figcaption>${esc(photo.caption || '')}</figcaption></figure>` : ''}
     </div>

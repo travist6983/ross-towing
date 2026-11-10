@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { CONFIG as FILE_CONFIG } from './src/config.js';
 import { renderPage, sitemap, siteUrl, PAGE_FILES } from './scripts/html.mjs';
 import { CITIES, cityPath } from './scripts/cities.mjs';
+import { SERVICE_PAGES, servicePath } from './scripts/services.mjs';
 import { robotsTxt, llmsTxt } from './scripts/seo.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -37,7 +38,7 @@ function rossSite() {
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(CONFIG, root) });
       this.emitFile({ type: 'asset', fileName: 'robots.txt', source: robotsTxt(siteUrl(CONFIG)) });
-      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt(siteUrl(CONFIG), CITIES.map((c) => ({ name: c.name, path: cityPath(c) }))) });
+      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt(siteUrl(CONFIG), CITIES.map((c) => ({ name: c.name, path: cityPath(c) })), SERVICE_PAGES.map((s) => ({ name: s.name, path: servicePath(s), summary: s.summary }))) });
     },
   };
 }

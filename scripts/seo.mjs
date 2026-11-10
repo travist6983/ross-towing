@@ -23,18 +23,20 @@ export const BUSINESS = {
   officeHours: 'Monday to Friday 9am to 5pm, Saturday 9am to 1pm',
 };
 
+export const serviceUrl = (url, s) => (s.page ? url + s.page : `${url}#${s.anchor}`);
 export const address = (b = BUSINESS) => `${b.street}, ${b.city}, ${b.region} ${b.postal}`;
 
 // Services as the home page lists them. area: where that service is offered when it isn't the tow area.
+// page: the service's own page (scripts/services.mjs), else the home page section is its link.
 export const SERVICES = [
-  { group: 'Towing', anchor: 'towing', items: ['Light duty towing', 'Flatbed towing', 'Police towing and impounds', 'Dealership towing'] },
-  { group: 'Roadside help', anchor: 'roadside', items: ['Lockouts', 'Jump starts', 'Flat tires', 'Fuel delivery', 'Battery service'] },
-  { group: 'Heavy duty, recovery and lifting', anchor: 'heavy', items: ['50 ton rotator recovery', 'Heavy duty and truck towing', 'Winch outs', 'Accident recovery', 'Crane and lifting service', 'Machinery hauling and rigging'] },
-  { group: 'Environmental spill response', anchor: 'spill', area: ['Michigan'], items: ['Hazardous spill cleanup', 'Diesel fuel and oil containment and cleanup', 'Electric vehicle fire storage'] },
-  { group: 'Freight hauling', anchor: 'freight', area: ['Michigan', 'Ohio', 'Indiana'], items: ['Machinery and equipment hauling', 'Flatbed, Conestoga, step deck, Landoll and lowboy trailers'] },
-  { group: 'Impound and vehicle release', anchor: 'release', items: ['Vehicle storage', 'Impound vehicle release'] },
+  { group: 'Towing', anchor: 'towing', page: 'services/towing/', items: ['Light duty towing', 'Flatbed towing', 'Police towing and impounds', 'Dealership towing'] },
+  { group: 'Roadside help', anchor: 'roadside', page: 'services/roadside/', items: ['Lockouts', 'Jump starts', 'Flat tires', 'Fuel delivery', 'Battery service'] },
+  { group: 'Heavy duty, recovery and lifting', anchor: 'heavy', page: 'services/heavy-duty/', items: ['50 ton rotator recovery', 'Heavy duty and truck towing', 'Winch outs', 'Accident recovery', 'Crane and lifting service', 'Machinery hauling and rigging'] },
+  { group: 'Environmental spill response', anchor: 'spill', page: 'services/spill-response/', area: ['Michigan'], items: ['Hazardous spill cleanup', 'Diesel fuel and oil containment and cleanup', 'Electric vehicle fire storage'] },
+  { group: 'Freight hauling', anchor: 'freight', page: 'services/freight/', area: ['Michigan', 'Ohio', 'Indiana'], items: ['Machinery and equipment hauling', 'Flatbed, Conestoga, step deck, Landoll and lowboy trailers'] },
+  { group: 'Impound and vehicle release', anchor: 'release', page: 'services/impound-release/', items: ['Vehicle storage', 'Impound vehicle release'] },
   { group: 'Public auctions', anchor: 'auctions', items: ['Public vehicle auctions about every two months'] },
-  { group: 'Private property impounds', anchor: 'ppi', items: ['Removal of unauthorized vehicles from private property, 24 hours a day'] },
+  { group: 'Private property impounds', anchor: 'ppi', page: 'services/private-property-impounds/', items: ['Removal of unauthorized vehicles from private property, 24 hours a day'] },
 ];
 
 const DESCRIPTION = 'Family owned towing, recovery and storage in Southfield, Michigan since 1962. Staffed 24 hours a day, 365 days a year. 50 ton rotator for semi trucks, fire trucks and buses, licensed hazardous spill cleanup anywhere in Michigan, impound release, public auctions, private property impounds, and a licensed for-hire freight carrier for Michigan, Ohio and Indiana.';
@@ -77,7 +79,7 @@ export function businessSchema(url, { reviews = [], extra = [] } = {}) {
           '@type': 'Service',
           name: s.group,
           serviceType: s.items.join(', '),
-          url: `${url}#${s.anchor}`,
+          url: serviceUrl(url, s),
           provider: { '@id': id },
           areaServed: s.area ? s.area.map(state) : b.cities.map(city),
         },
@@ -103,7 +105,7 @@ export function robotsTxt(url) {
 }
 
 // llms.txt (https://llmstxt.org): a plain summary for AI assistants and AI search. Facts from the site only.
-export function llmsTxt(url, cityPages = []) {
+export function llmsTxt(url, cityPages = [], servicePages = []) {
   const b = BUSINESS;
   const lines = [
     `# ${b.name}`,
@@ -118,7 +120,7 @@ export function llmsTxt(url, cityPages = []) {
     `- Facebook: ${b.facebook}`,
     '',
     '## Services',
-    ...SERVICES.map((s) => `- [${s.group}](${url}#${s.anchor}): ${s.items.join('; ')}${s.area ? ` (${s.area.join(', ')})` : ''}`),
+    ...SERVICES.map((s) => `- [${s.group}](${serviceUrl(url, s)}): ${s.items.join('; ')}${s.area ? ` (${s.area.join(', ')})` : ''}`),
     '',
     '## Service area',
     `- Towing: ${b.cities.join(', ')} and the rest of Metro Detroit.`,
@@ -133,6 +135,7 @@ export function llmsTxt(url, cityPages = []) {
     '## Pages',
     `- [Home](${url}): all services, service area, vehicle release, auctions, private property impounds and contact`,
     `- [Gallery](${url}gallery/): photos of towing jobs and freight loads`,
+    ...servicePages.map((s) => `- [${s.name}](${url}${s.path}): ${s.summary}`),
     ...cityPages.map((c) => `- [Towing in ${c.name}, MI](${url}${c.path}): distance from the yard, services and contact for ${c.name}`),
     '',
   ];
