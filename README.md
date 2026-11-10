@@ -174,6 +174,15 @@ Screenshots for Jennifer's how-to (to capture):
 4. `[SCREENSHOT: the published link to copy]`
 5. `[SCREENSHOT: the Sheet after adding the next auction date]`
 
+## Search and AI search
+
+`scripts/seo.mjs` is the one place for the business's name, address and phone, its services and the cities in "Where we tow". The build turns it into:
+
+- JSON-LD (`AutomotiveBusiness` plus `WebSite`) in the head of the home page and the gallery. The home page adds the three featured reviews, because that's where they're shown.
+- `robots.txt` (allow everything, points to the sitemap) and `llms.txt` (a plain summary for AI assistants) at the site root, next to `sitemap.xml`.
+
+Each page's Open Graph and Twitter tags copy its own `<title>` and meta description, so give every new page both. The 404 page gets noindex and no JSON-LD. Add a fact to `seo.mjs` only after it's on the page too: search engines check that the two match. `tests/seo.test.js` checks that the address matches the footer and the cities match the home page.
+
 ## Tests
 
 ```bash
