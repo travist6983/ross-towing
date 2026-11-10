@@ -88,3 +88,43 @@ test('cities: llms.txt lists the city pages it is given', () => {
   const t = llmsTxt(URL_, CITIES.map((c) => ({ name: c.name, path: cityPath(c) })));
   for (const c of CITIES) assert.ok(t.includes(`https://rosstow.com/towing/${c.slug}/`), c.slug);
 });
+
+test('services: one page per home page service, each listed in SERVICES with its path', async () => {
+  const { SERVICE_PAGES, servicePath } = await import('../scripts/services.mjs');
+  const { SERVICES } = await import('../scripts/seo.mjs');
+  for (const s of SERVICE_PAGES) {
+    assert.ok(fs.existsSync(new URL(`../${servicePath(s)}index.html`, import.meta.url)), s.slug);
+    assert.equal(SERVICES.find((g) => g.anchor === s.anchor)?.page, servicePath(s), s.slug);
+  }
+});
+
+test('services: titles and descriptions are unique, short, dash free, with the one phone number and links to every city', async () => {
+  const { SERVICE_PAGES, renderService } = await import('../scripts/services.mjs');
+  for (const key of ['title', 'description', 'h1', 'lede']) assert.equal(new Set(SERVICE_PAGES.map((s) => s[key])).size, SERVICE_PAGES.length, key);
+  for (const s of SERVICE_PAGES) {
+    const html = renderService(s.slug);
+    assert.ok(!/[–—]/.test(html + s.title + s.description), s.slug);
+    assert.ok(s.description.length <= 170, `${s.slug} description is ${s.description.length} chars`);
+    assert.ok(s.title.length <= 65, `${s.slug} title is ${s.title.length} chars`);
+    assert.ok(s.description.includes(BUSINESS.phone), s.slug);
+    assert.ok(!/\b\d{3}[-. ]\d{3}[-. ]\d{4}\b/.test(html.replaceAll(BUSINESS.phone, '')), `${s.slug} shows another phone number`);
+    assert.ok(html.includes(address()), `${s.slug} shows the address`);
+    for (const c of CITIES) assert.ok(html.includes(`/${cityPath(c)}"`), `${s.slug} links ${c.slug}`);
+    assert.ok(!html.includes('undefined'), `${s.slug} has a broken link`);
+  }
+});
+
+test('services: city pages link back to the service pages', async () => {
+  const html = renderCity('dearborn');
+  for (const slug of ['towing', 'roadside', 'heavy-duty', 'spill-response', 'freight', 'impound-release']) assert.ok(html.includes(`/services/${slug}/"`), slug);
+});
+
+test('services: schema adds the service and a breadcrumb to the one business graph', async () => {
+  const { serviceSchema } = await import('../scripts/services.mjs');
+  const g = businessSchema(URL_, { extra: serviceSchema(URL_, 'freight') })['@graph'];
+  const svc = g.find((n) => n['@type'] === 'Service');
+  assert.equal(svc.provider['@id'], g[0]['@id']);
+  assert.deepEqual(svc.areaServed.map((a) => a.name), ['Michigan', 'Ohio', 'Indiana']);
+  assert.equal(g.find((n) => n['@type'] === 'BreadcrumbList').itemListElement.at(-1).item, 'https://rosstow.com/services/freight/');
+  assert.ok(g[0].hasOfferCatalog.itemListElement.some((o) => o.itemOffered.url === 'https://rosstow.com/services/freight/'));
+});
