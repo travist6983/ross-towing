@@ -27,7 +27,10 @@ const isPlaceholder = (p) => /^\[.*\]$/.test(String(p.name || '').trim());
 export function partnerItems(list, { group, dev = false, logoExists = () => false }) {
   return (list || []).flatMap((p) => {
     if (isPlaceholder(p)) return dev ? [{ kind: 'placeholder', name: p.name }] : [];
-    if (p.permission === true && p.logo && logoExists(p.logo)) return [{ kind: 'logo', name: p.name, logo: p.logo, url: httpsUrl(p.url) }];
+    if (p.permission === true && p.logo && logoExists(p.logo)) {
+      const w = Number(p.width) > 0 ? Math.round(p.width) : 0, h = Number(p.height) > 0 ? Math.round(p.height) : 0;
+      return [{ kind: 'logo', name: p.name, logo: p.logo, url: httpsUrl(p.url), width: w && h ? w : 0, height: w && h ? h : 48 }];
+    }
     if (group === 'dealers' && p.permission !== true) return [];
     return [{ kind: 'name', name: p.name, url: group === 'dealers' ? httpsUrl(p.url) : '' }];
   });
@@ -37,10 +40,10 @@ export function renderPartners(list, opts) {
   if (!items.length) return '';
   const li = items.map((it) => {
     const inner = it.kind === 'logo'
-      ? `<img src="/${esc(it.logo.replace(/^\/+/, ''))}" alt="${esc(it.name)}" height="48" loading="lazy" decoding="async">`
+      ? `<img src="/${esc(it.logo.replace(/^\/+/, ''))}" alt="${esc(it.name)}"${it.width ? ` width="${it.width}"` : ''} height="${it.height}" loading="lazy" decoding="async">`
       : it.kind === 'placeholder' ? `<span class="ph">${esc(it.name)}</span>` : `<span>${esc(it.name)}</span>`;
     const body = it.url ? `<a href="${esc(it.url)}" target="_blank" rel="noopener">${inner}</a>` : inner;
-    return `<li class="pt-${it.kind}">${body}</li>`;
+    return `<li class="pt-${it.kind}${it.width > 180 ? ' pt-wide' : ''}">${body}</li>`;
   }).join('');
   const label = opts.group === 'dealers' ? 'Dealerships we tow for' : 'Agencies we work with';
   return `<ul class="partners partners-${opts.group}" aria-label="${label}">${li}</ul>`;

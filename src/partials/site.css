@@ -473,15 +473,19 @@ h3 { font-size: 1.4rem; font-weight: 700; }
 .tone-day .quote, .tone-day2 .quote { background: #fff; border-color: var(--line-l); border-left-color: var(--red); }
 .tone-day .quote figcaption, .tone-day2 .quote figcaption { color: var(--muted-l); }
 
-/* Partner rows: logos only with written permission; otherwise names (agencies) or nothing (dealers) */
+/* Partner rows: logos only with permission; otherwise names (agencies) or nothing (dealers) */
 .partners { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .partners li { display: flex; align-items: center; justify-content: center; min-height: 64px; padding: 10px 12px; border-radius: 10px; text-align: center; font-weight: 600; font-size: .95rem; line-height: 1.25; }
 .partners a { display: flex; align-items: center; justify-content: center; color: inherit; }
-.partners img { max-height: 48px; width: auto; }
+.partners img { max-width: 100%; height: auto; }   /* width and height attributes set the display size */
+.partners img:not([width]) { height: 48px; width: auto; }
 .partners-agencies li { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16); color: #fff; }
 .partners-dealers { margin-top: 16px; }
 .partners-dealers li { background: #fff; border: 1px solid var(--line-l); color: var(--ink); }
-@media (min-width: 640px) { .partners-dealers { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); } }
+.partners-dealers { grid-auto-flow: row dense; }
+.partners-dealers li { min-height: 76px; }
+.partners-dealers .pt-wide { grid-column: span 2; }   /* very wide logos (The Tamaroff Group) get two cells */
+@media (min-width: 640px) { .partners-dealers { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (hover: hover) and (pointer: fine) {
   .partners img { filter: grayscale(1); transition: filter .2s; }
   .partners li:hover img, .partners a:focus-visible img { filter: none; }
