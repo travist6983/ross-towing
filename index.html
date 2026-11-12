@@ -457,10 +457,11 @@
           <p class="muted faq-link">Someone else picking up, or need your belongings? <a href="{{BASE}}faq/">See questions and answers</a>.</p>
         </section>
         <section id="auctions" class="sub-block" aria-labelledby="auctions-h">
-          <!-- Next auction date: src/main.js reads the published Google Sheet (CONFIG.AUCTION_SHEET_CSV_URL)
-               or data/auction.json, and shows it from 30 days before through the auction day. See README.md, "Auction date". -->
+          <!-- Next auction date: the static line is written at build time from src/data/auction.json (scripts/auction.mjs).
+               src/main.js reads the published Google Sheet (CONFIG.AUCTION_SHEET_CSV_URL) or data/auction.json, and shows
+               the banner from 30 days before through the auction day. See README.md, "Auction date". -->
           <div class="auction-slot" id="auction-slot">
-            <p class="auction-static" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg><span>Public auctions about every two months. Call <a href="tel:+12483566011" data-track="preview_call" data-track-detail="auction"><span data-phone>248-356-6011</span></a> for the next date.</span></p>
+            <p class="auction-static" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg><span><!-- @auction-static --></span></p>
             <div class="auction-banner" hidden></div>
           </div>
           <p class="eyebrow">Public auctions</p>

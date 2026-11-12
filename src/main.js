@@ -6,6 +6,7 @@ import { setupForm, readForm, check, phoneRule, callLink, summaryList } from './
 import { freightSummary } from './messages.js';
 import { rowsFromCSV, rowsFromJSON, getAuctionState, formatAuctionDate, buildICS } from './auction.js';
 import AUCTION_JSON from './data/auction.json';
+import './auction-swap.js';
 
 const D = document;
 const ADDRESS = '21360 Telegraph Rd, Southfield, MI 48033';

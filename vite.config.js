@@ -8,6 +8,7 @@ import { CITIES, cityPath } from './scripts/cities.mjs';
 import { SERVICE_PAGES, servicePath } from './scripts/services.mjs';
 import { FAQS, plain } from './scripts/faq.mjs';
 import { robotsTxt, llmsTxt } from './scripts/seo.mjs';
+import { loadAuctionJson, nextAuction, auctionSentence } from './scripts/auction.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
@@ -37,9 +38,10 @@ function rossSite() {
       handler: (html, ctx) => renderPage(html, { page: path.relative(root, ctx.filename).replace(/\\/g, '/'), base: BASE, config: CONFIG, dev, root }),
     },
     generateBundle() {
+      const AUCTION = nextAuction(loadAuctionJson(root));
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(CONFIG, root) });
       this.emitFile({ type: 'asset', fileName: 'robots.txt', source: robotsTxt(siteUrl(CONFIG)) });
-      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt(siteUrl(CONFIG), CITIES.map((c) => ({ name: c.name, path: cityPath(c) })), SERVICE_PAGES.map((s) => ({ name: s.name, path: servicePath(s), summary: s.summary })), FAQS.map(([q, a]) => [q, plain(a.replaceAll('{{BASE}}', siteUrl(CONFIG)))])) });
+      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llmsTxt(siteUrl(CONFIG), CITIES.map((c) => ({ name: c.name, path: cityPath(c) })), SERVICE_PAGES.map((s) => ({ name: s.name, path: servicePath(s), summary: s.summary })), FAQS.map(([q, a]) => [q, plain(a.replaceAll('{{BASE}}', siteUrl(CONFIG)))]), AUCTION ? auctionSentence(AUCTION) : '') });
     },
   };
 }

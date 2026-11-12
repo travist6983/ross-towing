@@ -8,6 +8,7 @@ import { businessSchema, jsonLd } from './seo.mjs';
 import { CITIES, cityPath, cityTitle, citySchema, renderCity } from './cities.mjs';
 import { SERVICE_PAGES, servicePath, serviceSchema, renderService } from './services.mjs';
 import { FAQ_PATH, faqSchema, renderFaq } from './faq.mjs';
+import { loadAuctionJson, nextAuction, auctionSchema, renderAuctionStatic, renderAuctionNote } from './auction.mjs';
 import { loadData, renderReviews, reviewSchema, renderPartners, renderTraining, renderGallery, renderTeaser, renderTowQr, renderOnline, buildQrs } from './sections.mjs';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -16,7 +17,7 @@ export const siteUrl = (config) => String(config.SITE_URL || '').replace(/\/?$/,
 // path: where the page lives (null: not a real page, so no canonical, no sitemap entry, noindex).
 // schema: the business JSON-LD goes on the page; reviews only where the reviews are shown.
 const PAGES = {
-  'index.html': { path: '', home: '', schema: 'reviews' },
+  'index.html': { path: '', home: '', schema: 'reviews', auction: true },
   'gallery/index.html': { path: 'gallery/', schema: 'plain' },
   '404.html': { path: null },
   // One "Towing in <city>" page per city in the home page's service area list (scripts/cities.mjs).
@@ -24,7 +25,7 @@ const PAGES = {
   // One page per service the home page lists (scripts/services.mjs).
   // Questions and answers (scripts/faq.mjs).
   [`${FAQ_PATH}index.html`]: { path: FAQ_PATH, schema: 'plain', faq: true },
-  ...Object.fromEntries(SERVICE_PAGES.map((s) => [`${servicePath(s)}index.html`, { path: servicePath(s), schema: 'plain', service: s.slug }])),
+  ...Object.fromEntries(SERVICE_PAGES.map((s) => [`${servicePath(s)}index.html`, { path: servicePath(s), schema: 'plain', service: s.slug, auction: s.slug === 'impound-release' }])),
 };
 export const PAGE_FILES = Object.keys(PAGES);
 
@@ -38,7 +39,7 @@ function includes(html, root, depth = 0) {
 
 // Head tags for one page. title and description come from the page's own <title> and meta description,
 // so Open Graph and Twitter cards always match what search shows.
-function head({ page, config }, { title, description, reviews }) {
+function head({ page, config }, { title, description, reviews, auction }) {
   const url = siteUrl(config), info = PAGES[page] || {};
   const out = [];
   if (config.NOINDEX || info.path == null) out.push('<meta name="robots" content="noindex">');
@@ -53,7 +54,7 @@ function head({ page, config }, { title, description, reviews }) {
   out.push('<meta property="og:image:width" content="1206">', '<meta property="og:image:height" content="701">');
   out.push('<meta property="og:image:alt" content="Ross Towing rotator lit up at night">');
   out.push('<meta name="twitter:card" content="summary_large_image">');
-  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [], extra: info.city ? citySchema(url, info.city) : info.service ? serviceSchema(url, info.service) : info.faq ? faqSchema(url) : [] })));
+  if (info.schema) out.push(jsonLd(businessSchema(url, { reviews: info.schema === 'reviews' ? reviews : [], extra: [...(info.city ? citySchema(url, info.city) : info.service ? serviceSchema(url, info.service) : info.faq ? faqSchema(url) : []), ...(info.auction ? auctionSchema(url, auction) : [])] })));
   if (config.JWC_TRACKING) {
     out.push('<meta name="jwc-endpoint" content="https://journeyman-contact.travisjterry.workers.dev">');
     out.push('<script src="https://journeymanwebco.com/track.js" defer></script>');
@@ -67,6 +68,7 @@ export async function renderPage(html, ctx) {
   const { page, base, config, root, dev } = ctx;
   const info = PAGES[page] || {};
   const data = loadData(root);
+  const auction = nextAuction(loadAuctionJson(root));
   const logoExists = (rel) => fs.existsSync(path.join(root, 'public', rel.replace(/^\/+/, '')));
   const qr = await buildQrs(config, qrToSvg);
   const sections = {
@@ -91,10 +93,12 @@ export async function renderPage(html, ctx) {
   }
   const title = decode(attr(out, /<title>([^<]*)<\/title>/));
   const description = decode(attr(out, /<meta name="description" content="([^"]*)">/));
-  out = out.replace('<!-- @head -->', head(ctx, { title, description, reviews: reviewSchema(data.reviews) }));
+  out = out.replace('<!-- @head -->', head(ctx, { title, description, reviews: reviewSchema(data.reviews), auction }));
   out = out.replace(/<!-- @section ([\w-]+)(?: ([\w-]+))? -->/g, (_, name, arg) => (sections[name] ? sections[name](arg) : ''));
   if (out.includes('<!-- @towqr -->')) out = out.replace('<!-- @towqr -->', await renderTowQr(config, qrToSvg));
   return out
+    .replace('<!-- @auction-static -->', renderAuctionStatic(auction))
+    .replace('<!-- @auction-note -->', renderAuctionNote(auction))
     .replaceAll('{{HOME}}', info.home ?? base)
     .replaceAll('{{BASE}}', base)
     .replaceAll('{{SITE_URL}}', siteUrl(config))

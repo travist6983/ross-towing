@@ -135,6 +135,8 @@ Before adding any photo, check it:
 
 Public auctions run about every two months. The auctions block shows the next date from 30 days before through the auction day ("Next public auction: Saturday, December 12", plus time and location), with an "Add to calendar" button and a close button. On the day it says "Public auction today". From the day after, and whenever nothing is scheduled, it shows "Public auctions about every two months. Call 248-356-6011 for the next date."
 
+The date in `src/data/auction.json` is also written into the pages at build time (`scripts/auction.mjs`): the home page's auctions line, the vehicle release page, an Event in the JSON-LD on both, and a line in `llms.txt`. So search engines, AI search and visitors with JavaScript off see it too. From the day after the auction, `src/auction-swap.js` puts the "call for the next date" line back on the page, but the schema and `llms.txt` keep the old date until the next push, so set the next date (or `null`) soon after each auction. A date in the Google Sheet (Option B) only drives the banner.
+
 All dates follow Detroit time, whatever time zone a visitor is in. Visitors who close the banner don't see it again for that auction date.
 
 To preview any date on the live page without changing anything, add `?auction=2026-12-12` to the URL.
