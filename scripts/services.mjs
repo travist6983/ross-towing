@@ -165,7 +165,7 @@ export const SERVICE_PAGES = [
           <li>Indoor storage for up to 8 impounded or evidence vehicles in the shop, plus a 40 ft locking container for long term storage and preservation of evidence</li>
         </ul>
         <h3>Public auctions about every two months</h3>
-        <p class="city-note">Open to the public. Parking for over 100 customers across from our lobby, with ADA spots right by the front door. Call for the next date.</p>`,
+        <p class="city-note">Open to the public. Parking for over 100 customers across from our lobby, with ADA spots right by the front door. <!-- @auction-note --></p>`,
     ],
     notes: ['We tow and impound for the Michigan State Police and the Farmington Hills Police Department, and the yard is staffed 24 hours a day, 365 days a year for towing and impound services.'],
     links: [['faq', 'Someone else picking up, belongings and other questions'], ['private-property-impounds', 'Property owners: private property impounds']],

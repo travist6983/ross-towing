@@ -105,7 +105,7 @@ export function robotsTxt(url) {
 }
 
 // llms.txt (https://llmstxt.org): a plain summary for AI assistants and AI search. Facts from the site only.
-export function llmsTxt(url, cityPages = [], servicePages = [], faqs = []) {
+export function llmsTxt(url, cityPages = [], servicePages = [], faqs = [], auctionLine = '') {
   const b = BUSINESS;
   const lines = [
     `# ${b.name}`,
@@ -119,6 +119,7 @@ export function llmsTxt(url, cityPages = [], servicePages = [], faqs = []) {
     `- Office and vehicle release hours: ${b.officeHours}. Vehicle release is cash only.`,
     '- Towing: 24 hours a day, 7 days a week, 365 days a year.',
     '- Payment: vehicle release is cash only. Cards are accepted for towing and roadside calls, with a 5% credit card fee.',
+    ...(auctionLine ? [`- ${auctionLine}`] : []),
     `- Facebook: ${b.facebook}`,
     '',
     '## Services',
