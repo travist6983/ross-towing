@@ -172,6 +172,10 @@ h3 { font-size: 1.4rem; font-weight: 700; }
 .equip tbody th { font-weight: 600; }
 .equip td { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .equip tr:last-child th, .equip tr:last-child td { border-bottom: 0; }
+.auction-vehicles { margin-top: 28px; }
+.auction-vehicles .city-note { margin: 6px 0 14px; }
+.tbl-scroll { overflow-x: auto; border-radius: 12px; }
+.auction-vehicles td.vin { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; letter-spacing: .02em; }
 .equip .num-col { text-align: right; }
 .tow-fleet { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .tow-fleet li { padding: 8px 12px; border-radius: 8px; background: #fff; border: 1px solid var(--line-l); font-weight: 600; }

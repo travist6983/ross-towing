@@ -1,7 +1,7 @@
 // Run: npm test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { nextAuction, auctionWhen, auctionSentence, auctionStart, auctionSchema, renderAuctionStatic, renderAuctionNote, loadAuctionJson } from '../scripts/auction.mjs';
+import { nextAuction, auctionWhen, auctionSentence, auctionStart, auctionSchema, renderAuctionStatic, renderAuctionNote, renderAuctionVehicles, auctionVehicles, loadAuctionJson } from '../scripts/auction.mjs';
 
 const URL_ = 'https://rosstow.com/';
 const JSON_ = { date: '2026-12-04', time: '10:00 AM', location: '21360 Telegraph Rd, Southfield, MI 48033', showFromDaysBefore: 30, note: "Open to the public. Bring your driver's license." };
@@ -47,4 +47,37 @@ test('auction build: page lines keep the generic line hidden for after the aucti
   assert.doesNotMatch(renderAuctionStatic(null), /hidden|data-auction-date/);
   assert.equal(renderAuctionNote(null), '<span data-auction-none>Call for the next date.</span>');
   for (const html of [s, renderAuctionNote(a)]) assert.doesNotMatch(html, /[–—]/);
+});
+
+test('auction build: the data file lists the office\'s 52 vehicles, each with a valid VIN', () => {
+  const j = loadAuctionJson(new URL('..', import.meta.url).pathname);
+  const list = auctionVehicles(j);
+  assert.equal(j.vehicles.length, 52);
+  assert.equal(list.length, 52);
+  const W = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2];
+  const val = (c) => (/\d/.test(c) ? +c : 'ABCDEFGH'.includes(c) ? 'ABCDEFGH'.indexOf(c) + 1 : 'JKLMN'.includes(c) ? 'JKLMN'.indexOf(c) + 1 : c === 'P' ? 7 : c === 'R' ? 9 : 'STUVWXYZ'.indexOf(c) + 2);
+  for (const v of list) {
+    const r = [...v.vin].reduce((t, c, i) => t + val(c) * W[i], 0) % 11;
+    assert.equal(v.vin[8], r === 10 ? 'X' : String(r), v.vin);
+  }
+  assert.equal(new Set(list.map((v) => v.vin)).size, 52);
+});
+
+test('auction build: vehicle list sorts, drops bad rows and hides with the date', () => {
+  const j = { ...JSON_, vehicles: [
+    { year: 2014, make: 'Ford', model: 'Focus', color: 'Silver', vin: '1FADP3F27FL374318' },
+    { year: 2001, make: 'Buick', model: 'Century', color: '', vin: '2g4ws52j511118330' },
+    { year: 2010, make: 'Saab', model: '9-3', color: 'Black', vin: 'TOO-SHORT' },
+  ] };
+  const a = nextAuction(j, NOV12);
+  assert.deepEqual(a.vehicles.map((v) => v.make), ['Buick', 'Ford']);
+  assert.equal(a.vehicles[0].vin, '2G4WS52J511118330');
+  const html = renderAuctionVehicles(a);
+  assert.match(html, /data-auction-date="2026-12-04"/);
+  assert.match(html, /Vehicles in the December 4 auction/);
+  assert.match(html, /2 vehicles\./);
+  assert.match(html, /<th scope="row">2001 Buick Century<\/th><td><\/td><td class="vin">2G4WS52J511118330<\/td>/);
+  assert.doesNotMatch(html, /[–—]/);
+  assert.equal(renderAuctionVehicles(nextAuction(JSON_, NOV12)), '');
+  assert.equal(renderAuctionVehicles(null), '');
 });

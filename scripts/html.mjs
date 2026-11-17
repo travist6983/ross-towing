@@ -8,7 +8,7 @@ import { businessSchema, jsonLd } from './seo.mjs';
 import { CITIES, cityPath, cityTitle, citySchema, renderCity } from './cities.mjs';
 import { SERVICE_PAGES, servicePath, serviceSchema, renderService } from './services.mjs';
 import { FAQ_PATH, faqSchema, renderFaq } from './faq.mjs';
-import { loadAuctionJson, nextAuction, auctionSchema, renderAuctionStatic, renderAuctionNote } from './auction.mjs';
+import { loadAuctionJson, nextAuction, auctionSchema, renderAuctionStatic, renderAuctionNote, renderAuctionVehicles } from './auction.mjs';
 import { loadData, renderReviews, reviewSchema, renderPartners, renderTraining, renderGallery, renderTeaser, renderTowQr, renderOnline, buildQrs } from './sections.mjs';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -99,6 +99,7 @@ export async function renderPage(html, ctx) {
   return out
     .replace('<!-- @auction-static -->', renderAuctionStatic(auction))
     .replace('<!-- @auction-note -->', renderAuctionNote(auction))
+    .replace('<!-- @auction-vehicles -->', renderAuctionVehicles(auction))
     .replaceAll('{{HOME}}', info.home ?? base)
     .replaceAll('{{BASE}}', base)
     .replaceAll('{{SITE_URL}}', siteUrl(config))

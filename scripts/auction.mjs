@@ -2,7 +2,9 @@
 // engines, AI search and visitors with JavaScript off see the date. On the page, src/auction-swap.js puts
 // back the "call for the next date" line once the date has passed, and src/main.js still shows the banner.
 // Dates come only from the office. Dec 4, 2026: Jenn's emails of Nov 12, 2026 (10am, Southfield yard,
-// open to the public, bring a driver's license). No vehicle list yet: she'll decide what to list.
+// open to the public, bring a driver's license). Vehicle list: the office's email of Nov 17, 2026 (52 vehicles,
+// sent by Jake Rider, towing and dispatch manager). Only spelling was tidied (Chevy Avero to Chevrolet Aveo,
+// ELANTRA to Elantra, Saab 93 to 9-3); every VIN passes its check digit.
 import fs from 'node:fs';
 import path from 'node:path';
 import { rowsFromJSON, getAuctionState, formatAuctionDate, parseDay, parseTime, detroitToUTC } from '../src/auction.js';
@@ -18,7 +20,19 @@ export function nextAuction(json, now = new Date()) {
   const res = getAuctionState(rowsFromJSON(json, () => {}), now, 3650);
   if (res.state === 'none') return null;
   const a = res.auction;
-  return { date: a.date, time: a.time, location: a.location || json.location || address(), note: a.note };
+  return { date: a.date, time: a.time, location: a.location || json.location || address(), note: a.note, vehicles: auctionVehicles(json) };
+}
+
+const VIN = /^[A-HJ-NPR-Z0-9]{17}$/;
+
+// The vehicles listed for the auction, sorted by make, model and year. Rows without a year, make and
+// valid VIN are dropped. Color is optional (the office leaves it off for some).
+export function auctionVehicles(json) {
+  const s = (v) => (v == null ? '' : String(v).trim());
+  return (Array.isArray(json && json.vehicles) ? json.vehicles : [])
+    .map((v) => ({ year: Number(v && v.year), make: s(v && v.make), model: s(v && v.model), color: s(v && v.color), vin: s(v && v.vin).toUpperCase() }))
+    .filter((v) => Number.isInteger(v.year) && v.make && VIN.test(v.vin))
+    .sort((a, b) => a.make.localeCompare(b.make) || a.model.localeCompare(b.model) || a.year - b.year);
 }
 
 // "Friday, December 4, 2026 at 10:00 AM"
@@ -43,6 +57,22 @@ export function renderAuctionNote(a) {
   const none = (hidden) => `<span data-auction-none${hidden ? ' hidden' : ''}>Call for the next date.</span>`;
   if (!a) return none(false);
   return `<span data-auction-date="${esc(a.date)}"><strong>${esc(`Next public auction: ${auctionWhen(a)}.`)}</strong>${a.note ? ` ${esc(a.note)}` : ''}</span>${none(true)}`;
+}
+
+// The vehicle list on the vehicle release page, or nothing. It carries data-auction-date, so
+// src/auction-swap.js hides it the day after the auction, along with the date line.
+export function renderAuctionVehicles(a) {
+  const list = (a && a.vehicles) || [];
+  if (!list.length) return '';
+  const rows = list.map((v) => `<tr><th scope="row">${esc(`${v.year} ${v.make} ${v.model}`.trim())}</th><td>${esc(v.color)}</td><td class="vin">${esc(v.vin)}</td></tr>`).join('');
+  return `<div class="equip auction-vehicles" data-auction-date="${esc(a.date)}">
+          <h3>Vehicles in the ${esc(formatAuctionDate(a.date).replace(/^\w+, /, ''))} auction</h3>
+          <p class="city-note">${list.length} vehicles. Call <a href="tel:${BUSINESS.phoneE164}" data-track="preview_call" data-track-detail="auction list"><span data-phone>${BUSINESS.phone}</span></a> with questions about a vehicle.</p>
+          <div class="tbl-scroll"><table>
+            <thead><tr><th scope="col">Vehicle</th><th scope="col">Color</th><th scope="col">VIN</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table></div>
+        </div>`;
 }
 
 // "2026-12-04T10:00:00-05:00" in Detroit time, or the bare date when there's no time.
