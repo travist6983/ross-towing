@@ -1,7 +1,8 @@
 // Run: npm test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { nextAuction, auctionWhen, auctionSentence, auctionStart, auctionSchema, renderAuctionStatic, renderAuctionNote, renderAuctionVehicles, auctionVehicles, loadAuctionJson } from '../scripts/auction.mjs';
+import { nextAuction, auctionWhen, auctionSentence, auctionStart, auctionSchema, renderAuctionStatic, renderAuctionNote, renderAuctionVehicles, renderAuctionListLink, auctionVehicles, loadAuctionJson } from '../scripts/auction.mjs';
+import { swapPastAuction } from '../src/auction-swap.js';
 
 const URL_ = 'https://rosstow.com/';
 const JSON_ = { date: '2026-12-04', time: '10:00 AM', location: '21360 Telegraph Rd, Southfield, MI 48033', showFromDaysBefore: 30, note: "Open to the public. Bring your driver's license." };
@@ -38,15 +39,56 @@ test('auction build: Event schema at the yard, and none without a date', () => {
   assert.deepEqual(auctionSchema(URL_, null), []);
 });
 
-test('auction build: page lines keep the generic line hidden for after the auction', () => {
+test('auction build: page lines show only the date while there is one, and mark it for the fallback', () => {
   const a = nextAuction(JSON_, NOV12);
-  const s = renderAuctionStatic(a);
-  assert.match(s, /data-auction-date="2026-12-04"/);
-  assert.match(s, /<span data-auction-none hidden>Public auctions about every two months/);
-  assert.match(renderAuctionNote(a), /Next public auction: Friday, December 4, 2026 at 10:00 AM\./);
+  const s = renderAuctionStatic(a), n = renderAuctionNote(a);
+  for (const html of [s, n]) {
+    assert.match(html, /data-auction-date="2026-12-04" data-auction-fallback/);
+    assert.doesNotMatch(html, /next date|data-auction-none|hidden/);
+    assert.doesNotMatch(html, /[\u2013\u2014]/);
+  }
+  assert.match(s, /Next public auction: Friday, December 4, 2026 at 10:00 AM/);
+  assert.match(n, /Next public auction: Friday, December 4, 2026 at 10:00 AM\./);
+  assert.match(renderAuctionStatic(null), /^<span data-auction-none>Call <a href="tel:\+12483566011"[^>]*><span data-phone>248-356-6011<\/span><\/a> for the next date\.<\/span>$/);
   assert.doesNotMatch(renderAuctionStatic(null), /hidden|data-auction-date/);
-  assert.equal(renderAuctionNote(null), '<span data-auction-none>Call for the next date.</span>');
-  for (const html of [s, renderAuctionNote(a)]) assert.doesNotMatch(html, /[–—]/);
+  assert.match(renderAuctionNote(null), /^<span data-auction-none>Call .* for the next date\.<\/span>$/);
+});
+
+test('auction build: the home page links to the vehicle list while there is one', () => {
+  const a = nextAuction(loadAuctionJson(new URL('..', import.meta.url).pathname), NOV12);
+  const link = renderAuctionListLink(a, '/');
+  assert.match(link, /data-auction-date="2026-12-04"/);
+  assert.match(link, /href="\/services\/impound-release\/#auction-vehicles">See the 52 vehicles in the December 4 auction<\/a>/);
+  assert.doesNotMatch(link, /data-auction-fallback/);
+  assert.equal(renderAuctionListLink({ ...a, vehicles: [] }), '');
+  assert.equal(renderAuctionListLink(null), '');
+  assert.match(renderAuctionVehicles(a), /id="auction-vehicles"/);
+});
+
+test('auction swap: after the date, hides it and writes the fallback only where marked', () => {
+  const made = [];
+  const mk = (attrs) => {
+    const el = { hidden: false, dataset: { auctionDate: attrs.date }, ownerDocument: doc, hasAttribute: (k) => k in attrs, after: (x) => made.push([attrs.name, x]) };
+    return el;
+  };
+  const node = () => { const n = { attrs: {}, kids: [], textContent: '', setAttribute(k, v) { this.attrs[k] = v; }, append(...k) { this.kids.push(...k); } }; return n; };
+  const doc = { createElement: node };
+  const els = [mk({ name: 'line', date: '2026-12-04', 'data-auction-fallback': '' }), mk({ name: 'list', date: '2026-12-04' })];
+  const root = { querySelectorAll: () => els };
+  swapPastAuction(root, new Date('2026-12-04T17:00:00Z'));
+  assert.deepEqual(els.map((e) => e.hidden), [false, false]);
+  swapPastAuction(root, new Date('2026-12-05T17:00:00Z'));
+  assert.deepEqual(els.map((e) => e.hidden), [true, true]);
+  assert.equal(made.length, 1);
+  const [name, span] = made[0];
+  assert.equal(name, 'line');
+  assert.ok('data-auction-none' in span.attrs);
+  assert.equal(span.kids[0], 'Call ');
+  assert.equal(span.kids[1].href, 'tel:+12483566011');
+  assert.equal(span.kids[1].kids[0].textContent, '248-356-6011');
+  assert.equal(span.kids[2], ' for the next date.');
+  swapPastAuction(root, new Date('2026-12-06T17:00:00Z'));
+  assert.equal(made.length, 1);
 });
 
 test('auction build: the data file lists the office\'s 52 vehicles, each with a valid VIN', () => {
@@ -76,7 +118,8 @@ test('auction build: vehicle list sorts, drops bad rows and hides with the date'
   assert.match(html, /data-auction-date="2026-12-04"/);
   assert.match(html, /Vehicles in the December 4 auction/);
   assert.match(html, /2 vehicles\./);
-  assert.match(html, /<th scope="row">2001 Buick Century<\/th><td><\/td><td class="vin">2G4WS52J511118330<\/td>/);
+  assert.match(html, /<th scope="row">2001 Buick Century<\/th><td class="col-color"><\/td><td class="vin">2G4WS52J511118330<\/td>/);
+  assert.match(html, /2014 Ford Focus<span class="vc">Silver<\/span><\/th><td class="col-color">Silver<\/td>/);
   assert.doesNotMatch(html, /[–—]/);
   assert.equal(renderAuctionVehicles(nextAuction(JSON_, NOV12)), '');
   assert.equal(renderAuctionVehicles(null), '');

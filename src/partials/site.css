@@ -176,6 +176,12 @@ h3 { font-size: 1.4rem; font-weight: 700; }
 .auction-vehicles .city-note { margin: 6px 0 14px; }
 .tbl-scroll { overflow-x: auto; border-radius: 12px; }
 .auction-vehicles td.vin { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; letter-spacing: .02em; }
+.auction-vehicles .vc { display: none; }
+@media (max-width: 639px) {
+  .auction-vehicles .col-color { display: none; }
+  .auction-vehicles .vc { display: block; font-weight: 400; font-size: .86em; color: var(--muted-l, #5b6168); }
+  .auction-vehicles td.vin { font-size: .82em; letter-spacing: 0; }
+}
 .equip .num-col { text-align: right; }
 .tow-fleet { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .tow-fleet li { padding: 8px 12px; border-radius: 8px; background: #fff; border: 1px solid var(--line-l); font-weight: 600; }
@@ -276,6 +282,8 @@ h3 { font-size: 1.4rem; font-weight: 700; }
 .auction-static:focus-visible { outline-offset: 2px; }
 .auction-banner { position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 10px 14px; border: 2px solid var(--red-on-dark); background: linear-gradient(90deg, rgba(199,6,6,.3), rgba(199,6,6,.1)), var(--raised); animation: ab-in .45s ease-out; }
 .auction-banner[hidden], .auction-static[hidden] { display: none; }
+.auction-list-link { margin: -12px 0 0; }
+.auction-list-link a { color: var(--paint); font-weight: 700; }
 @keyframes ab-in { from { opacity: 0; } }
 .ab-text { min-width: 0; padding-right: 34px; }
 .ab-h { font: 800 clamp(1.35rem, 2.4vw, 1.7rem)/1.1 var(--display); }

@@ -460,13 +460,14 @@
           <!-- Next auction date: the static line is written at build time from src/data/auction.json (scripts/auction.mjs).
                src/main.js reads the published Google Sheet (CONFIG.AUCTION_SHEET_CSV_URL) or data/auction.json, and shows
                the banner from 30 days before through the auction day. See README.md, "Auction date". -->
+          <p class="eyebrow">Public auctions</p>
+          <h2 id="auctions-h">Public auctions about every two months</h2>
+          <p class="lede">Open to the public. Parking for over 100 customers across from our lobby, with ADA spots right by the front door.</p>
           <div class="auction-slot" id="auction-slot">
             <p class="auction-static" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg><span><!-- @auction-static --></span></p>
             <div class="auction-banner" hidden></div>
           </div>
-          <p class="eyebrow">Public auctions</p>
-          <h2 id="auctions-h">Public auctions about every two months</h2>
-          <p class="lede">Open to the public. Parking for over 100 customers across from our lobby, with ADA spots right by the front door.</p>
+          <!-- @auction-list-link -->
         </section>
         <!-- Private property impounds (PPI): Jennifer's Nov 5, 2026 email. The authorization form is public/forms/, built by scripts/forms/ppi_form.py. -->
         <section id="ppi" class="sub-block" aria-labelledby="ppi-h">
