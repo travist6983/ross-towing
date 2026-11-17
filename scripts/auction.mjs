@@ -4,7 +4,7 @@
 // Dates come only from the office. Dec 4, 2026: Jenn's emails of Nov 12, 2026 (10am, Southfield yard,
 // open to the public, bring a driver's license). Vehicle list: the office's email of Nov 17, 2026 (52 vehicles,
 // sent by Jake Rider, towing and dispatch manager). Only spelling was tidied (Chevy Avero to Chevrolet Aveo,
-// ELANTRA to Elantra, Saab 93 to 9-3); every VIN passes its check digit.
+// ELANTRA to Elantra, Saab 93 to 9-3); every VIN passes its check digit. The eight missing colors: his follow up email of Nov 17.
 import fs from 'node:fs';
 import path from 'node:path';
 import { rowsFromJSON, getAuctionState, formatAuctionDate, parseDay, parseTime, detroitToUTC } from '../src/auction.js';
