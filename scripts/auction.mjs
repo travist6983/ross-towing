@@ -1,6 +1,6 @@
 // The next public auction, written into the pages at build time from src/data/auction.json, so search
 // engines, AI search and visitors with JavaScript off see the date. On the page, src/auction-swap.js puts
-// back the "call for the next date" line once the date has passed, and src/main.js still shows the banner.
+// in the "call for the next date" line once the date has passed, and src/main.js still shows the banner.
 // Dates come only from the office. Dec 4, 2026: Jenn's emails of Nov 12, 2026 (10am, Southfield yard,
 // open to the public, bring a driver's license). Vehicle list: the office's email of Nov 17, 2026 (52 vehicles,
 // sent by Jake Rider, towing and dispatch manager). Only spelling was tidied (Chevy Avero to Chevrolet Aveo,
@@ -41,22 +41,30 @@ export const auctionWhen = (a) => `${formatAuctionDate(a.date)}, ${a.date.slice(
 // One plain sentence for llms.txt and the page copy.
 export const auctionSentence = (a) => [`Next public auction: ${auctionWhen(a)}, at ${a.location}.`, a.note].filter(Boolean).join(' ');
 
-const generic = (tel) => `Public auctions about every two months. Call ${tel} for the next date.`;
+const tel = (detail) => `<a href="tel:${BUSINESS.phoneE164}" data-track="preview_call" data-track-detail="${detail}"><span data-phone>${BUSINESS.phone}</span></a>`;
 
-// The home page's static auction line (inside .auction-static). With a date, both lines are written and
-// the generic one waits hidden for the day after the auction.
+// The "call for the next date" line. With a date it is not written into the page at all, so a visitor
+// or a crawler never reads it beside the date; src/auction-swap.js writes it in once the date passes,
+// next to any element marked data-auction-fallback.
+export const auctionFallback = (detail) => `Call ${tel(detail)} for the next date.`;
+
+// The home page's static auction line (inside .auction-static). src/main.js swaps it for the banner.
 export function renderAuctionStatic(a) {
-  const tel = `<a href="tel:${BUSINESS.phoneE164}" data-track="preview_call" data-track-detail="auction"><span data-phone>${BUSINESS.phone}</span></a>`;
-  const none = (hidden) => `<span data-auction-none${hidden ? ' hidden' : ''}>${generic(tel)}</span>`;
-  if (!a) return none(false);
-  return `<span data-auction-date="${esc(a.date)}">${esc(auctionSentence(a))}</span>${none(true)}`;
+  if (!a) return `<span data-auction-none>${auctionFallback('auction')}</span>`;
+  return `<span data-auction-date="${esc(a.date)}" data-auction-fallback>${esc(auctionSentence(a))}</span>`;
 }
 
 // The line under "Public auctions about every two months" on the vehicle release page.
 export function renderAuctionNote(a) {
-  const none = (hidden) => `<span data-auction-none${hidden ? ' hidden' : ''}>Call for the next date.</span>`;
-  if (!a) return none(false);
-  return `<span data-auction-date="${esc(a.date)}"><strong>${esc(`Next public auction: ${auctionWhen(a)}.`)}</strong>${a.note ? ` ${esc(a.note)}` : ''}</span>${none(true)}`;
+  if (!a) return `<span data-auction-none>${auctionFallback('auction note')}</span>`;
+  return `<span data-auction-date="${esc(a.date)}" data-auction-fallback><strong>${esc(`Next public auction: ${auctionWhen(a)}.`)}</strong>${a.note ? ` ${esc(a.note)}` : ''}</span>`;
+}
+
+// On the home page, under the auction line: a link to the vehicle list, while there is one.
+export function renderAuctionListLink(a, base = '/') {
+  const n = ((a && a.vehicles) || []).length;
+  if (!n) return '';
+  return `<p class="muted auction-list-link" data-auction-date="${esc(a.date)}"><a href="${esc(base)}services/impound-release/#auction-vehicles">See the ${n} vehicles in the ${esc(formatAuctionDate(a.date).replace(/^\w+, /, ''))} auction</a></p>`;
 }
 
 // The vehicle list on the vehicle release page, or nothing. It carries data-auction-date, so
@@ -64,12 +72,13 @@ export function renderAuctionNote(a) {
 export function renderAuctionVehicles(a) {
   const list = (a && a.vehicles) || [];
   if (!list.length) return '';
-  const rows = list.map((v) => `<tr><th scope="row">${esc(`${v.year} ${v.make} ${v.model}`.trim())}</th><td>${esc(v.color)}</td><td class="vin">${esc(v.vin)}</td></tr>`).join('');
-  return `<div class="equip auction-vehicles" data-auction-date="${esc(a.date)}">
+  // On phones the color moves under the vehicle name (.vc) and the Color column hides, so the VIN fits.
+  const rows = list.map((v) => `<tr><th scope="row">${esc(`${v.year} ${v.make} ${v.model}`.trim())}${v.color ? `<span class="vc">${esc(v.color)}</span>` : ''}</th><td class="col-color">${esc(v.color)}</td><td class="vin">${esc(v.vin)}</td></tr>`).join('');
+  return `<div class="equip auction-vehicles" id="auction-vehicles" data-auction-date="${esc(a.date)}">
           <h3>Vehicles in the ${esc(formatAuctionDate(a.date).replace(/^\w+, /, ''))} auction</h3>
           <p class="city-note">${list.length} vehicles. Call <a href="tel:${BUSINESS.phoneE164}" data-track="preview_call" data-track-detail="auction list"><span data-phone>${BUSINESS.phone}</span></a> with questions about a vehicle.</p>
           <div class="tbl-scroll"><table>
-            <thead><tr><th scope="col">Vehicle</th><th scope="col">Color</th><th scope="col">VIN</th></tr></thead>
+            <thead><tr><th scope="col">Vehicle</th><th scope="col" class="col-color">Color</th><th scope="col">VIN</th></tr></thead>
             <tbody>${rows}</tbody>
           </table></div>
         </div>`;
